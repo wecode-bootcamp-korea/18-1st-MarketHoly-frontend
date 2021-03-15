@@ -1,0 +1,23 @@
+@import './reset.scss';
+@import './commonColor.scss';
+
+* { font-family : 'Noto Sans KR', sans-serif; }
+
+a { text-decoration : none; }
+
+button, input {
+   outline : none;
+   cursor  : pointer;
+}
+
+%flex-row-center {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+%flex-column-center {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
