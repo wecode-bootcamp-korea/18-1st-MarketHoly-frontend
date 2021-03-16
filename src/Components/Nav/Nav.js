@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import NavBanner from './NavBanner';
 import { CgSearch } from 'react-icons/cg';
 import { FiMenu, FiShoppingCart } from 'react-icons/fi';
-import { GiCarrot } from 'react-icons/gi';
+
 import './Nav.scss';
 import NavBarHoverList from './NavBarHoverList';
 
@@ -32,7 +32,6 @@ class Nav extends React.Component {
 
   handleSubmitSearch = e => {
     e.preventDefault();
-    console.log(this.state.search);
   };
 
   allCategoriesHoverOver = () => {
@@ -50,7 +49,6 @@ class Nav extends React.Component {
   };
 
   categoriesMenuHoverOver = index => {
-    console.log(index);
     this.setState({
       hoverWidth: 450,
       displayShowIndex: index,
@@ -136,36 +134,6 @@ class Nav extends React.Component {
                 {navbarList.map((list, index) => (
                   <NavBarHoverList displayShowIndex={displayShowIndex} list={list} index={index} key={index} categoriesMenuHoverOver={this.categoriesMenuHoverOver} />
                 ))}
-                {/*<li>*/}
-                {/*  <Link to="#" id={2} className={'menu-hover-list-name ' + (parseInt(displayShowIndex) === 2 ? 'hover-on' : null)} onMouseEnter={this.categoriesMenuHoverOver}>*/}
-                {/*    <span>*/}
-                {/*      <GiCarrot className="list-icon" />*/}
-                {/*    </span>*/}
-                {/*    <span>&nbsp;햄버거</span>*/}
-                {/*  </Link>*/}
-                {/*  <ul className="menu-sub-list" style={parseInt(displayShowIndex) === 2 ? { display: 'none' } : { display: 'flex' }}>*/}
-                {/*    <li>*/}
-                {/*      <Link to="#" className="sub-list-link">*/}
-                {/*        <span className="sub-list-name">햄버거 &#183; 치즈버거 &#183; 군대버거</span>*/}
-                {/*      </Link>*/}
-                {/*    </li>*/}
-                {/*    <li>*/}
-                {/*      <Link to="#" className="sub-list-link">*/}
-                {/*        <span className="sub-list-name">불고기버거 &#183; 치킨버거 &#183; 똥버거</span>*/}
-                {/*      </Link>*/}
-                {/*    </li>*/}
-                {/*    <li>*/}
-                {/*      <Link to="#" className="sub-list-link">*/}
-                {/*        <span className="sub-list-name">딸기에몽버거 &#183; 상하이버거&#183; 모짜렐라버거</span>*/}
-                {/*      </Link>*/}
-                {/*    </li>*/}
-                {/*    <li>*/}
-                {/*      <Link to="#" className="sub-list-link">*/}
-                {/*        <span className="sub-list-name">바나나버거 &#183; 딸기버거&#183; 초코버</span>*/}
-                {/*      </Link>*/}
-                {/*    </li>*/}
-                {/*  </ul>*/}
-                {/*</li>*/}
               </ul>
             </div>
           </div>
