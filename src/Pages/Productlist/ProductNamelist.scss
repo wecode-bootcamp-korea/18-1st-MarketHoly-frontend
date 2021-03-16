@@ -1,0 +1,21 @@
+@import '../../styles/reset.scss';
+
+.productList {
+  display: flex;
+  flex-direction: row;
+
+  li {
+    overflow: hidden;
+    padding: 0 13px 7px 12px;
+    border-bottom: 1px solid #ddd;
+    line-height: 20px;
+    font-size: 12px;
+    color: #333;
+    letter-spacing: -0.3px;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: rgb(94, 1, 128);
+  }
+}
