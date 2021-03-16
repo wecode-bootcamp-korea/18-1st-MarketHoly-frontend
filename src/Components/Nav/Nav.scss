@@ -1,0 +1,238 @@
+@import '../../styles/common.scss';
+
+.navbar {
+   @extend %flex-column-center;
+   min-width : 1050px;
+   height    : 156px;
+   .user-menu {
+      display         : flex;
+      justify-content : space-between;
+      align-items     : center;
+      width           : 1050px;
+      height          : 37px;
+      .user-list-menu {
+         display         : flex;
+         justify-content : flex-end;
+         align-items     : center;
+         width           : 195px;
+         height          : 100%;
+         font-size       : 13px;
+         .menu-list {
+            margin : 0 5px;
+         }
+         .join-link {
+            color : $themePurple;
+         }
+         .login-link {
+            color : $mainText;
+         }
+      }
+   }
+   .navbar-logo {
+      @extend %flex-row-center;
+      width  : 1050px;
+      height : 63px;
+      .logo-link {
+         img {
+            width  : 105px;
+            height : 79px;
+         }
+      }
+   }
+   .navbar-menu {
+      position : relative;
+      width    : 1050px;
+      height   : 56px;
+      .menu-main {
+         position    : relative;
+         display     : flex;
+         align-items : center;
+         width       : 100%;
+         height      : 100%;
+         .menu-main-list {
+            display     : flex;
+            align-items : center;
+            width       : 750px;
+            height      : 100%;
+            li {
+               display     : flex;
+               align-items : center;
+               height      : 100%;
+               cursor      : pointer;
+            }
+            .menu1 {
+               display      : flex;
+               align-items  : center;
+               margin-right : 20px;
+               .menu1-link {
+                  display     : flex;
+                  align-items : center;
+                  .menu1-icon {
+                     color        : $mainText;
+                     width        : 26px;
+                     height       : 24px;
+                     margin-right : 10px;
+                  }
+               }
+            }
+            li {
+               &:nth-child(1n+2) {
+                  margin : 0 45px;
+               }
+               &:not(:first-child) {
+                  &:hover {
+                     .menu-text {
+                        color         : rgb(110, 26, 140);
+                        border-bottom : 1px solid rgb(110, 26, 140);
+                     }
+                  }
+               }
+               &:first-child {
+                  &:hover {
+                     .menu1-icon, .menu-text {
+                        color : rgb(110, 26, 140);
+                     }
+                  }
+               }
+            }
+            .menu-text {
+               color       : $mainText;
+               font-size   : 15px;
+               font-weight : 700;
+            }
+         }
+         .side-search {
+            display     : flex;
+            align-items : center;
+            right       : 150px;
+            width       : 240px;
+            height      : 100%;
+            .side-search-box {
+               display          : flex;
+               align-items      : center;
+               justify-content  : center;
+               width            : 100%;
+               height           : 36px;
+               border           : 1px solid rgba(0, 0, 0, 0);
+               border-radius    : 20px;
+               background-color : #f7f7f7;
+               .search-input, .search-btn {
+                  border           : none;
+                  background-color : rgba(0, 0, 0, 0);
+               }
+               .search-input {
+                  width   : 100%;
+                  padding : 0 22px;
+               }
+               .search-btn {
+                  display     : flex;
+                  align-items : center;
+                  right       : 0;
+                  .search-btn-icon {
+                     font-size : 20px;
+                     color     : $mainText;
+                  }
+               }
+            }
+         }
+         .cart-count {
+            position : absolute;
+            right    : 5px;
+            @extend %flex-row-center;
+            width    : 36px;
+            height   : 36px;
+            .cart-count-link {
+               .cart-count-icon {
+                  font-size : 25px;
+               }
+            }
+         }
+      }
+      .menu-hover-box {
+         position   : absolute;
+         display    : none;
+         width      : 220px;
+         height     : 600px;
+         border     : 1px solid #efefef;
+         overflow   : hidden;
+         transition : 0.2s all;
+         .menu-hover {
+            .menu-hover-list {
+               li {
+                  display   : flex;
+                  font-size : 13px;
+                  .menu-hover-list-name {
+                     display      : flex;
+                     align-items  : center;
+                     width        : 220px;
+                     height       : 40px;
+                     padding-left : 20px;
+                     color        : $mainText;
+                     cursor       : pointer;
+                     z-index      : 300;
+                     &:hover {
+                        color            : $themePurple;
+                        background-color : #f7f7f7;
+                        font-weight      : 700;
+                     }
+                  }
+                  .menu-sub-list {
+                     position         : absolute;
+                     top              : 0;
+                     left             : 220px;
+                     display          : flex;
+                     flex-direction   : column;
+                     width            : 245px;
+                     height           : 100%;
+                     background-color : #f7f7f7;
+                     li {
+                        position     : relative;
+                        display      : flex;
+                        align-items  : center;
+                        padding-left : 20px;
+                        height       : 40px;
+                        cursor       : pointer;
+                        .sub-list-link {
+                           display     : flex;
+                           align-items : center;
+                           overflow    : hidden;
+                           height      : 40px;
+                           line-height : 18px;
+                        }
+                        .sub-list-name {
+                           opacity             : 0;
+                           color               : $mainText;
+                           animation-name      : opacityShow;
+                           animation-duration  : 1.8s;
+                           animation-fill-mode : forwards;
+                        }
+                        &:hover {
+                           .sub-list-name {
+                              border-bottom : 1px solid $themePurple;
+                              font-weight   : 700;
+                              color         : $themePurple;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+.hover-on {
+   color            : $themePurple;
+   background-color : #f7f7f7;
+   font-weight      : 700;
+}
+
+@keyframes opacityShow {
+   from {
+      opacity : 0;
+   }
+   to {
+      opacity : 1;
+   }
+}
