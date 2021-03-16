@@ -1,96 +1,101 @@
 @import '../../styles/reset.scss';
-.screen {
+.scrollOff {
   display: flex;
   justify-content: center;
+  overflow: hidden;
+  height: 100%;
+}
 
-  .wide {
-    width: 1008px;
+.scrollOn {
+  display: flex;
+  justify-content: center;
+}
+.wide {
+  width: 1008px;
 
-    .list {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      // margin-left: 300px;
+  .list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-      li {
-        float: left;
-        width: 336px;
-        height: 643px;
-        padding: 25px 28px 0 0;
-        word-break: break-all;
+    li {
+      float: left;
+      width: 336px;
+      height: 643px;
+      padding: 25px 28px 0 0;
+      word-break: break-all;
 
-        .imgCouponBox {
-          position: relative;
-          left: 0;
+      .imgCouponBox {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 308px;
+        height: 396px;
+
+        .itemcoupon {
+          font-size: 14px;
+          position: absolute;
+          z-index: 1;
+          left: 1px;
           top: 0;
-          width: 308px;
-          height: 396px;
-
-          .itemcoupon {
-            font-size: 14px;
-            position: absolute;
-            z-index: 1;
-            left: 1px;
-            top: 0;
-            color: white;
-            background-color: rgb(189, 118, 255);
-            opacity: 0.9;
-            width: 96px;
-            height: 32px;
-            text-align: center;
-            padding-top: 10px;
-          }
-
-          .off {
-            visibility: hidden;
-          }
-
-          img {
-            width: 100%;
-            height: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-          }
-
-          .FiShoppingCart {
-            position: absolute;
-            border: 0;
-            z-index: 1;
-            right: 15px;
-            bottom: 15px;
-            width: 45px;
-            height: 45px;
-            padding-top: 7px;
-            padding-right: 9px;
-            background-color: rgb(169, 50, 169);
-            border-radius: 40px;
-            opacity: 0.8;
-          }
+          color: white;
+          background-color: rgb(189, 118, 255);
+          opacity: 0.9;
+          width: 96px;
+          height: 32px;
+          text-align: center;
+          padding-top: 10px;
         }
-        .totalInfo {
-          padding: 14px 0px 10px;
-          font-size: 12px;
 
-          .itemName {
-            font-size: 20px;
-            color: rgb(61, 61, 61);
-          }
+        .off {
+          visibility: hidden;
+        }
 
-          .itemPrice {
-            font-weight: 750;
-            padding-top: 7px;
-            font-size: 18px;
-            line-height: 29px;
-            color: rgb(51, 51, 51);
-            letter-spacing: 0;
-          }
+        img {
+          width: 100%;
+          height: 100%;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+        }
 
-          .itemInfo {
-            display: block;
-            padding-top: 8px;
-            font-size: 13px;
-            color: #999;
-            line-height: 19px;
-          }
+        .FiShoppingCart {
+          position: absolute;
+          border: 0;
+          z-index: 1;
+          right: 15px;
+          bottom: 15px;
+          width: 45px;
+          height: 45px;
+          padding-top: 7px;
+          padding-right: 9px;
+          background-color: rgb(169, 50, 169);
+          border-radius: 40px;
+          opacity: 0.8;
+        }
+      }
+      .totalInfo {
+        padding: 14px 0px 10px;
+        font-size: 12px;
+
+        .itemName {
+          font-size: 20px;
+          color: rgb(61, 61, 61);
+        }
+
+        .itemPrice {
+          font-weight: 750;
+          padding-top: 7px;
+          font-size: 18px;
+          line-height: 29px;
+          color: rgb(51, 51, 51);
+          letter-spacing: 0;
+        }
+
+        .itemInfo {
+          display: block;
+          padding-top: 8px;
+          font-size: 13px;
+          color: #999;
+          line-height: 19px;
         }
       }
     }

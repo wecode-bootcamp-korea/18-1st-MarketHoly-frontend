@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
 import './Productlist.scss';
 import Productbasket from './Productbasket';
@@ -25,17 +25,18 @@ export class Productlist extends Component {
   }
 
   handleBasketModal = e => {
-    // console.log(e);
     this.setState({
       basketItem: e,
       productbasket: !this.state.productbasket,
     });
-    // console.log(this.state.basketItem);
   };
 
   render() {
+    // const [show, setShow] = useState(false);
+    console.log('btn on');
+
     return (
-      <div className="screen">
+      <div className={this.state.productbasket ? 'scrollOff' : 'scrollOn'}>
         <div className="wide">
           <ul className="list">
             {this.state.product.map(item => {
