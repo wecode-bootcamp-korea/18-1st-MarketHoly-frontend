@@ -84,17 +84,17 @@ export class Productlist extends Component {
                 </li>
               );
             })}
-            <Productbasket
-              productbasket={this.state.productbasket}
-              name={this.state.basketItem.name}
-              Price={this.state.basketItem.Price}
-              addcomma={this.addcomma}
-              handleModalrevoe={this.handleModalrevoe}
-              count={this.state.count}
-              resetCount={this.resetCount}
-              handleCnt={this.handleCnt}
-            />
           </ul>
+          <Productbasket
+            productbasket={this.state.productbasket}
+            name={this.state.basketItem.name}
+            Price={this.state.basketItem.Price}
+            addcomma={this.addcomma}
+            handleModalrevoe={this.handleModalrevoe}
+            count={this.state.count}
+            resetCount={this.resetCount}
+            handleCnt={this.handleCnt}
+          />
         </div>
       </div>
     );
