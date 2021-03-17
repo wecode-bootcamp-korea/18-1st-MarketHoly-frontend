@@ -32,7 +32,6 @@ export class Productlist extends Component {
   };
 
   render() {
-    // const [show, setShow] = useState(false);
     console.log('btn on');
 
     return (

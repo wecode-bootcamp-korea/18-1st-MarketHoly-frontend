@@ -18,11 +18,27 @@ export class Productbasket extends Component {
                     <button className="subtract">
                       <GrSubtract />
                     </button>
-                    <input readonly="readonly" value="1"></input>
+                    <input readonly="readonly" value="1" />
                     <button className="add">
                       <RiAddFill />
                     </button>
                   </div>
+                </div>
+                <div className="modalTotal">
+                  <div className="modalTotalleft">합계</div>
+                  <div className="modalTotalright">
+                    <div className="modalTotalprice">{this.props.Price}</div>
+                    <div className="modalTotalcomment">
+                      <span className="modalTotalicon">적립</span>
+                      <span className="modalTotalCash">
+                        로그인 후, 적립혜택 제공
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="button">
+                  <button className="cancle">취소</button>
+                  <button className="pustBasket">장바구니 담기</button>
                 </div>
               </div>
             </div>
