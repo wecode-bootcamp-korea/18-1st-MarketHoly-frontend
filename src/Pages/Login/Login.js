@@ -27,7 +27,7 @@ class Login extends Component {
           />
           <div className="loginCheck">
             <label className="saveCheckBox">
-              <input className="securityConnect" type="checkbox" value="y" />
+              <input className="securityConnect" type="checkbox" />
               보안접속
             </label>
             <div className="findLogin">

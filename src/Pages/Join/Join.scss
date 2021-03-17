@@ -47,66 +47,82 @@
       width: 480px;
       padding: 10px 0;
       font-size: 14px;
-    }
 
-    .duplicationBtn {
-      width: 120px;
-      height: 45px;
-      color: $themePurple;
-    }
+      input {
+        width: 330px;
+        height: 44px;
+        padding: 0 14px;
+        cursor: text;
+        border: 1px solid $subTextLightGray;
+        font-size: 14px;
+        border-radius: 3px;
+        line-height: 20px;
+        color: $mainText;
+      }
 
-    input {
-      width: 330px;
-      height: 44px;
-      padding: 0 14px;
-      border: 1px solid $subTextLightGray;
-      font-size: 14px;
-    }
-
-    input::placeholder {
-      color: $subTextLightGray;
+      input::placeholder {
+        color: $subTextLightGray;
+      }
     }
 
     // 아이디
     .emailTable {
-      padding-top: 30px;
       border-top: 2px solid $mainText;
 
       td {
         padding-top: 20px;
+
+        //중복확인 버튼
+        .duplicationBtn {
+          width: 120px;
+          height: 45px;
+          margin-left: 10px;
+          color: $themePurple;
+          border: 1px solid $themePurple;
+          background-color: #fff;
+          border-radius: 3px;
+          font-weight: bold;
+        }
       }
-    }
-
-    // 비밀번호
-    .pwTable {
-    }
-
-    // 비밀번호 확인
-    .pwCheckTable {
-    }
-
-    // 이름
-    .nameTable {
-    }
-
-    // 휴대폰
-    .phoneNumberTable {
     }
 
     // 생년월일
     .birthTable {
       border-bottom: 1px solid $mainText;
+      margin-bottom: 20px; // 적용이 안된다.
     }
 
+    // 이용약관동의
     .tosTable {
+      margin-top: 40px;
       border-bottom: 1px solid #f4f4f4;
+
+      .tosText {
+        overflow: scroll;
+        width: 450px;
+        height: 200px;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid $subTextLightGray;
+        border-radius: 3px;
+        line-height: 16px;
+        color: $mainText;
+
+        p {
+          font-weight: bold;
+        }
+      }
     }
   }
 
+  //가입하기 버튼
   .joinBtn {
+    @extend %flex-column-center;
     width: 240px;
     height: 55px;
     margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 120px; //적용 안됨
     border: none;
     border-radius: 3px;
     font-size: 16px;
