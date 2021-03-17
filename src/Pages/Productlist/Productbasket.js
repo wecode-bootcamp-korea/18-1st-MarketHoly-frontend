@@ -4,26 +4,6 @@ import { RiAddFill } from 'react-icons/ri';
 import { GrSubtract } from 'react-icons/gr';
 
 export class Productbasket extends Component {
-  constructor() {
-    super();
-    this.state = {
-      count: 1,
-    };
-  }
-
-  resetCount = () => {
-    this.setState({
-      count: 0,
-    });
-  };
-
-  handleCnt = num => {
-    const { count } = this.state;
-
-    if (num === -1 && count === 1) return;
-    this.setState({ count: count + num });
-  };
-
   render() {
     return (
       <>
@@ -38,15 +18,15 @@ export class Productbasket extends Component {
                     <button
                       className="subtract"
                       name="subtract"
-                      onClick={() => this.handleCnt(-1)}
+                      onClick={() => this.props.handleCnt(-1)}
                     >
                       <GrSubtract />
                     </button>
-                    <input readonly="readonly" value={this.state.count} />
+                    <input readonly="readonly" value={this.props.count} />
                     <button
                       className="add"
                       name="add"
-                      onClick={() => this.handleCnt(1)}
+                      onClick={() => this.props.handleCnt(1)}
                     >
                       <RiAddFill />
                     </button>
@@ -56,7 +36,7 @@ export class Productbasket extends Component {
                   <div className="modalTotalleft">합계</div>
                   <div className="modalTotalright">
                     <div className="modalTotalprice">
-                      {this.props.addcomma(this.props.Price * this.state.count)}
+                      {this.props.addcomma(this.props.Price * this.props.count)}
                       원
                     </div>
                     <div className="modalTotalcomment">

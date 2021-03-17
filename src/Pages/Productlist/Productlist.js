@@ -7,7 +7,7 @@ export class Productlist extends Component {
   constructor() {
     super();
     this.state = {
-      productList: [],
+      count: 1,
       product: [],
       productbasket: false,
       basketItem: [],
@@ -31,6 +31,7 @@ export class Productlist extends Component {
   handleModalrevoe = e => {
     this.setState({
       productbasket: !this.state.productbasket,
+      count: 1,
     });
   };
 
@@ -39,6 +40,19 @@ export class Productlist extends Component {
       basketItem: e,
       productbasket: !this.state.productbasket,
     });
+  };
+
+  resetCount = () => {
+    this.setState({
+      count: 0,
+    });
+  };
+
+  handleCnt = num => {
+    const { count } = this.state;
+
+    if (num === -1 && count === 1) return;
+    this.setState({ count: count + num });
   };
 
   render() {
@@ -76,6 +90,9 @@ export class Productlist extends Component {
               Price={this.state.basketItem.Price}
               addcomma={this.addcomma}
               handleModalrevoe={this.handleModalrevoe}
+              count={this.state.count}
+              resetCount={this.resetCount}
+              handleCnt={this.handleCnt}
             />
           </ul>
         </div>
