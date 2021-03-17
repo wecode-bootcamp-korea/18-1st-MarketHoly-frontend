@@ -1,6 +1,6 @@
 [
   {
-    "navbarId": 0,
+    "navbarId": 1,
     "categoriesMenuName": "채소",
     "categoriesSubMenuName": [
       "고구마 · 감자 · 당근",
@@ -10,12 +10,21 @@
     ]
   },
   {
-    "navbarId": 1,
+    "navbarId": 2,
     "categoriesMenuName": "햄버거",
     "categoriesSubMenuName": [
       "햄버거 · 치즈버거 · 군대버거",
       "불고기버거 · 치킨버거 · 똥버거",
       "딸기에몽버거 · 상하이버거 · 초코버거"
+    ]
+  },  {
+    "navbarId": 3,
+    "categoriesMenuName": "채소오",
+    "categoriesSubMenuName": [
+      "고구마 · 감자 · 당근",
+      "시금치 · 쌈채 · 나",
+      "브로콜리 · 파프리카 · 양배추",
+      "브로콜리 · 파프리카 · 양배추"
     ]
   }
 ]

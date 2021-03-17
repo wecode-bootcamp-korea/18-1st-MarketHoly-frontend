@@ -116,7 +116,7 @@
                border           : 1px solid rgba(0, 0, 0, 0);
                border-radius    : 20px;
                background-color : #f7f7f7;
-               .search-input, .search-btn {
+               .search-input, .search-btn, .search-btn-cancel {
                   border           : none;
                   background-color : rgba(0, 0, 0, 0);
                }
@@ -156,68 +156,6 @@
          border     : 1px solid #efefef;
          overflow   : hidden;
          transition : 0.2s all;
-         .menu-hover {
-            .menu-hover-list {
-               li {
-                  display   : flex;
-                  font-size : 13px;
-                  .menu-hover-list-name {
-                     display      : flex;
-                     align-items  : center;
-                     width        : 220px;
-                     height       : 40px;
-                     padding-left : 20px;
-                     color        : $mainText;
-                     cursor       : pointer;
-                     z-index      : 300;
-                     &:hover {
-                        color            : $themePurple;
-                        background-color : #f7f7f7;
-                        font-weight      : 700;
-                     }
-                  }
-                  .menu-sub-list {
-                     position         : absolute;
-                     top              : 0;
-                     left             : 220px;
-                     display          : flex;
-                     flex-direction   : column;
-                     width            : 245px;
-                     height           : 100%;
-                     background-color : #f7f7f7;
-                     li {
-                        position     : relative;
-                        display      : flex;
-                        align-items  : center;
-                        padding-left : 20px;
-                        height       : 40px;
-                        cursor       : pointer;
-                        .sub-list-link {
-                           display     : flex;
-                           align-items : center;
-                           overflow    : hidden;
-                           height      : 40px;
-                           line-height : 18px;
-                        }
-                        .sub-list-name {
-                           opacity             : 0;
-                           color               : $mainText;
-                           animation-name      : opacityShow;
-                           animation-duration  : 1.8s;
-                           animation-fill-mode : forwards;
-                        }
-                        &:hover {
-                           .sub-list-name {
-                              border-bottom : 1px solid $themePurple;
-                              font-weight   : 700;
-                              color         : $themePurple;
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
       }
    }
 }

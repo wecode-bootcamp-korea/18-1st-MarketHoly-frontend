@@ -7,7 +7,11 @@ class NavBanner extends React.Component {
   };
 
   componentDidMount() {
-    setInterval(this.bannerChange, 1500);
+    this.bannerInterval = setInterval(this.bannerChange, 1500);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.bannerInterval);
   }
 
   bannerChange = () => {
@@ -20,17 +24,19 @@ class NavBanner extends React.Component {
     const { bannerChange } = this.state;
     return (
       <div className="user-menu-banner">
-        {bannerChange === 0 ? (
-          <a href="#">
-            <span>서울 &#183; 경기 &#183; 인천</span>
-            <span className="span-bold">샛별배송 > </span>
-          </a>
-        ) : (
-          <a href="#">
-            <span>수도권 이외 지역</span>
-            <span className="span-bold">택배배송 > </span>
-          </a>
-        )}
+        <a href="#">
+          {bannerChange === 0 ? (
+            <>
+              <span>서울 &#183; 경기 &#183; 인천</span>
+              <span className="span-bold">샛별배송 > </span>
+            </>
+          ) : (
+            <>
+              <span>수도권 이외 지역</span>
+              <span className="span-bold">택배배송 > </span>
+            </>
+          )}
+        </a>
       </div>
     );
   }

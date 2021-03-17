@@ -1,23 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NavBanner from './NavBanner';
 import { CgSearch } from 'react-icons/cg';
 import { FiMenu, FiShoppingCart } from 'react-icons/fi';
-
-import './Nav.scss';
+import { MdCancel } from 'react-icons/md';
+import NavBanner from './NavBanner';
 import NavBarHoverList from './NavBarHoverList';
+import './Nav.scss';
 
 class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.searchInputRef = React.createRef();
+    this.HOVER_WIDTH_TYPE1 = 220;
+    this.HOVER_WIDTH_TYPE2 = 450;
+  }
+
   state = {
     search: '',
     allCategoriesHover: false,
-    hoverWidth: 220,
+    hoverWidth: this.HOVER_WIDTH_TYPE1,
     navbarList: [],
-    displayShowIndex: -1,
+    displayShowIndex: 0,
+    toggleSearchInput: false,
   };
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/productNavbar.json', {})
+    fetch('/data/productNavbar.json', {})
       .then(res => res.json())
       .then(res => {
         this.setState({ navbarList: res });
@@ -25,43 +33,57 @@ class Nav extends React.Component {
   }
 
   handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => {
+        if (this.state.search) {
+          this.setState({
+            toggleSearchInput: true,
+          });
+        } else {
+          this.setState({
+            toggleSearchInput: false,
+          });
+        }
+      }
+    );
   };
 
   handleSubmitSearch = e => {
     e.preventDefault();
   };
 
-  allCategoriesHoverOver = () => {
+  allCategoriesHoverEnter = () => {
     this.setState({
       allCategoriesHover: true,
-      hoverWidth: 220,
+      hoverWidth: this.HOVER_WIDTH_TYPE1,
     });
   };
-  allCategoriesHoverOut = () => {
+  allCategoriesHoverLeave = () => {
     this.setState({
       allCategoriesHover: false,
-      hoverWidth: 220,
-      displayShowIndex: -1,
+      hoverWidth: this.HOVER_WIDTH_TYPE1,
+      displayShowIndex: 0,
     });
   };
-
-  categoriesMenuHoverOver = index => {
+  categoriesMenuHoverEnter = index => {
     this.setState({
-      hoverWidth: 450,
+      hoverWidth: this.HOVER_WIDTH_TYPE2,
       displayShowIndex: index,
     });
   };
-  categoriesMenuHoverOut = () => {
+
+  resetInputValue = () => {
     this.setState({
-      hoverWidth: 220,
+      toggleSearchInput: !this.state.toggleSearchInput,
     });
+    this.searchInputRef.current.value = '';
   };
 
   render() {
-    const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList } = this.state;
+    const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput } = this.state;
     return (
       <div className="navbar">
         <div className="user-menu">
@@ -87,7 +109,7 @@ class Nav extends React.Component {
         <div className="navbar-menu">
           <div className="menu-main">
             <ul className="menu-main-list">
-              <li className="menu1" onMouseEnter={this.allCategoriesHoverOver}>
+              <li className="menu1" onMouseEnter={this.allCategoriesHoverEnter}>
                 <Link to="#" className="menu1-link">
                   <FiMenu className="menu1-icon" />
                   <span className="menu-text">전체 카테고리</span>
@@ -116,7 +138,12 @@ class Nav extends React.Component {
             </ul>
             <div className="side-search">
               <form className="side-search-box" onSubmit={this.handleSubmitSearch}>
-                <input type="text" className="search-input" name="search" onChange={this.handleChange} />
+                <input type="text" className="search-input" name="search" onChange={this.handleChange} ref={this.searchInputRef} />
+                {toggleSearchInput && (
+                  <button className="search-btn-cancel" onClick={this.resetInputValue}>
+                    <MdCancel className="search-btn-icon" />
+                  </button>
+                )}
                 <button className="search-btn" type="submit">
                   <CgSearch className="search-btn-icon" />
                 </button>
@@ -128,11 +155,11 @@ class Nav extends React.Component {
               </div>
             </div>
           </div>
-          <div className="menu-hover-box" style={allCategoriesHover ? { display: 'flex', width: `${hoverWidth}px` } : { display: 'none' }} onMouseLeave={this.allCategoriesHoverOut}>
+          <div className="menu-hover-box" style={allCategoriesHover ? { display: 'flex', width: `${hoverWidth}px` } : { display: 'none' }} onMouseLeave={this.allCategoriesHoverLeave}>
             <div className="menu-hover">
               <ul className="menu-hover-list">
                 {navbarList.map((list, index) => (
-                  <NavBarHoverList displayShowIndex={displayShowIndex} list={list} index={index} key={index} categoriesMenuHoverOver={this.categoriesMenuHoverOver} />
+                  <NavBarHoverList displayShowIndex={displayShowIndex} list={list} index={index + 1} key={index} categoriesMenuHoverEnter={this.categoriesMenuHoverEnter} />
                 ))}
               </ul>
             </div>
