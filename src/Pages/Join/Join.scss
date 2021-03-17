@@ -1,0 +1,132 @@
+@import '../../styles/common.scss';
+
+.joinForm {
+  width: 640px;
+  margin: 0 auto;
+
+  h3 {
+    margin-top: 64px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: $mainText;
+    letter-spacing: -0.5px;
+  }
+
+  // 필수입력사항
+  .subText {
+    padding: 23px 0 10px;
+    line-height: 17px;
+    text-align: right;
+    color: #666;
+    font-size: 12px;
+  }
+
+  .essential {
+    vertical-align: top;
+    color: #ee6a7b;
+  }
+
+  // 회원가입 테이블
+  .joinTable {
+    color: $mainText;
+
+    // 테이블 공통
+    th {
+      width: 160px;
+      padding: 20px 0 0 20px;
+      vertical-align: top;
+      text-align: left;
+      line-height: 20px;
+      font-weight: bold;
+      font-size: 14px;
+      color: $mainText;
+    }
+
+    td {
+      width: 480px;
+      padding: 10px 0;
+      font-size: 14px;
+
+      input {
+        width: 330px;
+        height: 44px;
+        padding: 0 14px;
+        cursor: text;
+        border: 1px solid $subTextLightGray;
+        font-size: 14px;
+        border-radius: 3px;
+        line-height: 20px;
+        color: $mainText;
+      }
+
+      input::placeholder {
+        color: $subTextLightGray;
+      }
+    }
+
+    // 아이디
+    .emailTable {
+      border-top: 2px solid $mainText;
+
+      td {
+        padding-top: 20px;
+
+        //중복확인 버튼
+        .duplicationBtn {
+          width: 120px;
+          height: 45px;
+          margin-left: 10px;
+          color: $themePurple;
+          border: 1px solid $themePurple;
+          background-color: #fff;
+          border-radius: 3px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    // 생년월일
+    .birthTable {
+      border-bottom: 1px solid $mainText;
+      margin-bottom: 20px; // 적용 안됨
+    }
+
+    // 이용약관동의
+    .tosTable {
+      margin-top: 40px;
+      border-bottom: 1px solid #f4f4f4;
+
+      .tosText {
+        overflow: scroll;
+        width: 450px;
+        height: 200px;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid $subTextLightGray;
+        border-radius: 3px;
+        line-height: 16px;
+        color: $mainText;
+
+        p {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  //가입하기 버튼
+  .joinBtn {
+    @extend %flex-column-center;
+    width: 240px;
+    height: 55px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 120px; //적용 안됨
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    background-color: $themePurple;
+    color: white;
+  }
+}
