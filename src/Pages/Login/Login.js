@@ -5,10 +5,29 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      idField: '',
-      pwField: '',
+      email: '',
+      password: '',
     };
   }
+
+  handleOnChange = e => {
+    console.log('name : ' + e.target.name);
+    console.log('value : ' + e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  loginSubmit = e => {
+    e.preventDefault(); //Submit 버튼 눌러도 새로고침하지 않게 함
+    const idCheck = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{1,4}$/;
+
+    if (idCheck.test(this.state.email) && this.state.password.length >= 10) {
+      alert('이메일과 비밀번호가 유효합니다.');
+    } else {
+      alert('이메일과 비밀번호가 유효하지 않습니다.');
+    }
+  };
 
   render() {
     return (
@@ -18,12 +37,16 @@ class Login extends Component {
           <input
             type="text"
             className="idField"
+            name="email"
             placeholder="이메일을 입력해주세요"
+            onChange={this.handleOnChange}
           />
           <input
             type="password"
             className="pwField"
+            name="password"
             placeholder="비밀번호를 입력해주세요"
+            onChange={this.handleOnChange}
           />
           <div className="loginCheck">
             <label className="saveCheckBox">
@@ -40,12 +63,10 @@ class Login extends Component {
               </a>
             </div>
           </div>
-          <button type="submit" className="loginBtn" onClick={this.goToMain}>
+          <button type="submit" className="loginBtn" onClick={this.loginSubmit}>
             로그인
           </button>
-          <button className="joinBtn" onClick={this.goToMain}>
-            회원가입
-          </button>
+          <button className="joinBtn">회원가입 </button>
         </form>
       </div>
     );
