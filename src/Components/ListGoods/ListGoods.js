@@ -18,18 +18,9 @@ export default class ListGoods extends Component {
     return (
       <div className="ListGoods">
         <Slider {...settings}>
-          {this.props.goods.map(good => {
-            return (
-              <Goods
-                id={good.id}
-                img={good.img}
-                name={good.name}
-                price={good.price}
-                salePer={good.salePer}
-                originalPrice={good.originalPrice}
-              />
-            );
-          })}
+          {this.props.listgoods.map(good => (
+            <Goods id={good.id} img={good.img} name={good.name} price={good.price} salePer={good.salePer} originalPrice={good.originalPrice} />
+          ))}
         </Slider>
       </div>
     );

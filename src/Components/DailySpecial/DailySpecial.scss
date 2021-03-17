@@ -1,0 +1,48 @@
+@import '../../styles/common.scss';
+
+.DailySpecial {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    margin-right: 80px;
+  }
+
+  .main {
+    margin-bottom: 17px;
+    text-align: left;
+    font-size: 32px;
+    font-weight: 500;
+    color: $mainText;
+  }
+
+  .sub {
+    margin-top: 17px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 400;
+    color: $subTextGray;
+  }
+
+  .alert {
+    margin-top: 70px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 400;
+    color: $subTextLightGray;
+  }
+
+  .clock {
+    vertical-align: top;
+    margin-right: 5px;
+  }
+
+  .twoGoods {
+    display: flex;
+    justify-content: center;
+    margin-right: 50px;
+  }
+}
