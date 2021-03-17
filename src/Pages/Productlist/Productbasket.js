@@ -11,23 +11,17 @@ export class Productbasket extends Component {
     };
   }
 
-  handleCnt = e => {
-    console.log(e.target.name);
-    console.log(String([e.target.name]) === 'subtract');
-    if (String([e.target.name]) === 'subtract') {
-      this.setState({
-        count: --this.state.count,
-      });
-      if (this.state.count < 2)
-        this.setState({
-          count: 1,
-        });
-    }
-    if (String([e.target.name]) === 'add') {
-      this.setState({
-        count: ++this.state.count,
-      });
-    }
+  resetCount = () => {
+    this.setState({
+      count: 0,
+    });
+  };
+
+  handleCnt = num => {
+    const { count } = this.state;
+
+    if (num === -1 && count === 1) return;
+    this.setState({ count: count + num });
   };
 
   render() {
@@ -44,12 +38,16 @@ export class Productbasket extends Component {
                     <button
                       className="subtract"
                       name="subtract"
-                      onClick={this.handleCnt}
+                      onClick={() => this.handleCnt(-1)}
                     >
                       <GrSubtract />
                     </button>
                     <input readonly="readonly" value={this.state.count} />
-                    <button className="add" name="add" onClick={this.handleCnt}>
+                    <button
+                      className="add"
+                      name="add"
+                      onClick={() => this.handleCnt(1)}
+                    >
                       <RiAddFill />
                     </button>
                   </div>
