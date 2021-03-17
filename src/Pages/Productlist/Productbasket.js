@@ -27,7 +27,9 @@ export class Productbasket extends Component {
                 <div className="modalTotal">
                   <div className="modalTotalleft">합계</div>
                   <div className="modalTotalright">
-                    <div className="modalTotalprice">{this.props.Price}</div>
+                    <div className="modalTotalprice">
+                      {this.props.addcomma(this.props.Price)}원
+                    </div>
                     <div className="modalTotalcomment">
                       <span className="modalTotalicon">적립</span>
                       <span className="modalTotalCash">
@@ -37,7 +39,12 @@ export class Productbasket extends Component {
                   </div>
                 </div>
                 <div className="button">
-                  <button className="cancle">취소</button>
+                  <button
+                    className="cancle"
+                    onClick={this.props.handleModalrevoe}
+                  >
+                    취소
+                  </button>
                   <button className="pustBasket">장바구니 담기</button>
                 </div>
               </div>

@@ -24,6 +24,16 @@ export class Productlist extends Component {
       });
   }
 
+  addcomma = num => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+
+  handleModalrevoe = e => {
+    this.setState({
+      productbasket: !this.state.productbasket,
+    });
+  };
+
   handleBasketModal = e => {
     this.setState({
       basketItem: e,
@@ -32,8 +42,6 @@ export class Productlist extends Component {
   };
 
   render() {
-    console.log('btn on');
-
     return (
       <div className={this.state.productbasket ? 'scrollOff' : 'scrollOn'}>
         <div className="wide">
@@ -56,7 +64,7 @@ export class Productlist extends Component {
                   </div>
                   <div className="totalInfo">
                     <p className="itemName">{item.name}</p>
-                    <p className="itemPrice">{item.Price}</p>
+                    <p className="itemPrice">{this.addcomma(item.Price)}원</p>
                     <p className="itemInfo">{item.info}</p>
                   </div>
                 </li>
@@ -66,6 +74,8 @@ export class Productlist extends Component {
               productbasket={this.state.productbasket}
               name={this.state.basketItem.name}
               Price={this.state.basketItem.Price}
+              addcomma={this.addcomma}
+              handleModalrevoe={this.handleModalrevoe}
             />
           </ul>
         </div>
