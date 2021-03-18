@@ -11,7 +11,7 @@ export class ProductNamelist extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/items.json')
+    fetch('/data/items.json')
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -22,15 +22,17 @@ export class ProductNamelist extends Component {
 
   render() {
     return (
-      <ul className="productList">
-        {this.state.productList.map(items => {
-          return (
-            <li>
-              <a>{items.Contents}</a>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="listCenter">
+        <ul className="productList">
+          {this.state.productList.map(items => {
+            return (
+              <li>
+                <a>{items.Contents}</a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     );
   }
 }

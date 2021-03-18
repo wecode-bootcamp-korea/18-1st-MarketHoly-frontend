@@ -1,14 +1,9 @@
 @import '../../styles/reset.scss';
-.scrollOff {
-  display: flex;
-  justify-content: center;
-  height: 100%;
+.listView {
+  margin: 0 auto;
+  width: 1050px;
 }
 
-.scrollOn {
-  display: flex;
-  justify-content: center;
-}
 .wide {
   width: 1050px;
   margin-left: 29px;
@@ -17,6 +12,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 1021px;
 
     li {
       float: left;
@@ -32,19 +28,19 @@
         width: 308px;
         height: 396px;
 
-        .itemcoupon {
-          font-size: 14px;
+        .itemCoupon {
           position: absolute;
-          z-index: 1;
           left: 1px;
           top: 0;
-          color: white;
-          background-color: rgb(189, 118, 255);
-          opacity: 0.9;
           width: 96px;
           height: 32px;
-          text-align: center;
           padding-top: 10px;
+          color: white;
+          background-color: rgb(189, 118, 255);
+          font-size: 14px;
+          text-align: center;
+          z-index: 1;
+          opacity: 0.9;
         }
 
         .off {
@@ -59,19 +55,20 @@
 
         .FiShoppingCart {
           position: absolute;
-          border: 0;
-          z-index: 1;
           right: 15px;
           bottom: 15px;
           width: 45px;
           height: 45px;
           padding-top: 7px;
           padding-right: 9px;
-          background-color: rgb(169, 50, 169);
+          border: 0;
           border-radius: 40px;
+          background-color: rgb(169, 50, 169);
+          z-index: 1;
           opacity: 0.8;
         }
       }
+
       .totalInfo {
         padding: 14px 0px 10px;
         font-size: 12px;
@@ -82,10 +79,10 @@
         }
 
         .itemPrice {
-          font-weight: 750;
           padding-top: 7px;
-          font-size: 18px;
           line-height: 29px;
+          font-size: 18px;
+          font-weight: 750;
           color: rgb(51, 51, 51);
           letter-spacing: 0;
         }
@@ -93,9 +90,9 @@
         .itemInfo {
           display: block;
           padding-top: 8px;
+          line-height: 19px;
           font-size: 13px;
           color: #999;
-          line-height: 19px;
         }
       }
     }

@@ -3,80 +3,80 @@
     "id": 1,
     "img": "https://img-cf.kurly.com/shop/data/goods/1470293178805l0.jpg",
     "name": "친환경 시금치 200g",
-    "Price": 2100,
+    "price": 2100,
     "info": "뽀빠이가 좋아하는 바로 그 채소. 친환경 시금치 (200g)",
-    "iscoupon": true
+    "isCoupon": true
   },
   {
     "id": 2,
     "img": "https://img-cf.kurly.com/shop/data/goods/1583461623580l0.jpg",
     "name": "한끼 깻잎 20g",
-    "Price": 1400,
+    "price": 1400,
     "info": "딱 깻잎이 조금 필요할 때 ! ",
-    "iscoupon": false
+    "isCoupon": false
   },
   {
     "id": 3,
     "img": "https://img-cf.kurly.com/shop/data/goods/1470791945336l0.jpg",
     "name": "무농약 부추 200g",
-    "Price": 2690,
+    "price": 2690,
     "info": "외유내강, 영양 듬뿍 채소의 대명사 (200g)",
-    "iscoupon": true
+    "isCoupon": true
   },
   {
     "id": 4,
     "img": "https://img-cf.kurly.com/shop/data/goods/1580708666582l0.jpg",
     "name": "GAP 밀양 깻잎 3속",
-    "Price": 1400,
+    "price": 1400,
     "info": "보랏빛이 일품인 밀양 깻잎",
-    "iscoupon": true
+    "isCoupon": true
   },
   {
     "id": 5,
     "img": "https://img-cf.kurly.com/shop/data/goods/1583461623580l0.jpg",
     "name": "한끼 깻잎 20g",
-    "Price": 1400,
+    "price": 1400,
     "info": "딱 깻잎이 조금 필요할 때 ! ",
-    "iscoupon": true
+    "isCoupon": true
   },
   {
     "id": 6,
     "img": "https://img-cf.kurly.com/shop/data/goods/1470293178805l0.jpg",
     "name": "친환경 시금치 200g",
-    "Price": 2100,
+    "price": 2100,
     "info": "뽀빠이가 좋아하는 바로 그 채소. 친환경 시금치 (200g)",
-    "iscoupon": true
+    "isCoupon": true
   },
   {
     "id": 7,
     "img": "https://img-cf.kurly.com/shop/data/goods/1470293178805l0.jpg",
     "name": "친환경 시금치 200g",
-    "Price": 2100,
+    "price": 2100,
     "info": "뽀빠이가 좋아하는 바로 그 채소. 친환경 시금치 (200g)",
-    "iscoupon": true
+    "isCoupon": true
   },
   {
     "id": 8,
     "img": "https://img-cf.kurly.com/shop/data/goods/1580708666582l0.jpg",
     "name": "GAP 밀양 깻잎 3속",
-    "Price": 1400,
+    "price": 1400,
     "info": "보랏빛이 일품인 밀양 깻잎",
-    "iscoupon": true
+    "isCoupon": true
   },
   {
-    "id": 1,
+    "id": 9,
     "img": "https://img-cf.kurly.com/shop/data/goods/1580708666582l0.jpg",
     "name": "GAP 밀양 깻잎 3속",
-    "Price": 1400,
+    "price": 1400,
     "info": "보랏빛이 일품인 밀양 깻잎",
-    "iscoupon": true
+    "isCoupon": true
   },
   {
-    "id": 1,
+    "id": 10,
     "img": "https://img-cf.kurly.com/shop/data/goods/1580708666582l0.jpg",
     "name": "GAP 밀양 깻잎 3속",
-    "Price": 1400,
+    "price": 1400,
     "info": "보랏빛이 일품인 밀양 깻잎",
-    "iscoupon": true
+    "isCoupon": true
   }
 ]

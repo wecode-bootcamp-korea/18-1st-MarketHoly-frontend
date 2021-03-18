@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import Productlist from './Productlist';
 import ProductNamelist from './ProductNamelist';
 
-export class Productkategorie extends Component {
+export class ProductCategory extends Component {
   render() {
     return (
       <div>
-        <Productlist />
         <ProductNamelist />
+        <Productlist />
       </div>
     );
   }
 }
 
-export default Productkategorie;
+export default ProductCategory;

@@ -1,32 +1,41 @@
 import React, { Component } from 'react';
-import './productbasket.scss';
 import { RiAddFill } from 'react-icons/ri';
 import { GrSubtract } from 'react-icons/gr';
+import './productbasket.scss';
 
 export class Productbasket extends Component {
   render() {
+    const {
+      count,
+      handleCnt,
+      addComma,
+      price,
+      handleModalremove,
+      productBasket,
+    } = this.props;
+    let sumCount = addComma(price * count);
     return (
       <>
-        {this.props.productbasket ? (
+        {productBasket && (
           <div className="modalEffect">
             <div className="cartList">
               <div className="namePrice">
                 <div className="listName">{this.props.name}</div>
                 <div className="priceCount">
-                  <div className="listPrice">{this.props.Price}</div>
+                  <div className="listPrice">{this.props.price}</div>
                   <div className="countNumber">
                     <button
                       className="subtract"
                       name="subtract"
-                      onClick={() => this.props.handleCnt(-1)}
+                      onClick={() => handleCnt(-1)}
                     >
                       <GrSubtract />
                     </button>
-                    <input readonly="readonly" value={this.props.count} />
+                    <input readonly="readonly" value={count} />
                     <button
                       className="add"
                       name="add"
-                      onClick={() => this.props.handleCnt(1)}
+                      onClick={() => handleCnt(1)}
                     >
                       <RiAddFill />
                     </button>
@@ -35,10 +44,7 @@ export class Productbasket extends Component {
                 <div className="modalTotal">
                   <div className="modalTotalleft">합계</div>
                   <div className="modalTotalright">
-                    <div className="modalTotalprice">
-                      {this.props.addcomma(this.props.Price * this.props.count)}
-                      원
-                    </div>
+                    <div className="modalTotalprice">{sumCount}원</div>
                     <div className="modalTotalcomment">
                       <span className="modalTotalicon">적립</span>
                       <span className="modalTotalCash">
@@ -48,18 +54,15 @@ export class Productbasket extends Component {
                   </div>
                 </div>
                 <div className="button">
-                  <button
-                    className="cancle"
-                    onClick={this.props.handleModalrevoe}
-                  >
+                  <button className="cancel" onClick={handleModalremove}>
                     취소
                   </button>
-                  <button className="pustBasket">장바구니 담기</button>
+                  <button className="pushBasket">장바구니 담기</button>
                 </div>
               </div>
             </div>
           </div>
-        ) : null}
+        )}
       </>
     );
   }

@@ -1,21 +1,33 @@
 @import '../../styles/reset.scss';
 
+.listCenter {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  left: -75px;
+  margin-top: 20px;
+}
+
 .productList {
   display: flex;
   flex-direction: row;
 
+  width: 870px;
+
   li {
-    overflow: hidden;
     padding: 0 13px 7px 12px;
     border-bottom: 1px solid #ddd;
     line-height: 20px;
-    font-size: 12px;
     color: #333;
+    font-size: 12px;
     letter-spacing: -0.3px;
+    overflow: hidden;
     cursor: pointer;
   }
 
-  a:hover {
+  li:hover {
     color: rgb(94, 1, 128);
+    border-color: rgb(94, 1, 128);
+    font-weight: 600;
   }
 }

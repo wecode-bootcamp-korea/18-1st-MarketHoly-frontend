@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
+import Productbasket from './Productbasket';
 import { FiShoppingCart } from 'react-icons/fi';
 import './Productlist.scss';
-import Productbasket from './Productbasket';
 
 export class Productlist extends Component {
   constructor() {
@@ -9,13 +9,13 @@ export class Productlist extends Component {
     this.state = {
       count: 1,
       product: [],
-      productbasket: false,
+      productBasket: false,
       basketItem: [],
     };
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/products.json')
+    fetch('/data/products.json')
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -24,13 +24,13 @@ export class Productlist extends Component {
       });
   }
 
-  addcomma = num => {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  addComma = num => {
+    return num.toLocaleString('en');
   };
 
-  handleModalrevoe = e => {
+  handleModalremove = e => {
     this.setState({
-      productbasket: !this.state.productbasket,
+      productBasket: !this.state.productBasket,
       count: 1,
     });
   };
@@ -38,14 +38,9 @@ export class Productlist extends Component {
   handleBasketModal = e => {
     this.setState({
       basketItem: e,
-      productbasket: !this.state.productbasket,
+      productBasket: !this.state.productBasket,
     });
-  };
-
-  resetCount = () => {
-    this.setState({
-      count: 0,
-    });
+    console.log(e);
   };
 
   handleCnt = num => {
@@ -57,15 +52,15 @@ export class Productlist extends Component {
 
   render() {
     return (
-      <div className={this.state.productbasket ? 'scrollOff' : 'scrollOn'}>
+      <div className="listView">
         <div className="wide">
           <ul className="list">
             {this.state.product.map(item => {
               return (
-                <li>
+                <li key={item.id}>
                   <div className="imgCouponBox">
                     <img src={item.img} alt={item.name} />
-                    <span className={item.iscoupon ? 'itemcoupon' : 'off'}>
+                    <span className={item.isCoupon ? 'itemCoupon' : 'off'}>
                       20%농할쿠폰
                     </span>
                     <button
@@ -78,7 +73,7 @@ export class Productlist extends Component {
                   </div>
                   <div className="totalInfo">
                     <p className="itemName">{item.name}</p>
-                    <p className="itemPrice">{this.addcomma(item.Price)}원</p>
+                    <p className="itemPrice">{this.addComma(item.price)}원</p>
                     <p className="itemInfo">{item.info}</p>
                   </div>
                 </li>
@@ -86,13 +81,12 @@ export class Productlist extends Component {
             })}
           </ul>
           <Productbasket
-            productbasket={this.state.productbasket}
+            productBasket={this.state.productBasket}
             name={this.state.basketItem.name}
-            Price={this.state.basketItem.Price}
-            addcomma={this.addcomma}
-            handleModalrevoe={this.handleModalrevoe}
+            price={this.state.basketItem.price}
+            addComma={this.addComma}
+            handleModalremove={this.handleModalremove}
             count={this.state.count}
-            resetCount={this.resetCount}
             handleCnt={this.handleCnt}
           />
         </div>
