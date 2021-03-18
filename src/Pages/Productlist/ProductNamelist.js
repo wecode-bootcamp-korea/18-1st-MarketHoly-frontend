@@ -26,7 +26,7 @@ export class ProductNamelist extends Component {
         <ul className="productList">
           {this.state.productList.map(items => {
             return (
-              <li>
+              <li key={items.id}>
                 <a>{items.Contents}</a>
               </li>
             );
