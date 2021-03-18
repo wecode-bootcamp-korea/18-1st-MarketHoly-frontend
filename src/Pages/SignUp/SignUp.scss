@@ -1,6 +1,6 @@
 @import '../../styles/common.scss';
 
-.joinForm {
+.SignUpForm {
   width: 640px;
   margin: 0 auto;
 
@@ -28,7 +28,7 @@
   }
 
   // 회원가입 테이블
-  .joinTable {
+  .SignUpTable {
     color: $mainText;
 
     // 테이블 공통
@@ -116,7 +116,7 @@
   }
 
   //가입하기 버튼
-  .joinBtn {
+  .SignUpBtn {
     @extend %flex-column-center;
     width: 240px;
     height: 55px;

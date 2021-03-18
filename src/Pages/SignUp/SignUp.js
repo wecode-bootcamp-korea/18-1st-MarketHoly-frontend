@@ -1,24 +1,35 @@
 import React, { Component } from 'react';
-import './Join.scss';
+import './SignUp.scss';
 
-class Join extends Component {
+class SignUp extends Component {
   constructor() {
     super();
     this.state = {
-      idField: '',
-      pwField: '',
+      email: '',
+      password: '',
+      passwordCheck: '',
+      name: '',
+      phoneNumber: '',
+      address: '',
+      birth: '',
     };
   }
 
+  handleOnChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
   render() {
     return (
-      <div className="joinForm">
+      <div className="SignUpForm">
         <h3>회원가입</h3>
         <p className="subText">
           <span className="essential">*</span> 필수입력사항
         </p>
         <form>
-          <table className="joinTable">
+          <table className="SignUpTable">
             <tbody>
               <tr className="emailTable">
                 <th>이메일</th>
@@ -26,8 +37,10 @@ class Join extends Component {
                   <input
                     type="text"
                     className="idField"
-                    label="아이디"
+                    name="email"
+                    label="이메일"
                     placeholder="이메일을 입력해주세요"
+                    onChange={this.handleOnChange}
                   />
                   <button className="duplicationBtn">중복확인</button>
                 </td>
@@ -38,8 +51,10 @@ class Join extends Component {
                   <input
                     type="password"
                     className="pwField"
+                    name="password"
                     label="비밀번호"
                     placeholder="비밀번호를 입력해주세요"
+                    onChange={this.handleOnChange}
                   />
                 </td>
               </tr>
@@ -49,8 +64,10 @@ class Join extends Component {
                   <input
                     type="password"
                     className="pwCheckField"
+                    name="passwordCheck"
                     label="비밀번호 확인"
                     placeholder="비밀번호를 한번 더 입력해주세요"
+                    onChange={this.handleOnChange}
                   />
                 </td>
               </tr>
@@ -60,8 +77,10 @@ class Join extends Component {
                   <input
                     type="text"
                     className="nameField"
+                    name="name"
                     label="이름"
                     placeholder="이름을 입력해주세요"
+                    onChange={this.handleOnChange}
                   />
                 </td>
               </tr>
@@ -71,9 +90,17 @@ class Join extends Component {
                   <input
                     type="text"
                     className="phoneNumberField"
+                    name="phoneNumber"
                     label="이름"
                     placeholder="숫자만 입력해주세요"
+                    onChange={this.handleOnChange}
                   />
+                </td>
+              </tr>
+              <tr className="addressTable">
+                <th>주소</th>
+                <td>
+                  <button>주소</button>
                 </td>
               </tr>
               <tr className="birthTable">
@@ -82,8 +109,10 @@ class Join extends Component {
                   <input
                     type="text"
                     className="birthField"
+                    name="birth"
                     label="생년월일"
                     placeholder="YYYY-MM-DD 형식으로 입력해주세요"
+                    onChange={this.handleOnChange}
                   />
                 </td>
               </tr>
@@ -149,11 +178,11 @@ class Join extends Component {
               </tr>
             </tbody>
           </table>
-          <button className="joinBtn">가입하기</button>
+          <button className="SignUpBtn">가입하기</button>
         </form>
       </div>
     );
   }
 }
 
-export default Join;
+export default SignUp;
