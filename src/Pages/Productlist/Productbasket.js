@@ -6,6 +6,7 @@ import './productbasket.scss';
 export class Productbasket extends Component {
   render() {
     const {
+      name,
       count,
       handleCnt,
       addComma,
@@ -20,9 +21,9 @@ export class Productbasket extends Component {
           <div className="modalEffect">
             <div className="cartList">
               <div className="namePrice">
-                <div className="listName">{this.props.name}</div>
+                <div className="listName">{name}</div>
                 <div className="priceCount">
-                  <div className="listPrice">{this.props.price}</div>
+                  <div className="listPrice">{addComma(price)}</div>
                   <div className="countNumber">
                     <button
                       className="subtract"

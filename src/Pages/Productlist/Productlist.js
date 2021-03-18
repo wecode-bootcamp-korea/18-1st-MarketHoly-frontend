@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import Productbasket from './Productbasket';
 import { FiShoppingCart } from 'react-icons/fi';
 import './Productlist.scss';

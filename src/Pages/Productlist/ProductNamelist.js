@@ -27,7 +27,7 @@ export class ProductNamelist extends Component {
           {this.state.productList.map(items => {
             return (
               <li key={items.id}>
-                <a>{items.Contents}</a>
+                <a>{items.contents}</a>
               </li>
             );
           })}
