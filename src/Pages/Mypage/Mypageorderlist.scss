@@ -1,0 +1,173 @@
+@import '../../styles/reset.scss';
+.mypageOrderlist {
+  // display: block;
+  position: relative;
+  width: 100%;
+  height: 376px;
+  top: 200px;
+  background-color: rgb(247, 247, 247);
+
+  .mypageOrderlist2 {
+    display: flex;
+    justify-content: center;
+    // position: relative;
+    // top: 200px;
+    width: 1050px;
+    margin: 0 auto;
+    // height: 376px;
+    padding: 50px 0;
+    // background-color: rgb(247, 247, 247);
+
+    .myInfo {
+      width: 444px;
+      height: 196px;
+      background-color: white;
+      margin-right: 4px;
+      padding: 29px 0px 30px 30px;
+
+      .myInfo_one {
+        display: flex;
+        padding-right: 26px;
+
+        .myInfo_img {
+          width: 62px;
+          height: 64px;
+          border: 1px solid rgb(177, 175, 175);
+          border-radius: 5px;
+          margin-right: 20px;
+        }
+
+        .nameOne {
+          width: 304px;
+          height: 44px;
+          padding: 2px 0px 14px;
+          font-size: 16px;
+
+          .user {
+            font-weight: 600;
+            font-size: 21px;
+          }
+
+          .sir {
+            padding-left: 5px;
+            font-size: 16px;
+          }
+        }
+        .nameTwo {
+          margin-top: 2px;
+          font-size: 12px;
+        }
+
+        .nameThree {
+          margin-top: 7px;
+          font-size: 12px;
+        }
+      }
+
+      .myInfo_two {
+        padding: 22px 0px 0px 84px;
+
+        button {
+          background-color: rgb(244, 244, 244);
+          border: 0;
+          border-radius: 15px;
+          text-align: center;
+          outline: 0;
+          font-size: 14px;
+        }
+
+        .totalGrade {
+          width: 121px;
+          height: 32px;
+          margin-right: 8px;
+        }
+
+        .nextGrade {
+          width: 169px;
+          height: 32px;
+        }
+      }
+    }
+
+    .userReserve {
+      width: 198px;
+      height: 130px;
+      padding: 32px 0px 0px 30px;
+
+      .infoFooter {
+        font-size: 12px;
+        margin-top: 14px;
+        color: rgb(176, 176, 176);
+      }
+
+      .icon {
+        display: inline;
+        position: relative;
+        top: 3px;
+        left: 2px;
+        padding-top: 5px;
+        color: rgb(167, 167, 167);
+        border: 0;
+        cursor: pointer;
+      }
+    }
+
+    .title {
+      font-size: 15px;
+      margin-bottom: 26px;
+    }
+
+    .info {
+      color: rgb(94, 1, 128);
+      font-size: 20px;
+      font-weight: 600;
+
+      span {
+        margin-right: 6px;
+      }
+    }
+
+    .myMoney {
+      width: 198px;
+      height: 196px;
+      background-color: white;
+      margin-right: 4px;
+    }
+
+    .myCoupon {
+      width: 198px;
+      height: 196px;
+      background-color: white;
+      margin-right: 4px;
+    }
+
+    .kullyPass {
+      width: 198px;
+      height: 196px;
+      background-color: white;
+    }
+  }
+
+  .orderListUnderbar {
+    position: relative;
+    top: -20px;
+    width: 1050px;
+    height: 60px;
+    width: 1050px;
+    margin: 0 auto;
+    color: rgb(75, 51, 31);
+    background-color: rgb(255, 252, 235);
+    text-align: center;
+    padding-top: 25px;
+
+    .leftText {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .rightText {
+      font-size: 13px;
+      font-weight: 370;
+    }
+  }
+}
