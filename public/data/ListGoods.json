@@ -4,7 +4,7 @@
         "img" : "images/sampleproduct_1.jpeg",
         "name" : "[콜린스크린] 밀싹주스",
         "price" : "8,550",
-        "salePer" : "10",
+        "salePer" : "10", 
         "originalPrice" : "9,500"
     },
     {

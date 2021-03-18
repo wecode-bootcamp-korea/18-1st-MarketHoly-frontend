@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Countdown from 'react-countdown';
-
 import './Goods.scss';
-import '../../styles/common.scss';
 
 const renderer = ({ hours, minutes, seconds, completed }) => {
   return (
@@ -14,15 +12,15 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 
 class Goods extends Component {
   render() {
-    const { modifier, id, img, isSale, isCountdown, name, price, salePer, originalPrice } = this.props;
+    const { modifier, id, img, isSale, isCountdown, salestart, name, price, salePer, originalPrice } = this.props;
     return (
-      <div className="Goods" key={id}>
+      <div className="goods" key={id}>
         <div className="imagePart">
           <img className={modifier === 'dailyspecial' ? 'sizebig' : 'sizesmall'} src={img} alt="goods" />
           {isSale && <div className="saleMark">{salePer}% 일일특가</div>}
           {isCountdown && (
             <div className="countdownMark">
-              <Countdown date={Date.now() + 86400000} renderer={renderer} /> 남음
+              <Countdown date={1616029401189 /*{ salestart }*/ + 86400000} renderer={renderer} /> 남음
             </div>
           )}
         </div>

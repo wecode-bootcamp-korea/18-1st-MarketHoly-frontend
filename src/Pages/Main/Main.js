@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import Banner from '../../Components/Banner/Banner';
 import ListGoods from '../../Components/ListGoods/ListGoods';
 import DailySpecial from '../../Components/DailySpecial/DailySpecial';
-
-import './Main.scss';
+import ListCategory from '../../Components/ListCategory/ListCategory';
+import { IoChevronForward } from 'react-icons/io5';
 import '../../styles/common.scss';
+import './Main.scss';
 
 class Main extends Component {
   state = {
     listgoods: [],
     dailyspecial: [],
+    listcategory: [],
   };
 
   componentDidMount() {
@@ -27,15 +29,27 @@ class Main extends Component {
           dailyspecial: res,
         });
       });
+    fetch('/data/ListCategory.json')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ listcategory: res });
+      });
   }
 
   render() {
     return (
-      <div className="Main">
+      <div className="main">
         <Banner />
         <div className="titRecommendGoods">이 상품 어때요?</div>
         <ListGoods listgoods={this.state.listgoods} />
         <DailySpecial dailyspecial={this.state.dailyspecial} />
+        <div className="titRecommendGoods">MD의 추천</div>
+        <ListCategory listcategory={this.state.listcategory} />
+        <ListGoods listgoods={this.state.listgoods} />
+        <span className="viewAll">
+          전체보기
+          <IoChevronForward className="arrow" />
+        </span>
       </div>
     );
   }

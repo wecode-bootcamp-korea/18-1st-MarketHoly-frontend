@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Goods from '../../Components/Goods/Goods';
-import './DailySpecial.scss';
 import { BsClock } from 'react-icons/bs';
 import { IoRemoveOutline } from 'react-icons/io5';
+import './DailySpecial.scss';
 
 class DailySpecial extends Component {
   render() {
     return (
-      <div className="DailySpecial">
+      <div className="dailySpecial">
         <div className="title">
           <span className="main">일일특가</span>
           <IoRemoveOutline size="20" color="#999" />
@@ -25,6 +25,7 @@ class DailySpecial extends Component {
               img={good.img}
               isSale={good.isSale}
               isCountdown={good.isCountdown}
+              salestart={good.salestart}
               name={good.name}
               price={good.price}
               salePer={good.salePer}

@@ -3,7 +3,6 @@ import Slider from 'react-slick';
 import Goods from '../Goods/Goods';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
 import './ListGoods.scss';
 
 export default class ListGoods extends Component {
@@ -16,10 +15,10 @@ export default class ListGoods extends Component {
       slidesToScroll: 4,
     };
     return (
-      <div className="ListGoods">
+      <div className="listGoods">
         <Slider {...settings}>
           {this.props.listgoods.map(good => (
-            <Goods id={good.id} img={good.img} name={good.name} price={good.price} salePer={good.salePer} originalPrice={good.originalPrice} />
+            <Goods modifier="listcategory" id={good.id} img={good.img} name={good.name} price={good.price} salePer={good.salePer} originalPrice={good.originalPrice} />
           ))}
         </Slider>
       </div>
