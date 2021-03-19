@@ -3,7 +3,7 @@ import './SignUp.scss';
 
 const idCheck = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{2,4}$/;
 // const pwCheck = /[A-Za-z0-9!@#$%^&*_-+=.,]{10,20}$/;
-const birthCheck = /[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$/;
+// const birthCheck = /[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$/;
 
 class SignUp extends Component {
   constructor() {
@@ -61,21 +61,26 @@ class SignUp extends Component {
     } else if (this.state.address === '') {
       alert('주소를 입력해주세요');
     }
-    // else if{
-    //   fetch("", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     email: this.state.email,
-    //     password: this.state.password,
-    //     name: this.state.name,
-    //     phoneNumber: this.state.phoneNumber,
-    //     address: this.state.address,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => console.log(res)); //if 백엔드에서 성공메시지 뜨면 데이터 보내주기?
-    // }
-  };
+  //   else if{
+  //     fetch("", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       email: this.state.email,
+  //       password: this.state.password,
+  //       name: this.state.name,
+  //       phoneNumber: this.state.phoneNumber,
+  //       address: this.state.address,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       console.log(res)
+  //       //백엔드에서 성공메시지 뜨면 데이터 보내주기
+  //       if (res.message === 'SUCCESS') {
+  //         localStorage.setItem('키값', res.token);
+  //   }
+  // })
+  // };
 
   render() {
     return (
