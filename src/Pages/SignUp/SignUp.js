@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
+import DaumPostcode from 'react-daum-postcode';
 import './SignUp.scss';
 
 const idCheck = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{2,4}$/;
-// const pwCheck = /[A-Za-z0-9!@#$%^&*_-+=.,]{10,20}$/;
-// const birthCheck = /[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$/;
+const firstBirthCheck = /[0-9-]$/;
+const birthCheck = /[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$/;
+const phoneCheck = /[0-9]{1,11}$/;
 
 class SignUp extends Component {
   constructor() {
@@ -14,16 +16,76 @@ class SignUp extends Component {
       passwordCheck: '',
       name: '',
       phoneNumber: '',
-      address: '',
       birth: '',
       isIdValid: false,
+      isPwValid: false,
+
+      //DaumPost 주소
+      zoneCode: '',
+      fullAddress: '',
+      isDaumPost: false,
+      isRegister: false,
+      register: [],
     };
+
+    this.phoneRef = createRef();
+    this.birthRef = createRef();
   }
 
+  // Daumpostcode
+  handleOpenPost = () => {
+    this.setState({
+      isDaumPost: true,
+    });
+  };
+
+  handleAddress = data => {
+    let AllAddress = data.address;
+    let extraAddress = '';
+    let zoneCodes = data.zonecode;
+
+    if (data.addressType === 'R') {
+      if (data.bname !== '') {
+        extraAddress += data.bname;
+      }
+      if (data.buildingName !== '') {
+        extraAddress +=
+          extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+      }
+      AllAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+    }
+    this.setState({
+      fullAddress: AllAddress,
+      zoneCode: zoneCodes,
+    });
+  };
+
+  // Id Check
   handleIdCheck = () => {
     idCheck.test(this.state.email)
       ? this.setState({ isIdValid: false })
       : this.setState({ isIdValid: true });
+  };
+
+  // Password Check
+  handlePwCheck = () => {
+    this.state.password.length >= 10
+      ? this.setState({ isPwValid: false })
+      : this.setState({ isPwValid: true });
+  };
+
+  // Phone Check
+  handlePhoneCheck = () => {
+    if (!phoneCheck.test(this.state.phoneNumber)) {
+      this.phoneRef.current.value = '';
+    }
+  };
+
+  // Birth Check
+  handleBirthCheck = () => {
+    if (!firstBirthCheck.test(this.state.birth)) {
+      this.birthRef.current.value = '';
+    }
   };
 
   handleOnChange = e => {
@@ -32,22 +94,24 @@ class SignUp extends Component {
         [e.target.name]: e.target.value,
       },
       () => {
-        console.log(this.state.email);
         this.handleIdCheck();
+        this.handlePwCheck();
+        this.handlePhoneCheck();
+        this.handleBirthCheck();
       }
     );
   };
 
+  // Click
   handleEmailClick = () => {
     this.handleIdCheck();
   };
 
-  // handleNumberLimit (el, maxlength){
-  //   if(el.value.length > maxlength){
-  //     el.value = el.value.substr(0, maxlength);
-  //   }
-  // }
+  handlePwClick = () => {
+    this.handlePwCheck();
+  };
 
+  //가입하기 버튼 클릭 시,
   signUpSummit = e => {
     e.preventDefault();
     if (this.state.email === '') {
@@ -58,31 +122,44 @@ class SignUp extends Component {
       alert('비밀번호를 확인해주세요');
     } else if (this.state.name === '') {
       alert('이름을 입력해주세요');
-    } else if (this.state.address === '') {
-      alert('주소를 입력해주세요');
+    } else if (!birthCheck.test(this.state.birth)) {
+      alert('유효하지 않는 생년월일 입니다.');
     }
-  //   else if{
-  //     fetch("", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       email: this.state.email,
-  //       password: this.state.password,
-  //       name: this.state.name,
-  //       phoneNumber: this.state.phoneNumber,
-  //       address: this.state.address,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       console.log(res)
-  //       //백엔드에서 성공메시지 뜨면 데이터 보내주기
-  //       if (res.message === 'SUCCESS') {
-  //         localStorage.setItem('키값', res.token);
-  //   }
-  // })
-  // };
+
+    // else if (this.state.address === '') {
+    //   alert('주소를 입력해주세요');
+    // }
+    // else if{
+    //   fetch("", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     email: this.state.email,
+    //     password: this.state.password,
+    //     name: this.state.name,
+    //     phoneNumber: this.state.phoneNumber,
+    //     address: this.state.address,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => console.log(res)); //if 백엔드에서 성공메시지 뜨면 데이터 보내주기
+    // }
+  };
 
   render() {
+    const { isDaumPost, fullAddress, zoneCode } = this.state;
+
+    // DaumPostCode style
+    const width = 595;
+    const height = 450;
+    const modalStyle = {
+      position: 'fixed',
+      top: '100px',
+      left: '300px',
+      zIndex: '100',
+      border: '1px solid #000000',
+      overflow: 'hidden',
+    };
+
     return (
       <div className="signUpForm">
         <h3>회원가입</h3>
@@ -122,7 +199,13 @@ class SignUp extends Component {
                     label="비밀번호"
                     placeholder="비밀번호를 입력해주세요"
                     onChange={this.handleOnChange}
+                    onClick={this.handlePwClick}
                   />
+                  {this.state.isPwValid && (
+                    <p className="warningText">
+                      비밀번호를 10자 이상 입력해주세요
+                    </p>
+                  )}
                 </td>
               </tr>
               <tr className="pwCheckTable">
@@ -155,20 +238,52 @@ class SignUp extends Component {
                 <th>휴대폰</th>
                 <td>
                   <input
-                    type="number"
+                    type="text"
                     className="phoneNumberField"
                     name="phoneNumber"
                     label="휴대폰"
-                    // oninput={this.handleNumberLimit(this, 11)}
                     placeholder="숫자만 입력해주세요"
                     onChange={this.handleOnChange}
+                    ref={this.phoneRef}
                   />
                 </td>
               </tr>
               <tr className="addressTable">
                 <th>주소</th>
                 <td>
-                  <button>주소</button>
+                  <div className="textFieldAddress">
+                    <div className="textFieldAddressTop">
+                      <input
+                        className="inputAddress"
+                        placeholder="우편번호"
+                        type="text"
+                        value={zoneCode}
+                      />
+                      <input
+                        type="button"
+                        className="inputAddressButton"
+                        onClick={this.handleOpenPost}
+                        value="주소 검색"
+                      />
+                    </div>
+                    <div className="textFieldAddressBottom">
+                      <div>
+                        <input
+                          className="inputAddressBottom"
+                          placeholder="주소"
+                          type="text"
+                          value={fullAddress}
+                        />
+                      </div>
+                      <div className="addressDetail">
+                        <input
+                          type="text"
+                          className="inputAddressBottom"
+                          placeholder="상세주소"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </td>
               </tr>
               <tr className="birthTable">
@@ -181,6 +296,7 @@ class SignUp extends Component {
                     label="생년월일"
                     placeholder="YYYY-MM-DD 형식으로 입력해주세요"
                     onChange={this.handleOnChange}
+                    ref={this.birthRef}
                   />
                 </td>
               </tr>
@@ -242,6 +358,9 @@ class SignUp extends Component {
                     약관의규제등에관한법률, 공정거래위원회가 정하는 전자상거래
                     등에서의소비자보호지침 및 관계법령 또는 상관례에 따릅니다.
                   </div>
+                  {/* <input className="agreeCheckBox" type="checkbox">
+                    전체 동의합니다.
+                  </input> */}
                 </td>
               </tr>
             </tbody>
@@ -253,6 +372,16 @@ class SignUp extends Component {
           >
             가입하기
           </button>
+          {isDaumPost ? (
+            <DaumPostcode
+              onComplete={this.handleAddress}
+              autoClose
+              width={width}
+              height={height}
+              style={modalStyle}
+              isDaumPost={isDaumPost}
+            />
+          ) : null}
         </form>
       </div>
     );
