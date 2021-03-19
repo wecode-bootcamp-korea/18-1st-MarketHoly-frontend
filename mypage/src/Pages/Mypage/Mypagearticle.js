@@ -13,6 +13,23 @@ const options = [
 const MyComponent = () => <Select options={options} />;
 
 export class Mypagearticle extends Component {
+  constructor() {
+    super();
+    this.state = {
+      item: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('/data/productinfo.json')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          item: res,
+        });
+      });
+  }
+
   render() {
     return (
       <article className="myArticle">
@@ -59,6 +76,40 @@ export class Mypagearticle extends Component {
               </div>
               <div className="select">{MyComponent()}</div>
             </div>
+            {this.state.item.map(item => {
+              return (
+                <div className="item">
+                  <div className="date">
+                    {item.date} ({item.time})
+                  </div>
+                  <div className="itemInfo">
+                    <header>
+                      <div>{item.name}</div>
+                      <div className="infoIcon">
+                        <AiOutlineRight />
+                      </div>
+                    </header>
+                    <section>
+                      <div className="itemleft">
+                        <img src={item.img} />
+                        <div className="orderInfo">
+                          <div className="orderNumber">
+                            주문번호 <span>{item.ordernumber}</span>
+                          </div>
+                          <div className="price">
+                            결제금액 <span>{item.price}</span>
+                          </div>
+                          <div className="status">
+                            주문상태 <a>{item.status}</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="itemCall">1:1문의</div>
+                    </section>
+                  </div>
+                </div>
+              );
+            })}
           </section>
         </div>
       </article>

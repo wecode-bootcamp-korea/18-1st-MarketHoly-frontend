@@ -34,6 +34,7 @@
         border: 0.7px solid rgb(240, 240, 240);
         font-size: 14px;
         font-weight: 600;
+        cursor: pointer;
       }
 
       li:hover {
@@ -42,8 +43,6 @@
       }
     }
     .pageSection {
-      display: flex;
-
       width: 820px;
 
       .sectionHeader {
@@ -75,7 +74,6 @@
         }
 
         .select {
-          // overflow: hidden;
           width: 157px;
           height: 40px;
           padding: 0 0 0 15px;
@@ -84,6 +82,86 @@
           line-height: 18px;
           outline: 0;
         }
+      }
+    }
+  }
+}
+
+.item {
+  width: 820px;
+  height: 170px;
+  margin: 20px 0px 40px;
+
+  .date {
+    color: #757575;
+  }
+  .itemInfo {
+    margin-top: 8px;
+    border: 1px solid rgb(240, 240, 240);
+    height: 160px;
+    padding: 15px;
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      top: 4px;
+      height: 27px;
+      border-bottom: 1px solid rgb(240, 240, 240);
+      font-weight: 600;
+
+      .infoIcon {
+        position: relative;
+        top: -1px;
+        color: #5f0080;
+      }
+    }
+
+    section {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      top: 15px;
+
+      .itemleft {
+        display: flex;
+        justify-content: space-between;
+
+        img {
+          width: 70px;
+          height: 80px;
+          margin-right: 15px;
+        }
+
+        .orderInfo {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 5px 0px;
+          font-weight: 500;
+          font-size: 12px;
+
+          span {
+            font-size: 13px;
+            font-weight: 600;
+            margin-left: 5px;
+          }
+
+          a {
+            color: rgb(133, 132, 132);
+            margin-left: 5px;
+          }
+        }
+      }
+      .itemCall {
+        margin: auto 0;
+        padding: 10px 30px;
+        width: 110px;
+        height: 35px;
+        border: 2px solid #a821d5;
+        color: #a821d5;
+        font-weight: 600;
+        cursor: pointer;
       }
     }
   }
