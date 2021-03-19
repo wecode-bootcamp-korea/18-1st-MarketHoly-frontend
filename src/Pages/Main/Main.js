@@ -37,15 +37,16 @@ class Main extends Component {
   }
 
   render() {
+    const { listgoods, dailyspecial, listcategory } = this.state;
     return (
       <div className="main">
         <Banner />
         <div className="titRecommendGoods">이 상품 어때요?</div>
-        <ListGoods listgoods={this.state.listgoods} />
-        <DailySpecial dailyspecial={this.state.dailyspecial} />
+        <ListGoods listgoods={listgoods} />
+        <DailySpecial dailyspecial={dailyspecial} />
         <div className="titRecommendGoods">MD의 추천</div>
-        <ListCategory listcategory={this.state.listcategory} />
-        <ListGoods listgoods={this.state.listgoods} />
+        <ListCategory listcategory={listcategory} />
+        <ListGoods listgoods={listgoods} />
         <span className="viewAll">
           전체보기
           <IoChevronForward className="arrow" />
