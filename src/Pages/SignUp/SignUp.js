@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './SignUp.scss';
 
+const idCheck = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{2,4}$/;
+// const pwCheck = /[A-Za-z0-9!@#$%^&*_-+=.,]{10,20}$/;
+const birthCheck = /[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$/;
+
 class SignUp extends Component {
   constructor() {
     super();
@@ -12,18 +16,70 @@ class SignUp extends Component {
       phoneNumber: '',
       address: '',
       birth: '',
+      isIdValid: false,
     };
   }
 
+  handleIdCheck = () => {
+    idCheck.test(this.state.email)
+      ? this.setState({ isIdValid: false })
+      : this.setState({ isIdValid: true });
+  };
+
   handleOnChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => {
+        console.log(this.state.email);
+        this.handleIdCheck();
+      }
+    );
+  };
+
+  handleEmailClick = () => {
+    this.handleIdCheck();
+  };
+
+  // handleNumberLimit (el, maxlength){
+  //   if(el.value.length > maxlength){
+  //     el.value = el.value.substr(0, maxlength);
+  //   }
+  // }
+
+  signUpSummit = e => {
+    e.preventDefault();
+    if (this.state.email === '') {
+      alert('이메일을 입력해주세요');
+    } else if (this.state.password === '') {
+      alert('비밀번호를 입력해주세요');
+    } else if (!(this.state.password === this.state.passwordCheck)) {
+      alert('비밀번호를 확인해주세요');
+    } else if (this.state.name === '') {
+      alert('이름을 입력해주세요');
+    } else if (this.state.address === '') {
+      alert('주소를 입력해주세요');
+    }
+    // else if{
+    //   fetch("", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     email: this.state.email,
+    //     password: this.state.password,
+    //     name: this.state.name,
+    //     phoneNumber: this.state.phoneNumber,
+    //     address: this.state.address,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => console.log(res)); //if 백엔드에서 성공메시지 뜨면 데이터 보내주기?
+    // }
   };
 
   render() {
     return (
-      <div className="SignUpForm">
+      <div className="signUpForm">
         <h3>회원가입</h3>
         <p className="subText">
           <span className="essential">*</span> 필수입력사항
@@ -41,8 +97,14 @@ class SignUp extends Component {
                     label="이메일"
                     placeholder="이메일을 입력해주세요"
                     onChange={this.handleOnChange}
+                    onClick={this.handleEmailClick}
                   />
                   <button className="duplicationBtn">중복확인</button>
+                  {this.state.isIdValid && (
+                    <p className="warningText">
+                      이메일 형식이 올바르지 않습니다.
+                    </p>
+                  )}
                 </td>
               </tr>
               <tr className="pwTable">
@@ -88,10 +150,11 @@ class SignUp extends Component {
                 <th>휴대폰</th>
                 <td>
                   <input
-                    type="text"
+                    type="number"
                     className="phoneNumberField"
                     name="phoneNumber"
-                    label="이름"
+                    label="휴대폰"
+                    // oninput={this.handleNumberLimit(this, 11)}
                     placeholder="숫자만 입력해주세요"
                     onChange={this.handleOnChange}
                   />
@@ -120,14 +183,14 @@ class SignUp extends Component {
                 <th>이용약관동의</th>
                 <td>
                   <div className="tosText">
-                    <p>제1조</p>
+                    <p className="subHeading">제1조</p>
                     (목적) 이 약관은 마켓홀리가 운영하는 사이트에서 제공하는
                     인터넷 관련 서비스(이하 "서비스"라 한다)를 이용함에 있어
                     마켓홀리와 이용자의 권리/의무 및 책임사항을 규정함을
                     목적으로 합니다.
                     <br />
                     <br />
-                    <p>제2조</p>
+                    <p className="subHeading">제2조</p>
                     (용어정의) ① "마켓홀리" : 문서/서식 및 관련 컨텐츠를
                     서비스를 목록으로 하는 서식/양식 전문 포탈 사이트입니다. ②
                     "이용자"란 "마켓홀리"에 접속하여 이 약관에 따라 "마켓홀리"이
@@ -139,7 +202,7 @@ class SignUp extends Component {
                     않고마켓홀리"이 제공하는 서비스를 이용하는 자를 말합니다.
                     <br />
                     <br />
-                    <p>제3조</p>
+                    <p className="subHeading">제3조</p>
                     (약관 등의 명시와 설명 및 개정) ① "마켓홀리"는 이 약관의
                     내용과 상호 및 대표자 성명, 영업소 소재지 주소(소비자의
                     불만을 처리할 수 있는 곳의 주소를 포함), 전화번호,
@@ -178,7 +241,13 @@ class SignUp extends Component {
               </tr>
             </tbody>
           </table>
-          <button className="SignUpBtn">가입하기</button>
+          <button
+            className="SignUpBtn"
+            type="submit"
+            onClick={this.signUpSummit}
+          >
+            가입하기
+          </button>
         </form>
       </div>
     );

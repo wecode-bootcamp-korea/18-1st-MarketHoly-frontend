@@ -1,6 +1,6 @@
 @import '../../styles/common.scss';
 
-.SignUpForm {
+.signUpForm {
   width: 640px;
   margin: 0 auto;
 
@@ -10,7 +10,7 @@
     font-size: 30px;
     font-weight: bold;
     color: $mainText;
-    letter-spacing: -0.5px;
+    // letter-spacing: -0.5px;
   }
 
   // 필수입력사항
@@ -63,6 +63,10 @@
       input::placeholder {
         color: $subTextLightGray;
       }
+
+      .warningText {
+        color: red;
+      }
     }
 
     // 아이디
@@ -108,7 +112,7 @@
         line-height: 16px;
         color: $mainText;
 
-        p {
+        .subHeading {
           font-weight: bold;
         }
       }
