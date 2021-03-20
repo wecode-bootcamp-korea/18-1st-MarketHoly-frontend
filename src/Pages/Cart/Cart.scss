@@ -9,8 +9,12 @@
     font-size: 28px;
     color: $mainText;
   }
+  .contents {
+    display: flex;
+    justify-content: center;
+  }
   .select {
-    margin: 70px 0 0 190px;
+    margin-top: 70px;
   }
   .checkbox,
   .checkDelete {
@@ -56,14 +60,91 @@
     width: 742px;
     margin-left: 6px;
     padding: 115px 0 116px;
-    font-size: 16px;
     font-weight: 700;
     color: $mainText;
   }
   .delivery {
     width: 284px;
     height: 176px;
+    margin: 116px 0 0 30px;
     padding: 23px 19px 20px;
     border: 1px solid $subTextLightGray;
+  }
+  .delivery .icon {
+    width: 20px;
+    height: 20px;
+    color: $subTextGray;
+  }
+  .delivery .tit {
+    vertical-align: 4px;
+    margin-left: 5px;
+    font-weight: 700;
+    color: $mainText;
+  }
+  .delivery .text {
+    line-height: 22px;
+    margin-top: 10px;
+    font-weight: 600;
+    color: $mainText;
+  }
+  .purpleText {
+    color: $themePurple;
+  }
+  .address {
+    width: 244px;
+    height: 36px;
+    margin-top: 15px;
+    padding-top: 7px;
+    border-radius: 5px;
+    border: 1px solid $themePurple;
+    text-align: center;
+  }
+  .address .icon {
+    width: 15px;
+    color: $themePurple;
+  }
+  .address .tit {
+    vertical-align: 6px;
+    font-size: 12px;
+    font-weight: 400;
+    color: $themePurple;
+  }
+  .amountView {
+    width: 284px;
+    height: 211px;
+    margin: -1px 0 0 30px;
+    padding: 25px 18px 18px 20px;
+    border: 1px solid $subTextLightGray;
+    background-color: #fafafa;
+  }
+  .amount {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 23px;
+    color: $mainText;
+  }
+  .amountView .line {
+    text-align: center;
+    width: 244px;
+    margin-bottom: 23px;
+    border-bottom: 1px solid $subTextLightGray;
+  }
+  .cartBtn {
+    width: 284px;
+    height: 56px;
+    margin: 20px 0 40px 30px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: #ddd;
+  }
+  .notice {
+    display: block;
+    width: 284px;
+    margin: 0 0 0 30px;
+    font-size: 12px;
+    color: $mainText;
+    line-height: 15px;
   }
 }
