@@ -1,0 +1,23 @@
+.headAlwayitem {
+  display: flex;
+  justify-content: space-between;
+  height: 61px;
+  padding: 14px 20px 14px 0px;
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 1px solid black;
+  line-height: 36px;
+  color: #333;
+  letter-spacing: -0.5px;
+
+  input {
+    width: 17px;
+    height: 17px;
+    margin-top: 7px;
+    outline-style: 1px solid rgb(217, 217, 217);
+  }
+
+  .headAlwayright {
+    margin-right: 40px;
+  }
+}

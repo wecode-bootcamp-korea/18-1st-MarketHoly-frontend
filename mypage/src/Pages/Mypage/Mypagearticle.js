@@ -4,7 +4,7 @@ import Select from 'react-select';
 import { AiOutlineRight } from 'react-icons/ai';
 import './Mypagearticle.scss';
 import Myiteminfo from './Myiteminfo';
-// import { Route } from 'react-router-dom';
+import Myalwayitem from './Myalwayitem';
 
 const options = [
   { value: '전체기간', label: '전체기간' },
@@ -20,7 +20,6 @@ export class Mypagearticle extends Component {
     super();
     this.state = {
       item: [],
-      mapItem: '',
     };
   }
 
@@ -36,24 +35,27 @@ export class Mypagearticle extends Component {
 
   render() {
     return (
-      <article className="myArticle">
-        <div className="article">
-          <nav className="navBar">
-            <div className="myHoly">
-              <a>마이홀리</a>
-            </div>
-            <Router>
+      <Router>
+        <article className="myArticle">
+          <div className="article">
+            <nav className="navBar">
+              <div className="myHoly">
+                <a>마이홀리</a>
+              </div>
+
               <ul>
                 <Link to="/">
                   <li>
-                    <div>주문 내역</div> <AiOutlineRight />
+                    <div onClick="saveName">주문 내역</div> <AiOutlineRight />
+                  </li>
+                </Link>
+                <Link to="/Myalwayitem">
+                  <li>
+                    <div>늘 사는 것</div> <AiOutlineRight />
                   </li>
                 </Link>
                 <li>
                   <div>배송지 관리</div> <AiOutlineRight />
-                </li>
-                <li>
-                  <div>늘 사는 것</div> <AiOutlineRight />
                 </li>
                 <li>
                   <div>상품 후기</div>
@@ -72,37 +74,20 @@ export class Mypagearticle extends Component {
                   <AiOutlineRight />
                 </li>
               </ul>
-            </Router>
-          </nav>
-          <section className="pageSection">
-            <div className="sectionHeader">
-              <div className="headerName">
-                <h1>주문 내역</h1>
-                <div className="headerInfo">
-                  지난 3년간의 주문 내역 조회가 가능합니다.
-                </div>
-              </div>
-              <div className="select">{MyComponent()}</div>
-            </div>
-            {/* <Switch>
-              <Route path="/" render={() => <Myiteminfo name={name} />} />
-            </Switch> */}
-            {this.state.item.map(item => {
-              return (
-                <Myiteminfo
-                  img={item.img}
-                  name={item.name}
-                  price={item.price}
-                  ordernumber={item.ordernumber}
-                  status={item.status}
-                  date={item.date}
-                  time={item.time}
+            </nav>
+            <section className="pageSection">
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={() => <Myiteminfo item={this.state.item} />}
                 />
-              );
-            })}
-          </section>
-        </div>
-      </article>
+                <Route path="/Myalwayitem" render={() => <Myalwayitem />} />
+              </Switch>
+            </section>
+          </div>
+        </article>
+      </Router>
     );
   }
 }
