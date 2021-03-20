@@ -15,7 +15,6 @@ const MyComponent = () => <Select options={options} />;
 export class Myiteminfo extends Component {
   render() {
     const { item } = this.props;
-    console.log(item);
     return (
       <>
         <div className="sectionHeader">
@@ -29,7 +28,7 @@ export class Myiteminfo extends Component {
         </div>
         {this.props.item.map(e => {
           return (
-            <div className="item">
+            <div className="item" key={e.id}>
               <div className="date">
                 {e.date} ({e.time})
               </div>
@@ -61,6 +60,9 @@ export class Myiteminfo extends Component {
             </div>
           );
         })}
+        {item.length == 0 && (
+          <div className="notOder">주문내역이 없습니다.</div>
+        )}
       </>
     );
   }
