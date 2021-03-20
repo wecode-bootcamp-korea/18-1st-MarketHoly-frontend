@@ -20,9 +20,9 @@ class SignUp extends Component {
       isIdValid: false,
       isPwValid: false,
 
-      //DaumPost 주소
-      zoneCode: '',
-      fullAddress: '',
+      zoneCode: '', //우편번호
+      fullAddress: '', //주소
+      detailAddress: '', //상세주소
       isDaumPost: false,
       isRegister: false,
       register: [],
@@ -60,58 +60,82 @@ class SignUp extends Component {
     });
   };
 
-  // Id Check
+  // Check
   handleIdCheck = () => {
     idCheck.test(this.state.email)
       ? this.setState({ isIdValid: false })
       : this.setState({ isIdValid: true });
   };
-
-  // Password Check
   handlePwCheck = () => {
     this.state.password.length >= 10
       ? this.setState({ isPwValid: false })
       : this.setState({ isPwValid: true });
   };
-
-  // Phone Check
   handlePhoneCheck = () => {
     if (!phoneCheck.test(this.state.phoneNumber)) {
       this.phoneRef.current.value = '';
     }
   };
-
-  // Birth Check
   handleBirthCheck = () => {
     if (!firstBirthCheck.test(this.state.birth)) {
       this.birthRef.current.value = '';
     }
   };
 
+  // onChange
   handleOnChange = e => {
     this.setState(
       {
         [e.target.name]: e.target.value,
       },
       () => {
-        this.handleIdCheck();
-        this.handlePwCheck();
-        this.handlePhoneCheck();
-        this.handleBirthCheck();
+        if (e.target.name === 'email') {
+          this.handleIdCheck();
+          return;
+        }
+        if (e.target.name === 'password') {
+          this.handlePwCheck();
+          return;
+        }
+        if (e.target.name === 'phoneNumber') {
+          this.handlePhoneCheck();
+          return;
+        }
+        if (e.target.name === 'birth') {
+          this.handleBirthCheck();
+          return;
+        }
       }
     );
   };
 
-  // Click
-  handleEmailClick = () => {
-    this.handleIdCheck();
+  // 백엔드 API 연결
+  sendUserInfo = () => {
+    fetch('http://10.58.1.200:8000/user/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+        name: this.state.name,
+        phone_number: this.state.phoneNumber,
+        zip_code: this.state.zoneCode, //우편번호
+        address: this.state.fullAddress, //주소
+        detail_address: this.state.detailAddress, //상세주소
+        date_of_birth: this.state.birth,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (parseInt(res.status) === 200) {
+          alert('회원가입 완료');
+          this.props.history.push('../Main');
+        } else {
+          alert('회원가입 실패');
+        }
+      });
   };
 
-  handlePwClick = () => {
-    this.handlePwCheck();
-  };
-
-  //가입하기 버튼 클릭 시,
+  //signUp 버튼 클릭 시, alert
   signUpSummit = e => {
     e.preventDefault();
     if (this.state.email === '') {
@@ -122,27 +146,15 @@ class SignUp extends Component {
       alert('비밀번호를 확인해주세요');
     } else if (this.state.name === '') {
       alert('이름을 입력해주세요');
+    } else if (this.state.phoneNumber === '') {
+      alert('휴대폰 번호를 입력해주세요');
+    } else if (this.state.fullAddress === '') {
+      alert('주소를 입력해주세요');
     } else if (!birthCheck.test(this.state.birth)) {
       alert('유효하지 않는 생년월일 입니다.');
+    } else {
+      this.sendUserInfo();
     }
-
-    // else if (this.state.address === '') {
-    //   alert('주소를 입력해주세요');
-    // }
-    // else if{
-    //   fetch("", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     email: this.state.email,
-    //     password: this.state.password,
-    //     name: this.state.name,
-    //     phoneNumber: this.state.phoneNumber,
-    //     address: this.state.address,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => console.log(res)); //if 백엔드에서 성공메시지 뜨면 데이터 보내주기
-    // }
   };
 
   render() {
@@ -153,8 +165,8 @@ class SignUp extends Component {
     const height = 450;
     const modalStyle = {
       position: 'fixed',
-      top: '100px',
-      left: '300px',
+      top: '80px',
+      left: '320px',
       zIndex: '100',
       border: '1px solid #000000',
       overflow: 'hidden',
@@ -164,13 +176,15 @@ class SignUp extends Component {
       <div className="signUpForm">
         <h3>회원가입</h3>
         <p className="subText">
-          <span className="essential">*</span> 필수입력사항
+          <span className="essential">*</span>필수입력사항
         </p>
         <form>
           <table className="SignUpTable">
             <tbody>
               <tr className="emailTable">
-                <th>이메일</th>
+                <th>
+                  이메일<span className="essential">*</span>
+                </th>
                 <td>
                   <input
                     type="text"
@@ -179,7 +193,6 @@ class SignUp extends Component {
                     label="이메일"
                     placeholder="이메일을 입력해주세요"
                     onChange={this.handleOnChange}
-                    onClick={this.handleEmailClick}
                   />
                   <button className="duplicationBtn">중복확인</button>
                   {this.state.isIdValid && (
@@ -190,7 +203,9 @@ class SignUp extends Component {
                 </td>
               </tr>
               <tr className="pwTable">
-                <th>비밀번호</th>
+                <th>
+                  비밀번호<span className="essential">*</span>
+                </th>
                 <td>
                   <input
                     type="password"
@@ -199,7 +214,6 @@ class SignUp extends Component {
                     label="비밀번호"
                     placeholder="비밀번호를 입력해주세요"
                     onChange={this.handleOnChange}
-                    onClick={this.handlePwClick}
                   />
                   {this.state.isPwValid && (
                     <p className="warningText">
@@ -209,7 +223,9 @@ class SignUp extends Component {
                 </td>
               </tr>
               <tr className="pwCheckTable">
-                <th>비밀번호확인</th>
+                <th>
+                  비밀번호확인<span className="essential">*</span>
+                </th>
                 <td>
                   <input
                     type="password"
@@ -222,7 +238,9 @@ class SignUp extends Component {
                 </td>
               </tr>
               <tr className="nameTable">
-                <th>이름</th>
+                <th>
+                  이름<span className="essential">*</span>
+                </th>
                 <td>
                   <input
                     type="text"
@@ -235,13 +253,16 @@ class SignUp extends Component {
                 </td>
               </tr>
               <tr className="phoneNumberTable">
-                <th>휴대폰</th>
+                <th>
+                  휴대폰<span className="essential">*</span>
+                </th>
                 <td>
                   <input
                     type="text"
                     className="phoneNumberField"
                     name="phoneNumber"
                     label="휴대폰"
+                    maxlength="11"
                     placeholder="숫자만 입력해주세요"
                     onChange={this.handleOnChange}
                     ref={this.phoneRef}
@@ -249,12 +270,15 @@ class SignUp extends Component {
                 </td>
               </tr>
               <tr className="addressTable">
-                <th>주소</th>
+                <th>
+                  주소<span className="essential">*</span>
+                </th>
                 <td>
                   <div className="textFieldAddress">
                     <div className="textFieldAddressTop">
                       <input
                         className="inputAddress"
+                        name="zipCode"
                         placeholder="우편번호"
                         type="text"
                         value={zoneCode}
@@ -270,6 +294,7 @@ class SignUp extends Component {
                       <div>
                         <input
                           className="inputAddressBottom"
+                          name="address"
                           placeholder="주소"
                           type="text"
                           value={fullAddress}
@@ -279,7 +304,9 @@ class SignUp extends Component {
                         <input
                           type="text"
                           className="inputAddressBottom"
+                          name="detailAddress"
                           placeholder="상세주소"
+                          onChange={this.handleOnChange}
                         />
                       </div>
                     </div>
@@ -287,13 +314,16 @@ class SignUp extends Component {
                 </td>
               </tr>
               <tr className="birthTable">
-                <th>생년월일</th>
+                <th>
+                  생년월일<span className="essential">*</span>
+                </th>
                 <td>
                   <input
                     type="text"
                     className="birthField"
                     name="birth"
                     label="생년월일"
+                    maxlength="10"
                     placeholder="YYYY-MM-DD 형식으로 입력해주세요"
                     onChange={this.handleOnChange}
                     ref={this.birthRef}
@@ -301,7 +331,9 @@ class SignUp extends Component {
                 </td>
               </tr>
               <tr className="tosTable">
-                <th>이용약관동의</th>
+                <th>
+                  이용약관동의<span className="essential">*</span>
+                </th>
                 <td>
                   <div className="tosText">
                     <p className="subHeading">제1조</p>
@@ -358,9 +390,14 @@ class SignUp extends Component {
                     약관의규제등에관한법률, 공정거래위원회가 정하는 전자상거래
                     등에서의소비자보호지침 및 관계법령 또는 상관례에 따릅니다.
                   </div>
-                  {/* <input className="agreeCheckBox" type="checkbox">
-                    전체 동의합니다.
-                  </input> */}
+                  <div>
+                    <input
+                      className="agreeCheckBox"
+                      type="checkbox"
+                      onChange={this.handleOnChange}
+                    />
+                    <span className="necessaryText">(필수)</span> 동의합니다.
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -372,6 +409,7 @@ class SignUp extends Component {
           >
             가입하기
           </button>
+
           {isDaumPost ? (
             <DaumPostcode
               onComplete={this.handleAddress}

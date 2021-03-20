@@ -10,7 +10,6 @@
     font-size: 30px;
     font-weight: bold;
     color: $mainText;
-    // letter-spacing: -0.5px;
   }
 
   // 필수입력사항
@@ -71,24 +70,20 @@
       }
     }
 
-    // 아이디
+    // 이메일
     .emailTable {
       border-top: 2px solid $mainText;
 
-      td {
-        padding-top: 20px;
-
-        //중복확인 버튼
-        .duplicationBtn {
-          width: 120px;
-          height: 45px;
-          margin-left: 10px;
-          color: $themePurple;
-          border: 1px solid $themePurple;
-          background-color: #fff;
-          border-radius: 3px;
-          font-weight: bold;
-        }
+      //중복확인 버튼
+      .duplicationBtn {
+        width: 120px;
+        height: 45px;
+        margin-left: 10px;
+        color: $themePurple;
+        border: 1px solid $themePurple;
+        background-color: #fff;
+        border-radius: 3px;
+        font-weight: bold;
       }
     }
 
@@ -97,6 +92,7 @@
       width: 120px;
       height: 45px;
       margin-left: 10px;
+      cursor: pointer;
       color: $themePurple;
       border: 1px solid $themePurple;
       background-color: #fff;
@@ -107,7 +103,6 @@
     // 생년월일
     .birthTable {
       border-bottom: 1px solid $mainText;
-      margin-bottom: 20px; // 적용 안됨
     }
 
     // 이용약관동의
@@ -117,6 +112,7 @@
 
       .tosText {
         overflow: scroll;
+        overflow-x: hidden;
         width: 450px;
         height: 200px;
         padding: 10px;
@@ -130,6 +126,16 @@
           font-weight: bold;
         }
       }
+
+      .agreeCheckBox {
+        width: 15px;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+      .necessaryText {
+        color: #666;
+      }
     }
   }
 
@@ -140,7 +146,6 @@
     height: 55px;
     margin: 0 auto;
     margin-top: 40px;
-    margin-bottom: 120px; //적용 안됨
     border: none;
     border-radius: 3px;
     font-size: 16px;
