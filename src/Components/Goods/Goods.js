@@ -12,7 +12,7 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 
 class Goods extends Component {
   render() {
-    const { modifier, id, img, isSale, isCountdown, salestart, name, price, salePer, originalPrice } = this.props;
+    const { modifier, id, img, isSale, isCountdown, /*salestart,*/ name, price, salePer, originalPrice } = this.props;
     return (
       <div className="goods" key={id}>
         <div className="imagePart">
@@ -20,7 +20,7 @@ class Goods extends Component {
           {isSale && <div className="saleMark">{salePer}% 일일특가</div>}
           {isCountdown && (
             <div className="countdownMark">
-              <Countdown date={1616029401189 /*{ salestart }*/ + 86400000} renderer={renderer} /> 남음
+              <Countdown date={1616159618308 /*{ salestart }*/ + 86400000} renderer={renderer} /> 남음
             </div>
           )}
         </div>
