@@ -11,8 +11,6 @@ class Login extends Component {
   }
 
   handleOnChange = e => {
-    console.log('name : ' + e.target.name);
-    console.log('value : ' + e.target.value);
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -23,7 +21,24 @@ class Login extends Component {
     const idCheck = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{1,4}$/;
 
     if (idCheck.test(this.state.email) && this.state.password.length >= 10) {
-      alert('이메일과 비밀번호가 유효합니다.');
+      let summonerUrl = `user/login`;
+      fetch(summonerUrl, {
+        method: 'POST',
+        body: JSON.stringify({
+          email: this.state.email,
+          password: this.state.password,
+        }),
+      })
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+          if (parseInt(res.status) === 200) {
+            alert('로그인 완료');
+            this.props.history.push('../Main');
+          } else {
+            alert('로그인 실패');
+          }
+        });
     } else {
       alert('이메일과 비밀번호가 유효하지 않습니다.');
     }
