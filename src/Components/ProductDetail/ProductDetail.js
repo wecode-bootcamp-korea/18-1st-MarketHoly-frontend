@@ -2,6 +2,7 @@ import React from 'react';
 import { BiShareAlt } from 'react-icons/bi';
 import { AiFillFacebook, AiOutlineMinus, AiOutlinePlus, AiOutlineTwitter } from 'react-icons/ai';
 import ProductGoodsAdd from './ProductGoodsAdd';
+import GoodsViewInfomation from './GoodsViewInfomation';
 import './ProductDetail.scss';
 
 class ProductDetail extends React.Component {
@@ -158,7 +159,7 @@ class ProductDetail extends React.Component {
                   </div>
                 </div>
               </div>
-              {productInfo.allergy?.length !== 0 && (
+              {productInfo.allergy && (
                 <div className="allergyBox paddingCommonBox">
                   <div className="allergy">
                     <span className="allergyText widthCommonBox">알레르기정보</span>
@@ -219,6 +220,7 @@ class ProductDetail extends React.Component {
           </div>
         </div>
         <ProductGoodsAdd productInfoId={productInfo.id} />
+        <GoodsViewInfomation />
       </div>
     );
   }

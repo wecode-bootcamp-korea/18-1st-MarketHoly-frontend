@@ -198,7 +198,7 @@
                .salesUnitMiniBox {
                   display     : flex;
                   align-items : center;
-                  padding-top : 18px;
+                  padding     : 18px 0;
                   .salesUnitName {
                      width : 150px;
                   }
@@ -238,12 +238,12 @@
             }
 
             .allergyBox {
-               display : flex;
+               display       : flex;
+               border-bottom : 1px solid #f4f4f4;
             }
 
             .expirationBox {
-               display    : flex;
-               border-top : 1px solid #f4f4f4;
+               display : flex;
             }
 
             .detailInfoBuyBox {
