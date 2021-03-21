@@ -14,18 +14,20 @@ class ProductGoodsAdd extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({
-      imgUlWidth: this.getWidth.offsetWidth,
-    });
     fetch('data/goodsAddProduct.json')
       .then(res => res.json())
-      .then(res => this.setState({ goodsProductArr: res }));
+      .then(res =>
+        this.setState({ goodsProductArr: res }, () => {
+          this.setState({
+            imgUlWidth: this.getWidth.offsetWidth,
+          });
+        })
+      );
   }
 
   handleArrowMove = e => {
     if (e.target.className.includes('arrowLeftBox')) {
       this.setState({ carouselX: this.state.carouselX + CAROUSEL_X }, () => {
-        console.log(this.state.carouselX);
         if (this.state.carouselX < 0) {
           this.setState({ isRightArrow: true });
         } else {
