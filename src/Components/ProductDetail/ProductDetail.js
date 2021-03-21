@@ -12,6 +12,8 @@ class ProductDetail extends React.Component {
     sumPrice: 0,
     isSharedBtn: false,
     isLogin: false,
+    isRestockNotice: true,
+    isWishList: false,
   };
 
   componentDidMount() {
@@ -53,11 +55,12 @@ class ProductDetail extends React.Component {
     this.setState({ isSharedBtn: !this.state.isSharedBtn });
   };
   sendToCart = () => {
-    console.log(this.state.sumPrice);
+    if (this.state.sumPrice === 0) alert('1개 이상 선택 해주세요!');
+    else console.log(this.state.sumPrice);
   };
 
   render() {
-    const { productCount, productInfo, sumPrice, isSharedBtn, isLogin } = this.state;
+    const { productCount, productInfo, sumPrice, isSharedBtn, isLogin, isRestockNotice, isWishList } = this.state;
     return (
       <div className="detailContainer">
         <div className="detailMain">
@@ -161,7 +164,7 @@ class ProductDetail extends React.Component {
                     <span className="allergyText widthCommonBox">알레르기정보</span>
                   </div>
                   <div className="allergyInfo">
-                    <span className="allergyInfoList">{productInfo.allergy?.map(list => `${list}`)}</span>
+                    <span className="allergyInfoList">{productInfo.allergy?.map(list => `${list} `)}</span>
                     <span className="allergyDescription">을(를) 사용한 제품과 같은 제조시설에서 제조하였습니다.</span>
                   </div>
                 </div>
@@ -205,8 +208,8 @@ class ProductDetail extends React.Component {
               </div>
               <div className="buyGroupBtnBox off">
                 <div className="buyGroupBtnView">
-                  <button className="restockNotice">재입고 알림</button>
-                  <button className="wishList">늘 사는 것</button>
+                  <button className={'restockNotice ' + (isRestockNotice && 'notBuyGroupBtn')}>재입고 알림</button>
+                  <button className={'wishList ' + (isWishList && 'notAddToCart')}>늘 사는 것</button>
                 </div>
                 <button className="addToCart" onClick={this.sendToCart}>
                   장바구니 담기

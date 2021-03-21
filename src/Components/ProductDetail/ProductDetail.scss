@@ -17,7 +17,7 @@
    .detailMain {
       width         : 1050px;
       padding-top   : 15px;
-      margin-bottom : 25px;
+      margin-bottom : 40px;
       font-size     : 15px;
       .detailHeader {
          display : flex;
@@ -358,12 +358,17 @@
                   background-color : $themePurple;
                }
                .notBuyGroupBtn {
-                  color  : #dddddd;
-                  border : 1px solid #dddddd;
+                  border         : 1px solid #dddddd;
+                  color          : #dddddd;
+                  pointer-events : none;
+                  cursor         : none;
                }
                .notAddToCart {
                   border           : none;
+                  color            : $subTextLightGray;
                   background-color : #dddddd;
+                  pointer-events   : none;
+                  cursor           : none;
                }
             }
          }

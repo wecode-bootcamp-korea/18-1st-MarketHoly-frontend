@@ -7,30 +7,29 @@ const CAROUSEL_X = 940;
 class ProductGoodsAdd extends React.Component {
   state = {
     imgUlWidth: null,
-    imgListLength: null,
     carouselX: 0,
-    isCarouselX: true,
     isLeftArrow: false,
     isRightArrow: true,
+    goodsProductArr: [],
   };
 
   componentDidMount() {
-    this.setState(
-      {
-        imgUlWidth: this.getWidth.offsetWidth,
-        imgListLength: this.getWidth.children.length,
-      },
-      () => console.log(this.state.imgListLength)
-    );
+    this.setState({
+      imgUlWidth: this.getWidth.offsetWidth,
+    });
+    fetch('data/goodsAddProduct.json')
+      .then(res => res.json())
+      .then(res => this.setState({ goodsProductArr: res }));
   }
 
   handleArrowMove = e => {
     if (e.target.className.includes('arrowLeftBox')) {
       this.setState({ carouselX: this.state.carouselX + CAROUSEL_X }, () => {
+        console.log(this.state.carouselX);
         if (this.state.carouselX < 0) {
           this.setState({ isRightArrow: true });
         } else {
-          this.setState({ isLeftArrow: false });
+          this.setState({ isLeftArrow: false, isRightArrow: true });
         }
       });
     }
@@ -46,7 +45,7 @@ class ProductGoodsAdd extends React.Component {
   };
 
   render() {
-    const { carouselX, isLeftArrow, isRightArrow, imgListLength } = this.state;
+    const { carouselX, isLeftArrow, isRightArrow, goodsProductArr } = this.state;
     return (
       <div className="goodsAddProduct">
         <h3 className="goodsAddTitle">RELATED PRODUCT</h3>
@@ -56,217 +55,28 @@ class ProductGoodsAdd extends React.Component {
               <AiOutlineArrowLeft className="arrowIcon leftArrow" />
             </div>
           )}
-          {isRightArrow && imgListLength > 5 && (
+          {isRightArrow && goodsProductArr.length > 5 && (
             <div className="arrowRightBox arrowCommonBox" name="right" onClick={this.handleArrowMove}>
               <AiOutlineArrowRight className="arrowIcon rightArrow" />
             </div>
           )}
           <div className="goodsAddProductListWrapper">
             <ul className="goodsAddProductList" ref={e => (this.getWidth = e)} style={{ transform: `translateX(${carouselX}px)` }}>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
+              {goodsProductArr?.map((item, idx) => (
+                <li className="goodsAddProductItem" key={idx}>
+                  <div className="goodsAddProductItemFigure">
+                    <a href="#" target="_blank">
+                      <img src={item.imgUrl} alt="" className="goodsAddProductItemImage" />
+                    </a>
                   </div>
-                </div>
-              </li>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
+                  <div className="goodsAddProductItemContent">
+                    <div className="goodsAddProductItemContentWrapper">
+                      <p className="goodsAddProductItemName">{item.name}</p>
+                      <p className="goodsAddProductItemPrice">{item.price.toLocaleString(navigator.language)}</p>
+                    </div>
                   </div>
-                </div>
-              </li>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
-                  </div>
-                </div>
-              </li>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
-                  </div>
-                </div>
-              </li>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
-                  </div>
-                </div>
-              </li>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
-                  </div>
-                </div>
-              </li>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
-                  </div>
-                </div>
-              </li>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
-                  </div>
-                </div>
-              </li>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
-                  </div>
-                </div>
-              </li>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
-                  </div>
-                </div>
-              </li>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
-                  </div>
-                </div>
-              </li>
-              <li className="goodsAddProductItem">
-                <div className="goodsAddProductItemFigure">
-                  <a href="#" target="_blank">
-                    <img
-                      src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                      alt=""
-                      className="goodsAddProductItemImage"
-                    />
-                  </a>
-                </div>
-                <div className="goodsAddProductItemContent">
-                  <div className="goodsAddProductItemContentWrapper">
-                    <p className="goodsAddProductItemName">[심쿵] 고앵님</p>
-                    <p className="goodsAddProductItemPrice">3,000억</p>
-                  </div>
-                </div>
-              </li>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

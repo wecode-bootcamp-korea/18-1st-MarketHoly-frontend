@@ -4,7 +4,6 @@
 .goodsAddProduct {
    width       : 1050px;
    height      : 400px;
-   padding-top : 10px;
    font-family : 'Gothic A1', sans-serif;
    font-weight : 500;
    .goodsAddTitle {
@@ -55,8 +54,8 @@
             .goodsAddProductItem {
                width        : 179px;
                height       : 320px;
-               margin-right : 10px;
-               border: 1px solid #ddd;
+               margin-right : 9px;
+               border       : 1px solid #ddd;
                .goodsAddProductItemFigure {
                   height : 230px;
                   a {
@@ -68,11 +67,12 @@
                   }
                }
                .goodsAddProductItemContent {
-                  font-size: 14px;
+                  font-size : 14px;
                   .goodsAddProductItemContentWrapper {
                      padding : 10px;
                      .goodsAddProductItemName {
-                        height : 30px;
+                        height      : 35px;
+                        line-height : 18px;
                      }
                   }
                }
