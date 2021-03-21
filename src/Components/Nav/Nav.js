@@ -25,10 +25,13 @@ class Nav extends React.Component {
   };
 
   componentDidMount() {
-    fetch('/data/productNavbar.json', {})
+    // fetch('/data/productNavbar.json', {})
+    const categoryUrl = `product/category`;
+    fetch(categoryUrl, {})
       .then(res => res.json())
       .then(res => {
-        this.setState({ navbarList: res });
+        console.log(res.result);
+        this.setState({ navbarList: res.result });
       });
   }
 
@@ -84,8 +87,9 @@ class Nav extends React.Component {
 
   render() {
     const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput } = this.state;
+    console.log(navbarList);
     return (
-      <div className="navbar">
+      <div className="navbar" onMouseHover={this.allCategoriesHoverLeave}>
         <div className="user-menu">
           <NavBanner />
           <div className="user-list-menu">
