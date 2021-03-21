@@ -12,12 +12,12 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 
 class Goods extends Component {
   render() {
-    const { modifier, id, img, isSale, isCountdown, /*salestart,*/ name, price, salePer, originalPrice } = this.props;
+    const { modifier, id, image, isSale, isCountdown, /*salestart,*/ name, price, discount_rate /*originalPrice*/ } = this.props;
     return (
       <div className="goods" key={id}>
         <div className="imagePart">
-          <img className={modifier === 'dailyspecial' ? 'sizebig' : 'sizesmall'} src={img} alt="goods" />
-          {isSale && <div className="saleMark">{salePer}% 일일특가</div>}
+          <img className={modifier === 'dailyspecial' ? 'sizebig' : 'sizesmall'} src={image} alt="goods" />
+          {isSale && <div className="saleMark">{discount_rate}% 일일특가</div>}
           {isCountdown && (
             <div className="countdownMark">
               <Countdown date={1616159618308 /*{ salestart }*/ + 86400000} renderer={renderer} /> 남음
@@ -25,9 +25,11 @@ class Goods extends Component {
           )}
         </div>
         <div className="name">{name}</div>
-        <div className={modifier === 'dailyspecial' ? 'perbig' : 'persmall'}>{salePer}%</div>
-        <div className={modifier === 'dailyspecial' ? 'pricebig' : 'pricesmall'}>{price}원</div>
-        <div className="originalPrice">{originalPrice}원</div>
+        {discount_rate && <div className={modifier === 'dailyspecial' ? 'perbig' : 'persmall'}>{discount_rate && discount_rate * 100 + '%'}</div>}
+        <div className={modifier === 'dailyspecial' ? 'pricebig' : 'pricesmall'}>
+          {discount_rate ? Math.floor(price.toLocaleString(navigator.language) * (1 - discount_rate)) : Math.floor(price.toLocaleString(navigator.language))}원
+        </div>
+        {discount_rate && <div className="originalPrice">{discount_rate && Math.floor(price.toLocaleString(navigator.language))}원</div>}
       </div>
     );
   }

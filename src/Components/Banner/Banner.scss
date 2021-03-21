@@ -1,36 +1,12 @@
 .banner {
-  .firstimg {
-    width: 100%;
-    min-width: 1050px;
-    height: 370px;
-    background-color: palegoldenrod;
-  }
-
-  .secondimg {
-    width: 100%;
-    min-width: 1050px;
-    height: 370px;
-    background-color: rgb(166, 216, 142);
-  }
-
-  .thirdimg {
-    width: 100%;
-    min-width: 1050px;
-    height: 370px;
-    background-color: rgb(170, 222, 238);
-  }
-
-  .fourthimg {
-    width: 100%;
-    min-width: 1050px;
-    height: 370px;
-    background-color: rgb(170, 154, 211);
-  }
-
+  .firstimg,
+  .secondimg,
+  .thirdimg,
+  .fourthimg,
   .fifthimg {
     width: 100%;
     min-width: 1050px;
     height: 370px;
-    background-color: rgb(223, 178, 178);
+    object-fit: cover;
   }
 }

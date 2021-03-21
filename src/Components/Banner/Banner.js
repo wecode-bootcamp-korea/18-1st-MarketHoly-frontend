@@ -54,19 +54,39 @@ export default class Banner extends Component {
       <div className="banner">
         <Slider {...settings}>
           <div>
-            <div className="firstimg" />
+            <img
+              className="firstimg"
+              src="https://images.unsplash.com/photo-1506617420156-8e4536971650?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2768&q=80"
+              alt="banner"
+            />
           </div>
           <div>
-            <div className="secondimg" />
+            <img
+              className="secondimg"
+              src="https://images.unsplash.com/photo-1556559214-9d7db920d2eb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80"
+              alt="banner"
+            />
           </div>
           <div>
-            <div className="thirdimg" />
+            <img
+              className="thirdimg"
+              src="https://images.unsplash.com/photo-1590755958171-90168ab6e01e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80"
+              alt="banner"
+            />
           </div>
           <div>
-            <div className="fourthimg" />
+            <img
+              className="fourthimg"
+              src="https://images.unsplash.com/photo-1577595927087-dedbe84f0e4d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80"
+              alt="banner"
+            />
           </div>
           <div>
-            <div className="fifthimg" />
+            <img
+              className="fifthimg"
+              src="https://images.unsplash.com/photo-1558201202-e65298e2e869?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+              alt="banner"
+            />
           </div>
         </Slider>
       </div>

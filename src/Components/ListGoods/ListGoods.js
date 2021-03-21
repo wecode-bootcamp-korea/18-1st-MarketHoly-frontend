@@ -14,11 +14,12 @@ export default class ListGoods extends Component {
       slidesToShow: 4,
       slidesToScroll: 4,
     };
+
     return (
       <div className="listGoods">
         <Slider {...settings}>
           {this.props.listgoods.map(good => (
-            <Goods modifier="listcategory" id={good.id} img={good.img} name={good.name} price={good.price} salePer={good.salePer} originalPrice={good.originalPrice} />
+            <Goods modifier="listcategory" id={good.id} image={good.image} name={good.name} price={good.price} discount_rate={good.discount_rate} /*originalPrice={good.originalPrice}*/ />
           ))}
         </Slider>
       </div>

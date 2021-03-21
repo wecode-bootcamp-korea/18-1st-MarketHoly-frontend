@@ -15,11 +15,12 @@ class Main extends Component {
   };
 
   componentDidMount() {
-    fetch('/data/ListGoods.json')
+    const recommend = `product/recommendation`;
+    fetch(recommend)
       .then(res => res.json())
       .then(res => {
         this.setState({
-          listgoods: res,
+          listgoods: res.listgoods,
         });
       });
     fetch('/data/DailySpecial.json')
