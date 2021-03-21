@@ -31,7 +31,9 @@ export class Myalwayitem extends Component {
               </div>
               <div className="wishIteminfo">
                 <div className="wishItemname">{e.name}</div>
-                <div className="wishItemprice">{e.price}원</div>
+                <div className="wishItemprice">
+                  {e.price.toLocaleString(navigator.language)}원
+                </div>
               </div>
               <div className="wishItemOption">
                 <button className="wishBasket">장바구니 담기</button>

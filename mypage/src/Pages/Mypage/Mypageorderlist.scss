@@ -17,9 +17,9 @@
     .myInfo {
       width: 444px;
       height: 196px;
-      background-color: white;
       margin-right: 4px;
       padding: 29px 0px 30px 30px;
+      background-color: white;
 
       .myInfo_one {
         display: flex;
@@ -28,9 +28,9 @@
         .myInfo_img {
           width: 62px;
           height: 64px;
+          margin-right: 20px;
           border: 1px solid rgb(177, 175, 175);
           border-radius: 5px;
-          margin-right: 20px;
         }
 
         .nameOne {
@@ -67,9 +67,9 @@
           background-color: rgb(244, 244, 244);
           border: 0;
           border-radius: 15px;
+          font-size: 14px;
           text-align: center;
           outline: 0;
-          font-size: 14px;
         }
 
         .totalGrade {
@@ -91,9 +91,9 @@
       padding: 32px 0px 0px 30px;
 
       .infoFooter {
-        font-size: 12px;
         margin-top: 14px;
         color: rgb(176, 176, 176);
+        font-size: 12px;
       }
 
       .icon {
@@ -109,8 +109,8 @@
     }
 
     .title {
-      font-size: 15px;
       margin-bottom: 26px;
+      font-size: 15px;
     }
 
     .info {
@@ -149,12 +149,11 @@
     top: -20px;
     width: 1050px;
     height: 60px;
-    width: 1050px;
     margin: 0 auto;
+    padding-top: 25px;
     color: rgb(75, 51, 31);
     background-color: rgb(255, 252, 235);
     text-align: center;
-    padding-top: 25px;
 
     .leftText {
       font-size: 15px;

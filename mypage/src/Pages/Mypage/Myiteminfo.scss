@@ -6,11 +6,12 @@
   .date {
     color: #757575;
   }
+
   .itemInfo {
-    margin-top: 8px;
-    border: 1px solid rgb(240, 240, 240);
     height: 160px;
     padding: 15px;
+    margin-top: 8px;
+    border: 1px solid rgb(240, 240, 240);
 
     header {
       display: flex;
@@ -53,17 +54,18 @@
           font-size: 12px;
 
           span {
+            margin-left: 5px;
             font-size: 13px;
             font-weight: 600;
-            margin-left: 5px;
           }
 
           a {
-            color: rgb(133, 132, 132);
             margin-left: 5px;
+            color: rgb(133, 132, 132);
           }
         }
       }
+
       .itemCall {
         margin: auto 0;
         padding: 10px 30px;
