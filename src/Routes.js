@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ProductNamelist from './Pages/Productlist/ProductNamelist';
 import Productlist from './Pages/Productlist/Productlist';
 import ProductCategory from './Pages/Productlist/ProductCategory';
+import Productslider from './Pages/Productlist/Productslider';
 
 class Routes extends React.Component {
   render() {
@@ -14,6 +15,7 @@ class Routes extends React.Component {
           {/* <Route exact path="/" component={ProductNamelist} /> */}
           {/* <Route exact path="/" component={Productlist} /> */}
           <Route exact path="/" component={ProductCategory} />
+          {/* <Route exact path="/" component={Productslider} /> */}
         </Switch>
       </Router>
     );

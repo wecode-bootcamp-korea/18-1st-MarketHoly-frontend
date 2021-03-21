@@ -1,10 +1,8 @@
-@import '../../styles/reset.scss';
+@import '../../styles/common.scss';
 
 .modalEffect {
   position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-row-center;
   top: 0;
   left: 0;
   min-height: 100%;
@@ -133,7 +131,7 @@
       .pushBasket {
         border: 1px solid white;
         color: white;
-        background-color: rgb(94, 1, 128);
+        background-color: $themePurple;
       }
 
       button {

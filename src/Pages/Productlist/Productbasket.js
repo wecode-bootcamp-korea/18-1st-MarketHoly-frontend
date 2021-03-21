@@ -14,7 +14,7 @@ export class Productbasket extends Component {
       handleModalremove,
       productBasket,
     } = this.props;
-    let sumCount = addComma(price * count);
+    const sumCount = addComma(price * count);
     return (
       <>
         {productBasket && (

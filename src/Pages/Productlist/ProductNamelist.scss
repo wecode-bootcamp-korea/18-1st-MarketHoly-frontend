@@ -1,17 +1,16 @@
-@import '../../styles/reset.scss';
+@import '../../styles/common.scss';
 
 .listCenter {
   display: flex;
   position: relative;
   justify-content: center;
-  left: -75px;
-  margin-top: 20px;
+  left: -60px;
+  margin-top: 10px;
 }
 
 .productList {
   display: flex;
   flex-direction: row;
-
   width: 870px;
 
   li {
@@ -26,8 +25,15 @@
   }
 
   li:hover {
-    color: rgb(94, 1, 128);
-    border-color: rgb(94, 1, 128);
+    color: $themePurple;
+    border-color: $themePurple;
     font-weight: 600;
   }
+}
+
+.productHeaderName {
+  position: relative;
+  left: 410px;
+  margin-top: 40px;
+  font-weight: 600;
 }
