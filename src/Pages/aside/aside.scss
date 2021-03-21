@@ -18,7 +18,10 @@
 }
 
 .sectionTwo {
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 250px;
   border: 1px solid #ddd;
 
   .recentItem {
@@ -27,13 +30,39 @@
     font-weight: 600;
     text-align: center;
   }
+
+  button {
+    background-color: white;
+    border: 1px solid white;
+    margin-left: 25px;
+  }
+
+  .imgList {
+    overflow: hidden;
+  }
+
+  .underButton {
+    margin-left: 1px;
+  }
+
+  img {
+    width: 60px;
+    height: 70px;
+    margin: 10px 10px 0px 10px;
+  }
 }
 
 .scroll {
   position: absolute;
   right: 20px;
   height: 400px;
-  // border: 1px solid #ddd;
   color: #333;
   z-index: 1;
+  transition-duration: 0.3s;
+}
+
+.slider {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
 }

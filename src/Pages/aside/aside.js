@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-// import { StickyContainer, Sticky } from 'react-sticky';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import './aside.scss';
 
 export class aside extends Component {
@@ -27,10 +29,17 @@ export class aside extends Component {
   };
 
   render() {
+    let settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    };
+
     return (
       <>
         <div className="test1">test</div>
-
         <div
           className="scroll"
           style={{ top: this.state.scrollTop + 300 }}
@@ -42,7 +51,16 @@ export class aside extends Component {
             <div className="list">베스트 후기</div>
           </div>
           <div className="sectionTwo">
-            <div className="recentItem">최근 본 상품</div>
+            <div>
+              <button>ᨈ</button>
+              <div className="recentItem">최근 본 상품</div>
+              <div className="imgList">
+                <div>
+                  <img src="https://img-cf.kurly.com/shop/data/goods/1615540419847l0.jpg" />
+                </div>
+              </div>
+            </div>
+            <button className="underButton">ᨆ</button>
           </div>
         </div>
       </>
