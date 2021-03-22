@@ -7,7 +7,7 @@ class ListCategory extends Component {
     return (
       <div className="listCategory">
         {this.props.listcategory.map(category => {
-          return <Category id={category.id} name={category.name} />;
+          return <Category key={category.id} name={category.name} />;
         })}
       </div>
     );

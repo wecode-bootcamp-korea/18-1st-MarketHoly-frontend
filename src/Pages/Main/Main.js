@@ -15,14 +15,15 @@ class Main extends Component {
   };
 
   componentDidMount() {
-    const recommend = `product/recommendation`;
-    fetch(recommend)
+    // 이 상품 어때요?
+    fetch('/data/ListGoods.json')
       .then(res => res.json())
       .then(res => {
         this.setState({
-          listgoods: res.listgoods,
+          listgoods: res,
         });
       });
+    // 일일 특가
     fetch('/data/DailySpecial.json')
       .then(res => res.json())
       .then(res => {
@@ -30,6 +31,7 @@ class Main extends Component {
           dailyspecial: res,
         });
       });
+    // MD 추천
     fetch('/data/ListCategory.json')
       .then(res => res.json())
       .then(res => {

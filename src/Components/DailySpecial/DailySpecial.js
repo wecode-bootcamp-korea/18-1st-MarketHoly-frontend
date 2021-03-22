@@ -21,16 +21,13 @@ class DailySpecial extends Component {
           {this.props.dailyspecial.map(good => (
             <Goods
               modifier="dailyspecial"
+              key={good.id}
               product_id={good.product_id}
               image_url={good.image_url}
-              isSale={good.isSale}
-              isCountdown={good.isCountdown}
-              // salestart={good.salestart}
               name={good.name}
               price={good.price}
-              discount_rate={good.discount_rate}
+              daily_discount_rate={good.daily_discount_rate}
               start_date={good.start_date}
-              // originalPrice={good.originalPrice}
             />
           ))}
         </div>

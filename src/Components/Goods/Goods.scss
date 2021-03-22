@@ -30,15 +30,17 @@
     font-weight: 400;
   }
   .countdownMark {
-    @extend %flex-column-center;
+    //@extend %flex-column-center;
+    text-align: center;
     position: absolute;
     bottom: 0;
     width: 338px;
     height: 40px;
+    padding-top: 10px;
     background-color: $themePurple;
     opacity: 0.6;
     color: rgb(255, 255, 255);
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
   }
   .name {
@@ -72,6 +74,7 @@
     }
     &.pricebig {
       font-size: 20px;
+      font-family: 'Open Sans', sans-serif !important;
     }
     &.pricesmall {
       font-size: 16px;

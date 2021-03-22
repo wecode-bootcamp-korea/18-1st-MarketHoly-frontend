@@ -1,24 +1,20 @@
 [
     {
         "id" : 1,
-        "img" : "images/sampleproduct_2.jpeg",
-        "isSale" : true,
-        "isCountdown" : true,
-        "salestart" : "1616029401189",
+        "product_id" : 23,
+        "image_url" : "images/sampleproduct_2.jpeg",
         "name" : "[빕스] 바베큐 폭립 오리지날",
-        "price" : "8,140",
-        "salePer" : "45",
-        "originalPrice" : "14,800"
+        "price" : "8,140.00",
+        "daily_discount_rate" : 0.4,
+        "start_date" : "2021-03-22"
     },
     {
         "id" : 2,
-        "img" : "images/sampleproduct_2.jpeg",
-        "isSale" : true,
-        "isCountdown" : true,
-        "salestart" : "1616029401189",
+        "product_id" : 11,
+        "image_url" : "images/sampleproduct_2.jpeg",
         "name" : "[빕스] 바베큐 폭립 오리지날",
-        "price" : "8,140",
-        "salePer" : "45",
-        "originalPrice" : "14,800"
+        "price" : "8,140.00",
+        "daily_discount_rate" : 0.4,
+        "start_date" : "2021-03-22"
     }
 ]
