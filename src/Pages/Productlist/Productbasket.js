@@ -18,7 +18,7 @@ export class Productbasket extends Component {
               <div className="namePrice">
                 <div className="listName">{name}</div>
                 <div className="priceCount">
-                  {discount_rate != null ? <div className="listPrice">{addComma(Math.floor(price * rate))}</div> : <div className="listPrice">{addComma(Math.floor(price))}</div>}
+                  {discount_rate ? <div className="listPrice">{addComma(Math.floor(price * rate))}</div> : <div className="listPrice">{addComma(Math.floor(price))}</div>}
                   <div className="countNumber">
                     <button className="subtract" name="subtract" onClick={() => handleCnt(-1)}>
                       <GrSubtract />
@@ -32,7 +32,7 @@ export class Productbasket extends Component {
                 <div className="modalTotal">
                   <div className="modalTotalleft">합계</div>
                   <div className="modalTotalright">
-                    {discount_rate != null ? <div className="modalTotalprice">{sumCountdiscount}원</div> : <div className="modalTotalprice">{sumCount}원</div>}
+                    {discount_rate ? <div className="modalTotalprice">{sumCountdiscount}원</div> : <div className="modalTotalprice">{sumCount}원</div>}
                     <div className="modalTotalcomment">
                       <span className="modalTotalicon">적립</span>
                       <span className="modalTotalCash">로그인 후, 적립혜택 제공</span>

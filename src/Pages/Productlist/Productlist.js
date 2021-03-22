@@ -70,13 +70,13 @@ export class Productlist extends Component {
                   </div>
                   <div className="totalInfo">
                     <p className="itemName">{item.name}</p>
-                    {item.discount_rate != null ? (
+                    {item.discount_rate ? (
                       <>
                         <div className="priceBox">
                           <p className="discount">{item.discount_rate * 100}%</p>
                           <p className="itemAfterPrice">{this.addComma(Math.floor(item.price * rate))}원</p>
                         </div>
-                        <p className="itemPrice1">{this.addComma(Math.floor(item.price))}원</p>
+                        <p className="itemPriceAfter">{this.addComma(Math.floor(item.price))}원</p>
                       </>
                     ) : (
                       <p className="itemPrice">{this.addComma(Math.floor(item.price))}원</p>
