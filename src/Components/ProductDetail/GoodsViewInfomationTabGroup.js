@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './goodsViewInfomationTabGroup.scss';
+import './GoodsViewInfomationTabGroup.scss';
 
 class GoodsViewInfomationTabGroup extends React.Component {
   render() {
@@ -24,7 +24,7 @@ class GoodsViewInfomationTabGroup extends React.Component {
           }}
         >
           <a href="#" className={`goodsViewInfomationTabAnchor`}>
-            고객후기(16)
+            상세정보
           </a>
         </li>
         <li
@@ -34,7 +34,7 @@ class GoodsViewInfomationTabGroup extends React.Component {
           }}
         >
           <a href="#" className={`goodsViewInfomationTabAnchor`}>
-            상품문의(10)
+            고객후기(16)
           </a>
         </li>
       </ul>

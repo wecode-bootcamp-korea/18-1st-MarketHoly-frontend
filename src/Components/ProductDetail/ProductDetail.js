@@ -9,7 +9,6 @@ class ProductDetail extends React.Component {
   state = {
     productInfo: {},
     productCount: 0,
-    productPrice: 11700,
     sumPrice: 0,
     isSharedBtn: false,
     isLogin: false,
@@ -25,29 +24,19 @@ class ProductDetail extends React.Component {
       });
   }
 
-  changeProductPrice = count => {
-    const { productInfo } = this.state;
-    this.setState({
-      sumPrice: (productInfo.price - productInfo.price * productInfo.discountRate) * count,
-    });
-  };
-
   handleProductCount = e => {
     const { productCount } = this.state;
     if (e.target.className === 'countPlus') {
       if (productCount < 99) {
-        this.setState({ productCount: productCount + 1 }, () => {
-          this.changeProductPrice(this.state.productCount);
-        });
+        this.setState({ productCount: productCount + 1 });
       } else {
         alert('99개 이상 주문은 안됩니다.');
       }
+      return;
     }
     if (e.target.className === 'countMinus') {
       if (productCount >= 1) {
-        this.setState({ productCount: productCount - 1 }, () => {
-          this.changeProductPrice(this.state.productCount);
-        });
+        this.setState({ productCount: productCount - 1 });
       }
     }
   };
@@ -55,19 +44,24 @@ class ProductDetail extends React.Component {
   handleShareBtn = () => {
     this.setState({ isSharedBtn: !this.state.isSharedBtn });
   };
+
   sendToCart = () => {
-    if (this.state.sumPrice === 0) alert('1개 이상 선택 해주세요!');
-    else console.log(this.state.sumPrice);
+    const { productInfo, productCount } = this.state;
+    if ((productInfo.price - productInfo.price * productInfo.discountRate) * productCount === 0) alert('1개 이상 선택 해주세요!');
+    else {
+      // 카트로 보낼때 값
+      console.log((productInfo.price - productInfo.price * productInfo.discountRate) * productCount);
+    }
   };
 
   render() {
-    const { productCount, productInfo, sumPrice, isSharedBtn, isLogin, isRestockNotice, isWishList } = this.state;
+    const { productCount, productInfo, isSharedBtn, isLogin, isRestockNotice, isWishList } = this.state;
     return (
       <div className="detailContainer">
         <div className="detailMain">
           <div className="detailHeader">
             <div className="detailImgSection">
-              <img src={productInfo.imageUrl} alt="" />
+              <img src={productInfo.imageUrl} alt="제품 이미지" />
             </div>
             <div className="detailInfoSection">
               <div className="detailInfoHeader">
@@ -198,7 +192,7 @@ class ProductDetail extends React.Component {
                 <div className="sumPrice">
                   <span className="sumName">총 상품금액 : </span>
                   <span className="sumBox">
-                    <span className="sumBuyPrice">{sumPrice.toLocaleString(navigator.language)}</span>
+                    <span className="sumBuyPrice">{((productInfo.price - productInfo.price * productInfo.discountRate) * productCount).toLocaleString(navigator.language)}</span>
                     <span className="sumWon">원</span>
                   </span>
                 </div>

@@ -1,6 +1,7 @@
 import React from 'react';
-import GoodsViewInfomationTabGroup from './goodsViewInfomationTabGroup';
-import GoodsViewInfomationContent from './goodsViewInfomationContent';
+import GoodsViewInfomationTabGroup from './GoodsViewInfomationTabGroup';
+import GoodsViewInfomationContent from './GoodsViewInfomationContent';
+import GoodsExtraInformation from './GoodsExtraInformation';
 import './GoodsViewInfomation.scss';
 
 class GoodsViewInfomation extends React.Component {
@@ -36,6 +37,7 @@ class GoodsViewInfomation extends React.Component {
         <div ref={this.twoGetY}>
           <GoodsViewInfomationTabGroup idx={2} moveScrollY={this.moveScrollY} />
         </div>
+        <GoodsExtraInformation />
         <div ref={this.threeGetY}>
           <GoodsViewInfomationTabGroup idx={3} moveScrollY={this.moveScrollY} />
         </div>

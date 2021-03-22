@@ -1,5 +1,5 @@
 import React from 'react';
-import './goodsViewInfomationContent.scss';
+import './GoodsViewInfomationContent.scss';
 
 class GoodsViewInfomationContent extends React.Component {
   render() {
