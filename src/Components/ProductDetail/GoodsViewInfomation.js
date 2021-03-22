@@ -22,8 +22,8 @@ class GoodsViewInfomation extends React.Component {
     idx === 3 && window.scrollTo(0, this.threeGetY.current.offsetTop);
   };
 
-  onScrollGet = e => {
-    const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop);
+  onScrollGet = () => {
+    const scrollTop = window.scrollY;
     console.log(scrollTop);
   };
 
