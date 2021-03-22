@@ -62,7 +62,9 @@ export class Productlist extends Component {
               return (
                 <li key={item.id}>
                   <div className="imgCouponBox">
-                    <img src={item.image} alt={item.name} />
+                    <div className="imgHover">
+                      <img src={item.image} alt={item.name} />
+                    </div>
                     <span className={item.isCoupon ? 'itemCoupon' : 'off'}>20%농할쿠폰</span>
                     <button className="FiShoppingCart" onClick={() => this.handleBasketModal(item)} value={item.name}>
                       <FiShoppingCart size="22" color="white" />
