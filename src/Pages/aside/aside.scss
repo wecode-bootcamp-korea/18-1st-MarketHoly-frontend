@@ -1,17 +1,15 @@
-.test1 {
-  height: 10000px;
-}
+$borderLine: #ddd;
 
 .sectionOne {
-  border: 1px solid #ddd;
   width: 80px;
+  border: 1px solid $borderLine;
   margin-bottom: 10px;
 
   .list {
     display: block;
     height: 35px;
     padding-top: 11px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid $borderLine;
     font-size: 13px;
     text-align: center;
   }
@@ -22,7 +20,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 250px;
-  border: 1px solid #ddd;
+  border: 1px solid $borderLine;
 
   .recentItem {
     margin-top: 5px;
@@ -35,10 +33,6 @@
     background-color: white;
     border: 1px solid white;
     margin-left: 25px;
-  }
-
-  .imgList {
-    overflow: hidden;
   }
 
   .underButton {
@@ -57,7 +51,7 @@
   right: 20px;
   height: 400px;
   color: #333;
-  z-index: 1;
+  z-index: 99999;
   transition-duration: 0.3s;
 }
 
