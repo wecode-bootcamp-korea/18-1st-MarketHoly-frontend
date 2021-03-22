@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from '../../Components/Footer/Footer';
 import './Login.scss';
 
 class Login extends Component {
@@ -21,7 +22,7 @@ class Login extends Component {
     const idCheck = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{1,4}$/;
 
     if (idCheck.test(this.state.email) && this.state.password.length >= 10) {
-      let summonerUrl = `user/login`;
+      const summonerUrl = `user/login`;
       fetch(summonerUrl, {
         method: 'POST',
         body: JSON.stringify({
@@ -46,44 +47,35 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="loginForm">
-        <h3>로그인</h3>
-        <form>
-          <input
-            type="text"
-            className="idField"
-            name="email"
-            placeholder="이메일을 입력해주세요"
-            onChange={this.handleOnChange}
-          />
-          <input
-            type="password"
-            className="pwField"
-            name="password"
-            placeholder="비밀번호를 입력해주세요"
-            onChange={this.handleOnChange}
-          />
-          <div className="loginCheck">
-            <label className="saveCheckBox">
-              <input className="securityConnect" type="checkbox" />
-              보안접속
-            </label>
-            <div className="findLogin">
-              <a href="/#" className="findId">
-                아이디 찾기
-              </a>
-              <span className="bar"> | </span>
-              <a href="/#" className="findPwd">
-                비밀번호 찾기
-              </a>
+      <>
+        <div className="loginForm">
+          <h3>로그인</h3>
+          <form>
+            <input type="text" className="idField" name="email" placeholder="이메일을 입력해주세요" onChange={this.handleOnChange} />
+            <input type="password" className="pwField" name="password" placeholder="비밀번호를 입력해주세요" onChange={this.handleOnChange} />
+            <div className="loginCheck">
+              <label className="saveCheckBox">
+                <input className="securityConnect" type="checkbox" />
+                보안접속
+              </label>
+              <div className="findLogin">
+                <a href="/#" className="findId">
+                  아이디 찾기
+                </a>
+                <span className="bar"> | </span>
+                <a href="/#" className="findPwd">
+                  비밀번호 찾기
+                </a>
+              </div>
             </div>
-          </div>
-          <button type="submit" className="loginBtn" onClick={this.loginSubmit}>
-            로그인
-          </button>
-          <button className="joinBtn">회원가입 </button>
-        </form>
-      </div>
+            <button type="submit" className="loginBtn" onClick={this.loginSubmit}>
+              로그인
+            </button>
+            <button className="joinBtn">회원가입 </button>
+          </form>
+        </div>
+        <Footer />;
+      </>
     );
   }
 }
