@@ -3,6 +3,7 @@ import GoodsViewInfomationTabGroup from './GoodsViewInfomationTabGroup';
 import GoodsViewInfomationContent from './GoodsViewInfomationContent';
 import GoodsExtraInformation from './GoodsExtraInformation';
 import './GoodsViewInfomation.scss';
+import ProductReviews from './ProductReviews';
 
 class GoodsViewInfomation extends React.Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class GoodsViewInfomation extends React.Component {
         <div ref={this.threeGetY}>
           <GoodsViewInfomationTabGroup idx={3} moveScrollY={this.moveScrollY} />
         </div>
+        <ProductReviews />
       </div>
     );
   }
