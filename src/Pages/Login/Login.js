@@ -49,20 +49,8 @@ class Login extends Component {
       <div className="loginForm">
         <h3>로그인</h3>
         <form>
-          <input
-            type="text"
-            className="idField"
-            name="email"
-            placeholder="이메일을 입력해주세요"
-            onChange={this.handleOnChange}
-          />
-          <input
-            type="password"
-            className="pwField"
-            name="password"
-            placeholder="비밀번호를 입력해주세요"
-            onChange={this.handleOnChange}
-          />
+          <input type="text" className="idField" name="email" placeholder="이메일을 입력해주세요" onChange={this.handleOnChange} />
+          <input type="password" className="pwField" name="password" placeholder="비밀번호를 입력해주세요" onChange={this.handleOnChange} />
           <div className="loginCheck">
             <label className="saveCheckBox">
               <input className="securityConnect" type="checkbox" />
