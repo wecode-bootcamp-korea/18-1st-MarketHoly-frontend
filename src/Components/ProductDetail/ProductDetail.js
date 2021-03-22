@@ -5,6 +5,7 @@ import ProductGoodsAdd from './ProductGoodsAdd';
 import GoodsViewInfomation from './GoodsViewInfomation';
 import './ProductDetail.scss';
 import Footer from '../Footer/Footer';
+import Nav from '../Nav/Nav';
 
 class ProductDetail extends React.Component {
   state = {
@@ -59,6 +60,7 @@ class ProductDetail extends React.Component {
     const { productCount, productInfo, isSharedBtn, isLogin, isRestockNotice, isWishList } = this.state;
     return (
       <>
+        <Nav />
         <div className="detailContainer">
           <div className="detailMain">
             <div className="detailHeader">
