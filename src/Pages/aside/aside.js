@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import './aside.scss';
 
 export class aside extends Component {
@@ -29,7 +27,7 @@ export class aside extends Component {
 
   render() {
     return (
-      <div
+      <aside
         className="scroll"
         style={{ top: this.state.scrollTop + 300 }}
         onScroll={this.handleScroll}
@@ -51,7 +49,7 @@ export class aside extends Component {
           </div>
           <button className="underButton">ᨆ</button>
         </div>
-      </div>
+      </aside>
     );
   }
 }
