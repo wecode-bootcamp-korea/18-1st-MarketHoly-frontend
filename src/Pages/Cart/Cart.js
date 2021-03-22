@@ -1,5 +1,5 @@
 import React from 'react';
-//import DaumPostcode from 'react-daum-postcode';
+import { Link } from 'react-router-dom';
 import './Cart.scss';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { VscKebabVertical } from 'react-icons/vsc';
@@ -9,10 +9,16 @@ import { BiSearch } from 'react-icons/bi';
 class Cart extends React.Component {
   state = {
     isCheck: false,
+    address: '',
   };
 
   handleCheck = () => {
     this.setState({ isCheck: !this.state.isCheck });
+  };
+
+  handleChangeAddress = address => {
+    console.log(address);
+    this.setState({ address: address });
   };
 
   deleteAlert = () => {
@@ -20,6 +26,8 @@ class Cart extends React.Component {
   };
 
   render() {
+    let aaa = localStorage.getItem('fulladdress');
+    // console.log(aaa);
     return (
       <div className="cart">
         <div className="title">장바구니</div>
@@ -54,12 +62,21 @@ class Cart extends React.Component {
               <GrLocation className="icon" />
               <span className="tit">배송지</span>
               <div className="text">
-                <span className="purpleText">배송지를 입력</span>하고 <br />
+                <span className="purpleText">{aaa}배송지를 입력</span>하고{' '}
+                <br />
                 배송유형을 확인해 보세요!
               </div>
               <div className="address">
                 <BiSearch className="icon" />
-                <span className="tit">주소 검색</span>
+                <Link
+                  to="/searchAddress"
+                  className="tit"
+                  target="_blank"
+                  // address={this.handleChangeAddress}
+                  // isCheck={this.state.isCheck}
+                >
+                  주소 검색
+                </Link>
               </div>
             </div>
             <div className="amountView">
