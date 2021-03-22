@@ -14,7 +14,7 @@
     "name": "한끼 깻잎 20g",
     "price": 1400,
     "info": "딱 깻잎이 조금 필요할 때 ! ",
-    "discount_rate": "",
+    "discount_rate": null,
     "isCoupon": false
   },
   {
@@ -23,7 +23,7 @@
     "name": "무농약 부추 200g",
     "price": 2690,
     "info": "외유내강, 영양 듬뿍 채소의 대명사 (200g)",
-    "discount_rate": "",
+    "discount_rate": null,
     "isCoupon": true
   },
   {
@@ -32,7 +32,7 @@
     "name": "GAP 밀양 깻잎 3속",
     "price": 1400,
     "info": "보랏빛이 일품인 밀양 깻잎",
-    "discount_rate": "",
+    "discount_rate": null,
     "isCoupon": true
   },
   {
@@ -59,7 +59,7 @@
     "name": "친환경 시금치 200g",
     "price": 2100,
     "info": "뽀빠이가 좋아하는 바로 그 채소. 친환경 시금치 (200g)",
-    "discount_rate": "",
+    "discount_rate": null,
     "isCoupon": true
   },
   {
@@ -68,7 +68,7 @@
     "name": "GAP 밀양 깻잎 3속",
     "price": 1400,
     "info": "보랏빛이 일품인 밀양 깻잎",
-    "discount_rate": "",
+    "discount_rate": null,
     "isCoupon": true
   },
   {
@@ -77,7 +77,7 @@
     "name": "GAP 밀양 깻잎 3속",
     "price": 1400,
     "info": "보랏빛이 일품인 밀양 깻잎",
-    "discount_rate": "",
+    "discount_rate": null,
     "isCoupon": true
   },
   {
@@ -86,7 +86,7 @@
     "name": "GAP 밀양 깻잎 3속",
     "price": 1400,
     "info": "보랏빛이 일품인 밀양 깻잎",
-    "discount_rate": "",
+    "discount_rate": null,
     "isCoupon": true
   }
 ]

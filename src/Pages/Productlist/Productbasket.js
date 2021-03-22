@@ -5,16 +5,11 @@ import './productbasket.scss';
 
 export class Productbasket extends Component {
   render() {
-    const {
-      name,
-      count,
-      handleCnt,
-      addComma,
-      price,
-      handleModalremove,
-      productBasket,
-    } = this.props;
+    const { name, count, handleCnt, addComma, price, handleModalremove, productBasket, discount_rate, id } = this.props;
     const sumCount = addComma(price * count);
+    const rate = 1 - discount_rate;
+    const sumCountdiscount = addComma(Math.floor(price * rate * count));
+
     return (
       <>
         {productBasket && (
@@ -23,21 +18,13 @@ export class Productbasket extends Component {
               <div className="namePrice">
                 <div className="listName">{name}</div>
                 <div className="priceCount">
-                  <div className="listPrice">{addComma(price)}</div>
+                  {discount_rate != null ? <div className="listPrice">{addComma(Math.floor(price * rate))}</div> : <div className="listPrice">{addComma(Math.floor(price))}</div>}
                   <div className="countNumber">
-                    <button
-                      className="subtract"
-                      name="subtract"
-                      onClick={() => handleCnt(-1)}
-                    >
+                    <button className="subtract" name="subtract" onClick={() => handleCnt(-1)}>
                       <GrSubtract />
                     </button>
                     <input readonly="readonly" value={count} />
-                    <button
-                      className="add"
-                      name="add"
-                      onClick={() => handleCnt(1)}
-                    >
+                    <button className="add" name="add" onClick={() => handleCnt(1)}>
                       <RiAddFill />
                     </button>
                   </div>
@@ -45,12 +32,10 @@ export class Productbasket extends Component {
                 <div className="modalTotal">
                   <div className="modalTotalleft">합계</div>
                   <div className="modalTotalright">
-                    <div className="modalTotalprice">{sumCount}원</div>
+                    {discount_rate != null ? <div className="modalTotalprice">{sumCountdiscount}원</div> : <div className="modalTotalprice">{sumCount}원</div>}
                     <div className="modalTotalcomment">
                       <span className="modalTotalicon">적립</span>
-                      <span className="modalTotalCash">
-                        로그인 후, 적립혜택 제공
-                      </span>
+                      <span className="modalTotalCash">로그인 후, 적립혜택 제공</span>
                     </div>
                   </div>
                 </div>

@@ -17,6 +17,7 @@ export class Productlist extends Component {
   componentDidMount() {
     // const product = `product/categorylistdetail/1`;
     fetch('/data/products.json')
+      // fetch(product)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -52,7 +53,6 @@ export class Productlist extends Component {
   };
 
   render() {
-    console.log(this.state.product_list);
     return (
       <div className="listView">
         <div className="wide">
@@ -63,35 +63,23 @@ export class Productlist extends Component {
                 <li key={item.id}>
                   <div className="imgCouponBox">
                     <img src={item.image} alt={item.name} />
-                    <span className={item.isCoupon ? 'itemCoupon' : 'off'}>
-                      20%농할쿠폰
-                    </span>
-                    <button
-                      className="FiShoppingCart"
-                      onClick={() => this.handleBasketModal(item)}
-                      value={item.name}
-                    >
+                    <span className={item.isCoupon ? 'itemCoupon' : 'off'}>20%농할쿠폰</span>
+                    <button className="FiShoppingCart" onClick={() => this.handleBasketModal(item)} value={item.name}>
                       <FiShoppingCart size="22" color="white" />
                     </button>
                   </div>
                   <div className="totalInfo">
                     <p className="itemName">{item.name}</p>
-                    {item.discount_rate != 0 ? (
+                    {item.discount_rate != null ? (
                       <>
                         <div className="priceBox">
-                          <p className="discount">
-                            {item.discount_rate * 100}%
-                          </p>
-                          <p className="itemAfterPrice">
-                            {this.addComma(item.price * rate)}원
-                          </p>
+                          <p className="discount">{item.discount_rate * 100}%</p>
+                          <p className="itemAfterPrice">{this.addComma(Math.floor(item.price * rate))}원</p>
                         </div>
-                        <p className="itemPrice1">
-                          {this.addComma(item.price)}원
-                        </p>
+                        <p className="itemPrice1">{this.addComma(Math.floor(item.price))}원</p>
                       </>
                     ) : (
-                      <p className="itemPrice">{this.addComma(item.price)}원</p>
+                      <p className="itemPrice">{this.addComma(Math.floor(item.price))}원</p>
                     )}
                     <p className="itemInfo">{item.info}</p>
                   </div>
@@ -107,6 +95,7 @@ export class Productlist extends Component {
             handleModalremove={this.handleModalremove}
             count={this.state.count}
             handleCnt={this.handleCnt}
+            discount_rate={this.state.basketItem.discount_rate}
           />
         </div>
       </div>
