@@ -1,0 +1,218 @@
+@import '../../styles/common.scss';
+
+.orderContainer {
+  width: 1050px;
+  margin: 0 auto;
+  color: $mainText;
+  letter-spacing: -0.5px;
+
+  // 주문서
+  h2 {
+    padding-top: 55px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 50px;
+  }
+
+  // 전체 주문정보
+  .userForm {
+    display: flex;
+    flex-direction: column;
+
+    // 공통 title
+    h3 {
+      padding: 80px 0 15px;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 29px;
+      border-bottom: 1px solid $mainText;
+    }
+
+    // 주문상품
+    .productList {
+      li {
+        height: 128px;
+        display: flex;
+        border-bottom: 1px solid #ecececea;
+      }
+
+      .productImg {
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 60px;
+          height: 78px;
+          margin-right: 20px;
+        }
+      }
+
+      .productName {
+        display: flex;
+        align-items: center;
+        width: 720px;
+        font-weight: bold;
+        font-size: 16px;
+        color: #000;
+      }
+
+      .productCount {
+        width: 100px;
+        padding-top: 52px;
+      }
+
+      .productPrice {
+        width: 170px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .price {
+          line-height: 24px;
+          font-weight: bold;
+        }
+
+        .cost {
+          font-size: 14px;
+          line-height: 24px;
+          color: $subTextGray;
+        }
+      }
+    }
+
+    // 주문자 정보
+    .userInfo {
+      padding-bottom: 25px;
+      font-size: 14px;
+      border-bottom: 1px solid #ecececea;
+      tr {
+        th {
+          width: 190px;
+          display: flex;
+          align-items: center;
+          padding-top: 25px;
+          font-weight: bold;
+        }
+        td {
+          width: 860px;
+          line-height: 24px;
+        }
+      }
+    }
+
+    // 배송 정보
+    .addressInfo {
+      .addressSection {
+        display: flex;
+        align-items: center;
+        height: 120px;
+        padding: 20px 0;
+        font-size: 14px;
+        border-bottom: 1px solid #ecececea;
+
+        h4 {
+          width: 190px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .payContainer {
+      display: flex;
+
+      // 적립금
+      .point {
+        width: 740px;
+
+        .pointsApplied {
+          display: flex;
+          align-items: center;
+          height: 65px;
+          font-size: 14px;
+          border-bottom: 1px solid #ecececea;
+
+          h4 {
+            width: 190px;
+            font-weight: bold;
+          }
+        }
+      }
+      // 결제수단
+      .payment {
+        width: 740px;
+
+        .paymentSection {
+          display: flex;
+          align-items: center;
+          height: 65px;
+          font-size: 14px;
+          border-bottom: 1px solid #ecececea;
+
+          h4 {
+            width: 190px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    // 결제 금액
+    .paymentResult {
+      width: 285px;
+
+      h3 {
+        border-bottom: none;
+      }
+
+      .paymentResultSection {
+        height: 325px;
+        padding: 20px;
+        background-color: #fafafa;
+        border: 2px solid #f2f2f2;
+
+        th {
+          float: left;
+        }
+
+        td {
+          float: right;
+        }
+
+        .subTit {
+          font-size: 16px;
+        }
+
+        .productAmount {
+          font-size: 14px;
+          color: $subTextGray;
+          line-height: 20px;
+        }
+      }
+    }
+
+    // 결제하기 버튼
+    button {
+      display: block;
+      margin: 0 auto;
+      width: 240px;
+      height: 55px;
+      margin-top: 40px;
+      border: none;
+      border-radius: 3px;
+      background-color: $themePurple;
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .paymentText {
+      padding: 40px 0 120px 0;
+      line-height: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: $subTextGray;
+    }
+  }
+}
