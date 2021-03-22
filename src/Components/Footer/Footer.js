@@ -51,15 +51,10 @@ class Footer extends Component {
                 법인명 (상호) : 주식회사 홀리 | 사업자등록번호: 123-45-67890
                 <span> 사업자정보 확인</span>
               </p>
+              <p>통신판매업 : 제 2021-서울강남-00000 호 | 개인정보책임자 : 김홀리</p>
+              <p>주소 : 서울시 홀리대로 16길 20, 홀리빌딩 | 대표이사 : 박홀라</p>
               <p>
-                통신판매업 : 제 2021-서울강남-00000 호 | 개인정보책임자 : 김홀리
-              </p>
-              <p>
-                주소 : 서울시 홀리대로 16길 20, 홀리빌딩 | 대표이사 : 박홀라
-              </p>
-              <p>
-                입점문의 : <span>입점문의하기</span> | 제휴문의 :
-                <span> bussiness@holycorp.com</span>
+                입점문의 : <span>입점문의하기</span> | 제휴문의 :<span> bussiness@holycorp.com</span>
               </p>
               <p>
                 채용문의 : <span>recruit@holycorp.com</span>
