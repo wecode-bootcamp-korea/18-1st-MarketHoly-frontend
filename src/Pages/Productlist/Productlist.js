@@ -8,18 +8,20 @@ export class Productlist extends Component {
     super();
     this.state = {
       count: 1,
-      product: [],
+      product_list: [],
       productBasket: false,
       basketItem: [],
     };
   }
-
+  // "proxy": "http://10.58.1.200:8000",
   componentDidMount() {
+    // const product = `product/categorylistdetail/1`;
     fetch('/data/products.json')
       .then(res => res.json())
       .then(res => {
         this.setState({
-          product: res,
+          // product_list: res.product_list,
+          product_list: res,
         });
       });
   }
@@ -40,7 +42,6 @@ export class Productlist extends Component {
       basketItem: e,
       productBasket: !this.state.productBasket,
     });
-    console.log(e);
   };
 
   handleCnt = num => {
@@ -51,15 +52,17 @@ export class Productlist extends Component {
   };
 
   render() {
+    console.log(this.state.product_list);
     return (
       <div className="listView">
         <div className="wide">
           <ul className="list">
-            {this.state.product.map(item => {
+            {this.state.product_list.map(item => {
+              let rate = 1 - item.discount_rate;
               return (
                 <li key={item.id}>
                   <div className="imgCouponBox">
-                    <img src={item.img} alt={item.name} />
+                    <img src={item.image} alt={item.name} />
                     <span className={item.isCoupon ? 'itemCoupon' : 'off'}>
                       20%농할쿠폰
                     </span>
@@ -73,7 +76,24 @@ export class Productlist extends Component {
                   </div>
                   <div className="totalInfo">
                     <p className="itemName">{item.name}</p>
-                    <p className="itemPrice">{this.addComma(item.price)}원</p>
+                    {item.discount_rate != 0 ? (
+                      <>
+                        <div className="priceBox">
+                          <p className="discount">
+                            {item.discount_rate * 100}%
+                          </p>
+                          <p className="itemAfterPrice">
+                            {this.addComma(item.price * rate)}원
+                          </p>
+                        </div>
+                        <p className="itemPrice1">
+                          {this.addComma(item.price)}원
+                        </p>
+                      </>
+                    ) : (
+                      <p className="itemPrice">{this.addComma(item.price)}원</p>
+                    )}
+                    {/* <p className="itemPrice">{this.addComma(item.price)}원</p> */}
                     <p className="itemInfo">{item.info}</p>
                   </div>
                 </li>
