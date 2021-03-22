@@ -93,7 +93,6 @@ export class Productlist extends Component {
                     ) : (
                       <p className="itemPrice">{this.addComma(item.price)}원</p>
                     )}
-                    {/* <p className="itemPrice">{this.addComma(item.price)}원</p> */}
                     <p className="itemInfo">{item.info}</p>
                   </div>
                 </li>
