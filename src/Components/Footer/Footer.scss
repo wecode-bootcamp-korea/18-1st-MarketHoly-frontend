@@ -1,6 +1,6 @@
 @import '../../styles/common.scss';
 
-.footerContainar {
+.footerContainer {
   width: 1050px;
   margin: 0 auto;
 
@@ -25,7 +25,6 @@
       span {
         vertical-align: top;
         font-size: 14px;
-        // line-height: 22px;
         letter-spacing: -0.2px;
       }
 
@@ -110,17 +109,15 @@
           color: #5f0080;
         }
 
-        .corp {
-          padding-top: 16px;
-          line-height: 22px;
+        small {
+          line-height: 35px;
           font-size: 10px;
           color: #949296;
         }
       }
 
       .snsList {
-        padding-top: 16px;
-        // background-color: indianred;
+        padding-top: 10px;
 
         li {
           float: left;

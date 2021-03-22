@@ -7,7 +7,7 @@ import './Footer.scss';
 class Footer extends Component {
   render() {
     return (
-      <div className="footerContainar">
+      <div className="footerContainer">
         <footer>
           <div className="footerCS">
             <h2>홀리고객센터</h2>
@@ -67,7 +67,7 @@ class Footer extends Component {
               <p>
                 팩스 : 070-0000-0000 | 이메일 : <span>help@holycorp.com</span>
               </p>
-              <p className="corp">© holy CORP. ALL RIGHTS RESERVED</p>
+              <small>© holy CORP. ALL RIGHTS RESERVED</small>
             </div>
             <ul className="snsList">
               <li>
