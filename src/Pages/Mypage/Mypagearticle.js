@@ -70,7 +70,6 @@ export class Mypagearticle extends Component {
   };
 
   removeWhishitem = e => {
-    console.log(e.target.value);
     this.setState({
       wishItem: this.state.wishItem.filter(item => e.target.value != item.id),
     });
@@ -127,26 +126,24 @@ export class Mypagearticle extends Component {
                   </li>
                 </Link>
                 <Link to="/Mydelivery">
-                  <li>
-                    <div
-                      className={this.state.color[3] ? 'reclickChanged' : false}
-                      onClick={this.changecolor}
-                      value="3"
-                    >
-                      배송지 관리
-                    </div>
+                  <li
+                    className={this.state.color[3] ? 'clickChange' : false}
+                    onClick={this.changecolor}
+                    value="3"
+                  >
+                    <div>배송지 관리</div>
                     <div>
                       <AiOutlineRight />
                     </div>
                   </li>
                 </Link>
                 <Link to="/Myreview">
-                  <li>
-                    <div
-                      className={this.state.color[4] ? 'reclickChanged' : false}
-                      onClick={this.changecolor}
-                      value="4"
-                    >
+                  <li
+                    className={this.state.color[4] ? 'clickChange' : false}
+                    onClick={this.changecolor}
+                    value="4"
+                  >
+                    <div>
                       <div>상품 후기</div>
                     </div>
                     <AiOutlineRight />

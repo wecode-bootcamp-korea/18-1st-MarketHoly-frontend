@@ -1,3 +1,6 @@
+@import './../../styles/common.scss';
+$reviewColor: #5f0080;
+
 .headerName {
   display: flex;
   flex-direction: column;
@@ -6,7 +9,7 @@
     height: 36px;
     margin-bottom: 30px;
     line-height: 36px;
-    color: #333;
+    color: $mainText;
     font-weight: 700;
     font-size: 24px;
     letter-spacing: -0.5px;
@@ -14,7 +17,7 @@
 
   p {
     font-size: 14px;
-    color: #999;
+    color: $subTextGray;
     line-height: 22px;
   }
 
@@ -31,30 +34,27 @@
 
   .noneReview {
     display: block;
-    overflow: hidden;
     width: 410px;
     height: 100%;
     border: 1px solid #dddfe1;
     border-right: 0px solid #dddfe1;
-    // border-bottom: 2px solid #5f0080;
-    // color: #5f0080;
     color: #666;
     line-height: 44px;
     text-align: center;
     font-size: 14px;
-    // font-weight: 700;
+    overflow: hidden;
     cursor: pointer;
   }
 
   .noneReview:hover {
-    border-bottom: 2px solid #5f0080;
-    color: #5f0080;
+    border-bottom: 2px solid $reviewColor;
+    color: $reviewColor;
     font-weight: 700;
   }
 
   .doneReview:hover {
-    border-bottom: 2px solid #5f0080;
-    color: #5f0080;
+    border-bottom: 2px solid $reviewColor;
+    color: $reviewColor;
     font-weight: 700;
   }
 
@@ -111,7 +111,7 @@
     margin: 50px 20px;
     padding-top: 9px;
     color: white;
-    background-color: #5f0080;
+    background-color: $reviewColor;
     text-align: center;
     font-size: 13px;
     cursor: pointer;
