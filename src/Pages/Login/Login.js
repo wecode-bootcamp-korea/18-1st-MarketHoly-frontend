@@ -23,7 +23,7 @@ class Login extends Component {
     const idCheck = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{1,4}$/;
 
     if (idCheck.test(this.state.email) && this.state.password.length >= 10) {
-      let summonerUrl = `user/login`;
+      const summonerUrl = `user/login`;
       fetch(summonerUrl, {
         //fetch url -> config.json으로 분리 필요
         method: 'POST',
