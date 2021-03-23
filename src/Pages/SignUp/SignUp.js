@@ -1,5 +1,7 @@
 import React, { Component, createRef } from 'react';
 import DaumPostcode from 'react-daum-postcode';
+import Nav from '../../Components/Nav/Nav';
+import Footer from '../../Components/Footer/Footer';
 import './SignUp.scss';
 
 const idCheck = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{2,4}$/;
@@ -178,136 +180,140 @@ class SignUp extends Component {
     };
 
     return (
-      <div className="signUpForm">
-        <h3>회원가입</h3>
-        <p className="subText">
-          <span className="essential">*</span>필수입력사항
-        </p>
-        <form>
-          <table className="SignUpTable">
-            <tbody>
-              <tr className="emailTable">
-                <th>
-                  이메일<span className="essential">*</span>
-                </th>
-                <td>
-                  <input type="text" className="idField" name="email" label="이메일" placeholder="이메일을 입력해주세요" onChange={this.handleOnChange} />
-                  <button className="duplicationBtn">중복확인</button>
-                  {this.state.isIdValid && <p className="warningText">이메일 형식이 올바르지 않습니다.</p>}
-                </td>
-              </tr>
-              <tr className="pwTable">
-                <th>
-                  비밀번호<span className="essential">*</span>
-                </th>
-                <td>
-                  <input type="password" className="pwField" name="password" label="비밀번호" placeholder="비밀번호를 입력해주세요" onChange={this.handleOnChange} />
-                  {this.state.isPwValid && <p className="warningText">비밀번호를 10자 이상 입력해주세요</p>}
-                </td>
-              </tr>
-              <tr className="pwCheckTable">
-                <th>
-                  비밀번호확인<span className="essential">*</span>
-                </th>
-                <td>
-                  <input type="password" className="pwCheckField" name="passwordCheck" label="비밀번호 확인" placeholder="비밀번호를 한번 더 입력해주세요" onChange={this.handleOnChange} />
-                </td>
-              </tr>
-              <tr className="nameTable">
-                <th>
-                  이름<span className="essential">*</span>
-                </th>
-                <td>
-                  <input type="text" className="nameField" name="name" label="이름" placeholder="이름을 입력해주세요" onChange={this.handleOnChange} />
-                </td>
-              </tr>
-              <tr className="phoneNumberTable">
-                <th>
-                  휴대폰<span className="essential">*</span>
-                </th>
-                <td>
-                  <input
-                    type="text"
-                    className="phoneNumberField"
-                    name="phoneNumber"
-                    label="휴대폰"
-                    maxlength="11"
-                    placeholder="숫자만 입력해주세요"
-                    onChange={this.handleOnChange}
-                    ref={this.phoneRef}
-                  />
-                </td>
-              </tr>
-              <tr className="addressTable">
-                <th>
-                  주소<span className="essential">*</span>
-                </th>
-                <td>
-                  <div className="textFieldAddress">
-                    <div className="textFieldAddressTop">
-                      <input className="inputAddress" name="zipCode" placeholder="우편번호" type="text" value={zoneCode} />
-                      <input type="button" className="inputAddressButton" onClick={this.handleOpenPost} value="주소 검색" />
-                    </div>
-                    <div className="textFieldAddressBottom">
-                      <div>
-                        <input className="inputAddressBottom" name="address" placeholder="주소" type="text" value={fullAddress} />
+      <>
+        <Nav />
+        <div className="signUpForm">
+          <h3>회원가입</h3>
+          <p className="subText">
+            <span className="essential">*</span>필수입력사항
+          </p>
+          <form>
+            <table className="SignUpTable">
+              <tbody>
+                <tr className="emailTable">
+                  <th>
+                    이메일<span className="essential">*</span>
+                  </th>
+                  <td>
+                    <input type="text" className="idField" name="email" label="이메일" placeholder="이메일을 입력해주세요" onChange={this.handleOnChange} />
+                    <button className="duplicationBtn">중복확인</button>
+                    {this.state.isIdValid && <p className="warningText">이메일 형식이 올바르지 않습니다.</p>}
+                  </td>
+                </tr>
+                <tr className="pwTable">
+                  <th>
+                    비밀번호<span className="essential">*</span>
+                  </th>
+                  <td>
+                    <input type="password" className="pwField" name="password" label="비밀번호" placeholder="비밀번호를 입력해주세요" onChange={this.handleOnChange} />
+                    {this.state.isPwValid && <p className="warningText">비밀번호를 10자 이상 입력해주세요</p>}
+                  </td>
+                </tr>
+                <tr className="pwCheckTable">
+                  <th>
+                    비밀번호확인<span className="essential">*</span>
+                  </th>
+                  <td>
+                    <input type="password" className="pwCheckField" name="passwordCheck" label="비밀번호 확인" placeholder="비밀번호를 한번 더 입력해주세요" onChange={this.handleOnChange} />
+                  </td>
+                </tr>
+                <tr className="nameTable">
+                  <th>
+                    이름<span className="essential">*</span>
+                  </th>
+                  <td>
+                    <input type="text" className="nameField" name="name" label="이름" placeholder="이름을 입력해주세요" onChange={this.handleOnChange} />
+                  </td>
+                </tr>
+                <tr className="phoneNumberTable">
+                  <th>
+                    휴대폰<span className="essential">*</span>
+                  </th>
+                  <td>
+                    <input
+                      type="text"
+                      className="phoneNumberField"
+                      name="phoneNumber"
+                      label="휴대폰"
+                      maxlength="11"
+                      placeholder="숫자만 입력해주세요"
+                      onChange={this.handleOnChange}
+                      ref={this.phoneRef}
+                    />
+                  </td>
+                </tr>
+                <tr className="addressTable">
+                  <th>
+                    주소<span className="essential">*</span>
+                  </th>
+                  <td>
+                    <div className="textFieldAddress">
+                      <div className="textFieldAddressTop">
+                        <input className="inputAddress" name="zipCode" placeholder="우편번호" type="text" value={zoneCode} />
+                        <input type="button" className="inputAddressButton" onClick={this.handleOpenPost} value="주소 검색" />
                       </div>
-                      <div className="addressDetail">
-                        <input type="text" className="inputAddressBottom" name="detailAddress" placeholder="상세주소" onChange={this.handleOnChange} />
+                      <div className="textFieldAddressBottom">
+                        <div>
+                          <input className="inputAddressBottom" name="address" placeholder="주소" type="text" value={fullAddress} />
+                        </div>
+                        <div className="addressDetail">
+                          <input type="text" className="inputAddressBottom" name="detailAddress" placeholder="상세주소" onChange={this.handleOnChange} />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-              <tr className="birthTable">
-                <th>
-                  생년월일<span className="essential">*</span>
-                </th>
-                <td>
-                  <input
-                    type="text"
-                    className="birthField"
-                    name="birth"
-                    label="생년월일"
-                    maxlength="10"
-                    placeholder="YYYY-MM-DD 형식으로 입력해주세요"
-                    onChange={this.handleOnChange}
-                    ref={this.birthRef}
-                  />
-                </td>
-              </tr>
-              <tr className="tosTable">
-                <th>
-                  이용약관동의<span className="essential">*</span>
-                </th>
-                <td>
-                  <div className="tosText">
-                    <p className="subHeading">{tos[0]?.subHeading}</p>
-                    {tos[0]?.contents}
-                    <br />
-                    <br />
-                    <p className="subHeading">{tos[1]?.subHeading}</p>
-                    {tos[1]?.contents}
-                    <br />
-                    <br />
-                    <p className="subHeading">{tos[2]?.subHeading}</p>
-                    {tos[2]?.contents}
-                  </div>
-                  <div>
-                    <input className="agreeCheckBox" type="checkbox" onChange={this.handleOnChange} />
-                    <span className="necessaryText">(필수)</span> 동의합니다.
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <button className="SignUpBtn" type="submit" onClick={this.signUpSummit}>
-            가입하기
-          </button>
+                  </td>
+                </tr>
+                <tr className="birthTable">
+                  <th>
+                    생년월일<span className="essential">*</span>
+                  </th>
+                  <td>
+                    <input
+                      type="text"
+                      className="birthField"
+                      name="birth"
+                      label="생년월일"
+                      maxlength="10"
+                      placeholder="YYYY-MM-DD 형식으로 입력해주세요"
+                      onChange={this.handleOnChange}
+                      ref={this.birthRef}
+                    />
+                  </td>
+                </tr>
+                <tr className="tosTable">
+                  <th>
+                    이용약관동의<span className="essential">*</span>
+                  </th>
+                  <td>
+                    <div className="tosText">
+                      <p className="subHeading">{tos[0]?.subHeading}</p>
+                      {tos[0]?.contents}
+                      <br />
+                      <br />
+                      <p className="subHeading">{tos[1]?.subHeading}</p>
+                      {tos[1]?.contents}
+                      <br />
+                      <br />
+                      <p className="subHeading">{tos[2]?.subHeading}</p>
+                      {tos[2]?.contents}
+                    </div>
+                    <div>
+                      <input className="agreeCheckBox" type="checkbox" onChange={this.handleOnChange} />
+                      <span className="necessaryText">(필수)</span> 동의합니다.
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button className="SignUpBtn" type="submit" onClick={this.signUpSummit}>
+              가입하기
+            </button>
 
-          {isDaumPost && <DaumPostcode onComplete={this.handleAddress} autoClose width={width} height={height} style={modalStyle} isDaumPost={isDaumPost} />}
-        </form>
-      </div>
+            {isDaumPost && <DaumPostcode onComplete={this.handleAddress} autoClose width={width} height={height} style={modalStyle} isDaumPost={isDaumPost} />}
+          </form>
+        </div>
+        <Footer />
+      </>
     );
   }
 }
