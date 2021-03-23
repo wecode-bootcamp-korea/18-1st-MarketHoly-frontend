@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import Select from 'react-select';
 import { AiOutlineRight } from 'react-icons/ai';
 import '../../styles/common.scss';
 import './Mypagearticle.scss';
 import Myiteminfo from './Myiteminfo';
 import Myalwayitem from './Myalwayitem';
-
-const options = [
-  { value: '전체기간', label: '전체기간' },
-  { value: '2021년', label: '2021년' },
-  { value: '2020년', label: '2020년' },
-  { value: '2019년', label: '2019년' },
-];
-
-const MyComponent = () => <Select options={options} />;
+import Myreview from './Myreview';
+import Mydelivery from './Mydelivery';
 
 export class Mypagearticle extends Component {
   constructor() {
@@ -22,13 +14,14 @@ export class Mypagearticle extends Component {
     this.state = {
       item: [],
       wishItem: [],
-      color: ['', true, false, false],
+      review: [],
+      color: ['', true, false, false, false],
       color1: '1',
     };
   }
 
   componentDidMount() {
-    fetch('/data/productinfo1.json')
+    fetch('/data/productinfo.json')
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -41,6 +34,14 @@ export class Mypagearticle extends Component {
       .then(res => {
         this.setState({
           wishItem: res,
+        });
+      });
+
+    fetch('/data/review.json')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          review: res,
         });
       });
   }
@@ -71,6 +72,7 @@ export class Mypagearticle extends Component {
             e.target.value
           ]);
     }
+    console.log(e.target.value);
   };
 
   render() {
@@ -107,22 +109,32 @@ export class Mypagearticle extends Component {
                     </div>
                   </li>
                 </Link>
-                <li>
-                  <div
-                    className={this.state.color[3] ? 'reclickChanged' : false}
-                    onClick={this.changecolor}
-                    value="3"
-                  >
-                    배송지 관리
-                  </div>
-                  <div>
+                <Link to="/Mydelivery">
+                  <li>
+                    <div
+                      className={this.state.color[3] ? 'reclickChanged' : false}
+                      onClick={this.changecolor}
+                      value="3"
+                    >
+                      배송지 관리
+                    </div>
+                    <div>
+                      <AiOutlineRight />
+                    </div>
+                  </li>
+                </Link>
+                <Link to="/Myreview">
+                  <li>
+                    <div
+                      className={this.state.color[4] ? 'reclickChanged' : false}
+                      onClick={this.changecolor}
+                      value="4"
+                    >
+                      <div>상품 후기</div>
+                    </div>
                     <AiOutlineRight />
-                  </div>
-                </li>
-                <li>
-                  <div>상품 후기</div>
-                  <AiOutlineRight />
-                </li>
+                  </li>
+                </Link>
                 <li>
                   <div> 적립금</div>
                   <AiOutlineRight />
@@ -154,6 +166,12 @@ export class Mypagearticle extends Component {
                       removeWhishitem={this.removeWhishitem}
                     />
                   )}
+                />
+                <Route exact path="/Mydelivery" render={() => <Mydelivery />} />
+                <Route
+                  exact
+                  path="/Myreview"
+                  render={() => <Myreview review={this.state.review} />}
                 />
               </Switch>
             </section>
