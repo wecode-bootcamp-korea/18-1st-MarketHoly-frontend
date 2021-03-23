@@ -55,35 +55,35 @@ export default class Banner extends Component {
         <Slider {...settings}>
           <div>
             <img
-              className="firstimg"
+              className="bannerImg"
               src="https://images.unsplash.com/photo-1506617420156-8e4536971650?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2768&q=80"
               alt="banner"
             />
           </div>
           <div>
             <img
-              className="secondimg"
+              className="bannerImg"
               src="https://images.unsplash.com/photo-1556559214-9d7db920d2eb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80"
               alt="banner"
             />
           </div>
           <div>
             <img
-              className="thirdimg"
+              className="bannerImg"
               src="https://images.unsplash.com/photo-1590755958171-90168ab6e01e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80"
               alt="banner"
             />
           </div>
           <div>
             <img
-              className="fourthimg"
+              className="bannerImg"
               src="https://images.unsplash.com/photo-1577595927087-dedbe84f0e4d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80"
               alt="banner"
             />
           </div>
           <div>
             <img
-              className="fifthimg"
+              className="bannerImg"
               src="https://images.unsplash.com/photo-1558201202-e65298e2e869?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
               alt="banner"
             />

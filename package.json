@@ -2,6 +2,7 @@
   "name": "marketholy",
   "version": "0.1.0",
   "private": true,
+  "proxy":"http://192.168.219.107:8000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -14,10 +15,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
-<<<<<<< HEAD
-=======
     "react-slideshow-image": "^3.4.3",
->>>>>>> 1c77613f4c2ceb345f8b6e990ce38589e3a1d1f3
     "slick-carousel": "^1.8.1",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.1"

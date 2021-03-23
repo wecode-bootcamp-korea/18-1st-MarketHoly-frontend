@@ -13,6 +13,10 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 class Goods extends Component {
   render() {
     const { modifier, id, image_url, name, price, discount_rate, daily_discount_rate, start_date } = this.props;
+    // let priceTag = '';
+    // if(discount_rate) {
+
+    // }
     return (
       <div className="goods" key={id}>
         <div className="imagePart">
@@ -31,8 +35,8 @@ class Goods extends Component {
           </div>
         )}
         <div className={modifier === 'dailyspecial' ? 'pricebig' : 'pricesmall'}>
-          {discount_rate ? Math.floor(price.toLocaleString(navigator.language) * (1 - discount_rate)) : Math.floor(price.toLocaleString(navigator.language))}원
-          {/* {daily_discount_rate ? Math.floor(price.toLocaleString(navigator.language) * (1 - daily_discount_rate)) : Math.floor(price.toLocaleString(navigator.language))}원 */}
+          {discount_rate !== undefined && (discount_rate ? Math.floor(Number(price) * (1 - discount_rate)).toLocaleString() : Math.floor(Number(price)).toLocaleString()) + '원'}
+          {daily_discount_rate && Math.floor(price * (1 - daily_discount_rate)).toLocaleString() + '원'}
         </div>
         {discount_rate && <div className="originalPrice">{discount_rate && Math.floor(price.toLocaleString(navigator.language))}원</div>}
       </div>

@@ -6,9 +6,17 @@
 
   .imagePart {
     position: relative;
+    overflow: hidden;
   }
   img {
+    transform: scale(1);
+    transition: transform 0.8s;
+    &:hover {
+      transform: scale(1.02);
+      transition: transform 0.8s;
+    }
     &.sizebig {
+      margin-right: 10px;
       width: 338px;
       height: 434px;
     }

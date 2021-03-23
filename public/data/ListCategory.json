@@ -1,70 +1,70 @@
 [
     {
-        "id": 1,
+        "category_id": 1,
         "name": "채소"
     },
     {
-        "id": 2,
+        "category_id": 2,
         "name": "과일·견과·쌀"
     },
     {
-        "id": 3,
+        "category_id": 3,
         "name": "수산·해산·건어물"
     },
     {
-        "id": 4,
+        "category_id": 4,
         "name": "정육·계란"
     },
     {
-        "id": 5,
+        "category_id": 5,
         "name": "국·반찬·메인요리"
     },
     {
-        "id": 6,
+        "category_id": 6,
         "name": "샐러드·간편식"
     },
     {
-        "id": 7,
+        "category_id": 7,
         "name": "면·양념·오일"
     },
     {
-        "id": 8,
+        "category_id": 8,
         "name": "생수·음료·우유·커피"
     },
     {
-        "id": 9,
+        "category_id": 9,
         "name": "간식·과자·떡"
     },
     {
-        "id": 10,
+        "category_id": 10,
         "name": "베이커리·치즈·델리"
     },
     {
-        "id": 11,
+        "category_id": 11,
         "name": "건강식품"
     },
     {
-        "id": 12,
+        "category_id": 12,
         "name": "생활용품·리빙"
     },
     {
-        "id": 13,
+        "category_id": 13,
         "name": "뷰티·바디케어"
     }
     ,{
-        "id": 14,
+        "category_id": 14,
         "name": "주방용품"
     }
     ,{
-        "id": 15,
+        "category_id": 15,
         "name": "가전제품"
     }
     ,{
-        "id": 16,
+        "category_id": 16,
         "name": "베이비·키즈"
     }
     ,{
-        "id": 17,
+        "category_id": 17,
         "name": "반려동물"
     }
 ]
