@@ -149,13 +149,14 @@
          }
       }
       .menu-hover-box {
-         position   : absolute;
-         display    : none;
-         width      : 220px;
-         height     : 600px;
-         border     : 1px solid #efefef;
-         overflow   : hidden;
-         transition : 0.2s all;
+         position         : absolute;
+         display          : none;
+         width            : 220px;
+         height           : 600px;
+         border           : 1px solid #efefef;
+         overflow         : hidden;
+         transition       : 0.2s all;
+         background-color : white;
       }
    }
 }
