@@ -3,9 +3,10 @@ import { BiShareAlt } from 'react-icons/bi';
 import { AiFillFacebook, AiOutlineMinus, AiOutlinePlus, AiOutlineTwitter } from 'react-icons/ai';
 import ProductGoodsAdd from './ProductGoodsAdd';
 import GoodsViewInfomation from './GoodsViewInfomation';
-import './ProductDetail.scss';
 import Footer from '../Footer/Footer';
 import Nav from '../Nav/Nav';
+import Aside from '../../Pages/aside/aside';
+import './ProductDetail.scss';
 
 class ProductDetail extends React.Component {
   state = {
@@ -60,6 +61,7 @@ class ProductDetail extends React.Component {
     const { productCount, productInfo, isSharedBtn, isLogin, isRestockNotice, isWishList } = this.state;
     return (
       <>
+        <Aside />
         <Nav />
         <div className="detailContainer">
           <div className="detailMain">

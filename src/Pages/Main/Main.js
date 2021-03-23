@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Aside from '../aside/aside';
 
 class Main extends Component {
   render() {
