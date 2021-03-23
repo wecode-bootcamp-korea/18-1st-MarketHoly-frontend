@@ -1,39 +1,40 @@
 @import '../../styles/common.scss';
 
 .listCenter {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  left: -60px;
-  margin-top: 10px;
+   display         : flex;
+   position        : relative;
+   justify-content : center;
+   left            : -60px;
+   margin-top      : 10px;
 }
 
 .productList {
-  display: flex;
-  flex-direction: row;
-  width: 870px;
+   display        : flex;
+   flex-direction : row;
+   width          : 870px;
 
-  li {
-    padding: 0 13px 7px 12px;
-    border-bottom: 1px solid #ddd;
-    line-height: 20px;
-    color: #333;
-    font-size: 12px;
-    letter-spacing: -0.3px;
-    overflow: hidden;
-    cursor: pointer;
-  }
+   li {
+      padding        : 0 13px 7px 12px;
+      border-bottom  : 1px solid #ddd;
+      line-height    : 20px;
+      color          : #333;
+      font-size      : 12px;
+      letter-spacing : -0.3px;
+      overflow       : hidden;
+      cursor         : pointer;
+   }
 
-  li:hover {
-    color: $themePurple;
-    border-color: $themePurple;
-    font-weight: 600;
-  }
+   li:hover {
+      color        : $themePurple;
+      border-color : $themePurple;
+      font-weight  : 600;
+   }
 }
 
 .productHeaderName {
-  position: relative;
-  left: 410px;
-  margin-top: 40px;
-  font-weight: 600;
+   font-weight  : 600;
+   width        : 1050px;
+   margin       : 0 auto;
+   padding-top: 60px;
+   padding-left : 42px;
 }

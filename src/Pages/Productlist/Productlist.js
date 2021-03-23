@@ -54,53 +54,55 @@ export class Productlist extends Component {
 
   render() {
     return (
-      <div className="listView">
-        <div className="wide">
-          <ul className="list">
-            {this.state.product_list.map(item => {
-              let rate = 1 - item.discount_rate;
-              return (
-                <li key={item.id}>
-                  <div className="imgCouponBox">
-                    <div className="imgHover">
-                      <img src={item.image} alt={item.name} />
+      <>
+        <div className="listView">
+          <div className="wide">
+            <ul className="list">
+              {this.state.product_list.map(item => {
+                let rate = 1 - item.discount_rate;
+                return (
+                  <li key={item.id}>
+                    <div className="imgCouponBox">
+                      <div className="imgHover">
+                        <img src={item.image} alt={item.name} />
+                      </div>
+                      <span className={item.isCoupon ? 'itemCoupon' : 'off'}>20%농할쿠폰</span>
+                      <button className="FiShoppingCart" onClick={() => this.handleBasketModal(item)} value={item.name}>
+                        <FiShoppingCart size="22" color="white" />
+                      </button>
                     </div>
-                    <span className={item.isCoupon ? 'itemCoupon' : 'off'}>20%농할쿠폰</span>
-                    <button className="FiShoppingCart" onClick={() => this.handleBasketModal(item)} value={item.name}>
-                      <FiShoppingCart size="22" color="white" />
-                    </button>
-                  </div>
-                  <div className="totalInfo">
-                    <p className="itemName">{item.name}</p>
-                    {item.discount_rate ? (
-                      <>
-                        <div className="priceBox">
-                          <p className="discount">{item.discount_rate * 100}%</p>
-                          <p className="itemAfterPrice">{this.addComma(Math.floor(item.price * rate))}원</p>
-                        </div>
-                        <p className="itemPriceAfter">{this.addComma(Math.floor(item.price))}원</p>
-                      </>
-                    ) : (
-                      <p className="itemPrice">{this.addComma(Math.floor(item.price))}원</p>
-                    )}
-                    <p className="itemInfo">{item.info}</p>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-          <Productbasket
-            productBasket={this.state.productBasket}
-            name={this.state.basketItem.name}
-            price={this.state.basketItem.price}
-            addComma={this.addComma}
-            handleModalremove={this.handleModalremove}
-            count={this.state.count}
-            handleCnt={this.handleCnt}
-            discount_rate={this.state.basketItem.discount_rate}
-          />
+                    <div className="totalInfo">
+                      <p className="itemName">{item.name}</p>
+                      {item.discount_rate ? (
+                        <>
+                          <div className="priceBox">
+                            <p className="discount">{item.discount_rate * 100}%</p>
+                            <p className="itemAfterPrice">{this.addComma(Math.floor(item.price * rate))}원</p>
+                          </div>
+                          <p className="itemPriceAfter">{this.addComma(Math.floor(item.price))}원</p>
+                        </>
+                      ) : (
+                        <p className="itemPrice">{this.addComma(Math.floor(item.price))}원</p>
+                      )}
+                      <p className="itemInfo">{item.info}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+            <Productbasket
+              productBasket={this.state.productBasket}
+              name={this.state.basketItem.name}
+              price={this.state.basketItem.price}
+              addComma={this.addComma}
+              handleModalremove={this.handleModalremove}
+              count={this.state.count}
+              handleCnt={this.handleCnt}
+              discount_rate={this.state.basketItem.discount_rate}
+            />
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }

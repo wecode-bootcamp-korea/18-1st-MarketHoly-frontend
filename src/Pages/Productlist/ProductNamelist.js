@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { FaAppleAlt } from 'react-icons/fa';
 import './ProductNamelist.scss';
 
 export class ProductNamelist extends Component {
