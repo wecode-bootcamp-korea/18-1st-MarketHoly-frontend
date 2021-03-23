@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { CgSearch } from 'react-icons/cg';
 import { FiMenu, FiShoppingCart } from 'react-icons/fi';
 import { MdCancel } from 'react-icons/md';
+import { GoTriangleDown } from 'react-icons/go';
 import NavBanner from './NavBanner';
 import NavBarHoverList from './NavBarHoverList';
 import './Nav.scss';
@@ -24,6 +25,8 @@ class Nav extends React.Component {
     displayShowIndex: 0,
     toggleSearchInput: false,
     isNavFixed: false,
+    isLoginHover: false,
+    isLogin: false,
   };
 
   componentDidMount() {
@@ -89,29 +92,72 @@ class Nav extends React.Component {
     this.searchInputRef.current.value = '';
   };
 
+  loginMenuHover = () => {
+    this.setState({ isLoginHover: !this.state.isLoginHover });
+  };
+
   onScrollGet = () => {
     if (window.scrollY > 105) this.setState({ isNavFixed: true });
     else this.setState({ isNavFixed: false });
   };
 
   render() {
-    const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput, isNavFixed } = this.state;
+    const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput, isNavFixed, isLogin, isLoginHover } = this.state;
     return (
       <div className={'navbar ' + (isNavFixed && 'navbarFixed')} onMouseHover={this.allCategoriesHoverLeave} onScroll={this.onScrollGet}>
         <div className="user-menu">
           <NavBanner />
-          <div className="user-list-menu">
-            <div className="list-join menu-list">
-              <Link to="#" className="join-link">
-                회원가입
-              </Link>
+          {isLogin ? (
+            <div className="user-list-menu">
+              <div className="list-join menu-list">
+                <Link to="/join" className="join-link">
+                  회원가입
+                </Link>
+              </div>
+              <div className="list-login menu-list">
+                <Link to="/login" className="login-link">
+                  &nbsp;로그인
+                </Link>
+              </div>
             </div>
-            <div className="list-login menu-list">
-              <Link to="#" className="login-link">
-                &nbsp;로그인
+          ) : (
+            <li className="userLoginMenu" onMouseEnter={this.loginMenuHover} onMouseLeave={this.loginMenuHover}>
+              <Link to="/mypage" className="use">
+                <span className="ico_grade grade6">웰컴</span>
+                <span className="txt">
+                  <span className="name">윤찬호</span>
+                  <span className="sir">님</span>
+                  <GoTriangleDown />
+                </span>
               </Link>
-            </div>
-          </div>
+              <ul className="sub" style={{ display: isLoginHover ? 'flex' : 'none' }}>
+                <li>
+                  <Link to="">주문 내역</Link>
+                </li>
+                <li>
+                  <Link to="">배송지 관리</Link>
+                </li>
+                <li>
+                  <Link to="">늘 사는 것</Link>
+                </li>
+                <li>
+                  <Link to="">상품 후기</Link>
+                </li>
+                <li>
+                  <Link to="">적립금</Link>
+                </li>
+                <li>
+                  <Link to="">쿠폰</Link>
+                </li>
+                <li>
+                  <Link to="">개인 정보 수정</Link>
+                </li>
+                <li>
+                  <Link to="">로그아웃</Link>
+                </li>
+              </ul>
+            </li>
+          )}
         </div>
         <div className="navbar-logo">
           <Link to="/productcategory" className="logo-link">
