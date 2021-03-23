@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './aside.scss';
 
-export class aside extends Component {
+export class Aside extends Component {
   constructor() {
     super();
     this.state = {
@@ -49,4 +49,4 @@ export class aside extends Component {
   }
 }
 
-export default aside;
+export default Aside;
