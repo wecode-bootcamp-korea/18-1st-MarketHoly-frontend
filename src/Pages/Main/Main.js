@@ -6,6 +6,7 @@ import ListCategory from '../../Components/ListCategory/ListCategory';
 import MDrecommend from '../../Components/MDrecommend/MDrecommend';
 import Nav from '../../Components/Nav/Nav';
 import Footer from '../../Components/Footer/Footer';
+import Aside from '../../Pages/aside/aside';
 import { IoChevronForward } from 'react-icons/io5';
 import '../../styles/common.scss';
 import './Main.scss';
@@ -53,6 +54,7 @@ class Main extends Component {
       <div className="main">
         <Nav />
         <Banner />
+        <Aside />
         <div className="titRecommendGoods">이 상품 어때요?</div>
         <ListGoods listgoods={listgoods} />
         <DailySpecial dailyspecial={dailyspecial} />
