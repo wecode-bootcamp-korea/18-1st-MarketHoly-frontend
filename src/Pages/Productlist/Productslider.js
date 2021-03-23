@@ -16,7 +16,7 @@ export default class SimpleSlider extends Component {
       autoplaySpeed: 1750,
     };
     return (
-      <div className="slider">
+      <div className="sliders">
         <Slider {...settings}>
           <div>
             <img src="https://img-cf.kurly.com/shop/data/category/pc_category_EDLP_210205.1612768855.jpg" />
