@@ -1,11 +1,10 @@
 @import '../../styles/common.scss';
 
 .listCenter {
-   display         : flex;
-   position        : relative;
-   justify-content : center;
-   left            : -60px;
-   margin-top      : 10px;
+   font-weight  : 600;
+   width        : 1050px;
+   margin       : 10px auto 0 auto;
+   padding-left : 42px;
 }
 
 .productList {
@@ -35,6 +34,6 @@
    font-weight  : 600;
    width        : 1050px;
    margin       : 0 auto;
-   padding-top: 60px;
+   padding-top  : 60px;
    padding-left : 42px;
 }
