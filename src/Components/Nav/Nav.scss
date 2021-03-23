@@ -2,8 +2,9 @@
 
 .navbar {
    @extend %flex-column-center;
-   min-width : 1050px;
-   height    : 156px;
+   min-width        : 1050px;
+   height           : 156px;
+   background-color : white;
    .user-menu {
       display         : flex;
       justify-content : space-between;
@@ -159,6 +160,14 @@
          background-color : white;
       }
    }
+}
+
+.navbarFixed {
+   position  : fixed;
+   top       : -105px;
+   left      : 50%;
+   transform : translateX(-50%);
+   z-index   : 999;
 }
 
 .hover-on {

@@ -18,19 +18,14 @@ class GoodsViewInfomation extends React.Component {
   }
 
   moveScrollY = idx => {
-    idx === 1 && window.scrollTo(0, this.oneGetY.current.offsetTop);
-    idx === 2 && window.scrollTo(0, this.twoGetY.current.offsetTop);
-    idx === 3 && window.scrollTo(0, this.threeGetY.current.offsetTop);
-  };
-
-  onScrollGet = () => {
-    const scrollTop = window.scrollY;
-    console.log(scrollTop);
+    idx === 1 && window.scrollTo(0, this.oneGetY.current.offsetTop - 56);
+    idx === 2 && window.scrollTo(0, this.twoGetY.current.offsetTop - 56);
+    idx === 3 && window.scrollTo(0, this.threeGetY.current.offsetTop - 56);
   };
 
   render() {
     return (
-      <div className="goodsViewInfomation" onScroll={this.onScrollGet}>
+      <div className="goodsViewInfomation">
         <div ref={this.oneGetY}>
           <GoodsViewInfomationTabGroup idx={1} moveScrollY={this.moveScrollY} />
         </div>

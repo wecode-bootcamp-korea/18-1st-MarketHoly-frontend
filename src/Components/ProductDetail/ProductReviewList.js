@@ -22,8 +22,6 @@ class ProductReviewList extends React.Component {
   render() {
     const { review, index } = this.props;
     const { isMainContent } = this.state;
-
-    console.log(review);
     return (
       <li className="reviewListContent" onMouseLeave={this.handlePointerLeave}>
         <div className="reviewTitleBox" onClick={this.handleShowMainContent}>

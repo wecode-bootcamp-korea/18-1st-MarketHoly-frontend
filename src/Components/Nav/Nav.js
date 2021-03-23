@@ -22,6 +22,7 @@ class Nav extends React.Component {
     navbarList: [],
     displayShowIndex: 0,
     toggleSearchInput: false,
+    isNavFixed: false,
   };
 
   componentDidMount() {
@@ -33,6 +34,8 @@ class Nav extends React.Component {
         console.log(res.result);
         this.setState({ navbarList: res.result });
       });
+
+    window.addEventListener('scroll', this.onScrollGet);
   }
 
   handleChange = e => {
@@ -85,11 +88,16 @@ class Nav extends React.Component {
     this.searchInputRef.current.value = '';
   };
 
+  onScrollGet = () => {
+    if (window.scrollY > 105) this.setState({ isNavFixed: true });
+    else this.setState({ isNavFixed: false });
+  };
+
   render() {
-    const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput } = this.state;
+    const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput, isNavFixed } = this.state;
     console.log(navbarList);
     return (
-      <div className="navbar" onMouseHover={this.allCategoriesHoverLeave}>
+      <div className={'navbar ' + (isNavFixed && 'navbarFixed')} onMouseHover={this.allCategoriesHoverLeave} onScroll={this.onScrollGet}>
         <div className="user-menu">
           <NavBanner />
           <div className="user-list-menu">
