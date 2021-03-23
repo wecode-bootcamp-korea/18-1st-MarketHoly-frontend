@@ -3,12 +3,13 @@ import './GoodsViewInfomationContent.scss';
 
 class GoodsViewInfomationContent extends React.Component {
   render() {
+    const { productInfo } = this.props;
     return (
       <div className="goodsViewInfomationContent">
         <div className="goodsWrap">
           <div className="goodsIntro">
             <div className="pic">
-              <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="" />
+              <img src={productInfo.image_url} alt={productInfo.name} />
             </div>
             <div className="context">
               <h3>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { BiShareAlt } from 'react-icons/bi';
 import { AiFillFacebook, AiOutlineMinus, AiOutlinePlus, AiOutlineTwitter } from 'react-icons/ai';
 import ProductGoodsAdd from './ProductGoodsAdd';
@@ -20,7 +21,8 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
-    fetch('/data/productDetail.json')
+    // fetch('/data/productDetail.json')
+    fetch(`/product/detailproduct?id=${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         this.setState({ productInfo: res });
@@ -50,10 +52,10 @@ class ProductDetail extends React.Component {
 
   sendToCart = () => {
     const { productInfo, productCount } = this.state;
-    if ((productInfo.price - productInfo.price * productInfo.discountRate) * productCount === 0) alert('1개 이상 선택 해주세요!');
+    if ((productInfo.price - productInfo.price * productInfo.discount_rate) * productCount === 0) alert('1개 이상 선택 해주세요!');
     else {
       // 카트로 보낼때 값
-      console.log((productInfo.price - productInfo.price * productInfo.discountRate) * productCount);
+      console.log((productInfo.price - productInfo.price * productInfo.discount_rate) * productCount);
     }
   };
 
@@ -67,7 +69,7 @@ class ProductDetail extends React.Component {
           <div className="detailMain">
             <div className="detailHeader">
               <div className="detailImgSection">
-                <img src={productInfo.imageUrl} alt="제품 이미지" />
+                <img src={productInfo.image_url} alt="제품 이미지" />
               </div>
               <div className="detailInfoSection">
                 <div className="detailInfoHeader">
@@ -107,15 +109,14 @@ class ProductDetail extends React.Component {
 
                 <div className="detailInfoPriceBox">
                   <div className="detailInfoPriceDc">
-                    <span className="detailInfoPrice">{productInfo.price && (productInfo.price - productInfo.price * productInfo.discountRate).toLocaleString(navigator.language)}</span>
+                    <span className="detailInfoPrice">{productInfo.price && Math.floor(productInfo.price - productInfo.price * productInfo.discount_rate).toLocaleString(navigator.language)}</span>
                     <span className="won">원</span>
-                    {productInfo.discountRate !== 0 && <span className="detailInfoPriceSale">{productInfo.discountRate * 100}%</span>}
+                    {productInfo.discount_rate && productInfo.dscount_rate !== 0 && <span className="detailInfoPriceSale">{productInfo.discount_rate * 100}%</span>}
                   </div>
                   <div className="detailInfoOriginalPrice">
-                    {productInfo.discountRate !== 0 && (
+                    {productInfo.discount_rate !== 0 && (
                       <>
-                        <div className="price">{productInfo.price && productInfo.price.toLocaleString('KO-kr')}</div>
-                        <span>?</span>
+                        <div className="price">{productInfo.price && Math.floor(productInfo.price).toLocaleString('KO-kr')}</div>
                       </>
                     )}
                   </div>
@@ -132,7 +133,7 @@ class ProductDetail extends React.Component {
                       <span className="salesUnitText">판매단위</span>
                     </div>
                     <div className="salesUnit">
-                      <span className="salesUnitText">{productInfo.salesUnit}개</span>
+                      <span className="salesUnitText">{productInfo.sales_unit}</span>
                     </div>
                   </div>
                   {productInfo.amount && (
@@ -154,7 +155,7 @@ class ProductDetail extends React.Component {
                   <div className="detailInfoPackingBox paddingCommonBox">
                     <span className="detailPackingType DeliveryCommon widthCommonBox">포장타입</span>
                     <div className="detailPackingNameBox">
-                      <span className="detailPackingName">{productInfo.storageMethod ? `${productInfo.storageMethod}` : '기타'}</span>
+                      <span className="detailPackingName">{productInfo.storage_method ? `${productInfo.storage_method}` : '기타'}</span>
                       <span className="detailPackingExplicate">택배배송은 에코포장이 스티로폼으로 대체됩니다.</span>
                     </div>
                   </div>
@@ -198,7 +199,9 @@ class ProductDetail extends React.Component {
                   <div className="sumPrice">
                     <span className="sumName">총 상품금액 : </span>
                     <span className="sumBox">
-                      <span className="sumBuyPrice">{((productInfo.price - productInfo.price * productInfo.discountRate) * productCount).toLocaleString(navigator.language)}</span>
+                      <span className="sumBuyPrice">
+                        {productInfo.price && Math.floor((productInfo.price - productInfo.price * productInfo.discount_rate) * productCount).toLocaleString(navigator.language)}
+                      </span>
                       <span className="sumWon">원</span>
                     </span>
                   </div>
@@ -219,8 +222,8 @@ class ProductDetail extends React.Component {
               </div>
             </div>
           </div>
-          <ProductGoodsAdd productInfoId={productInfo.id} />
-          <GoodsViewInfomation />
+          <ProductGoodsAdd productInfoId={productInfo.id} productInfo={productInfo} />
+          <GoodsViewInfomation productInfo={productInfo} />
         </div>
         <Footer />
       </>
@@ -228,4 +231,4 @@ class ProductDetail extends React.Component {
   }
 }
 
-export default ProductDetail;
+export default withRouter(ProductDetail);

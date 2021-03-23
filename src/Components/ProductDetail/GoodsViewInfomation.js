@@ -29,7 +29,7 @@ class GoodsViewInfomation extends React.Component {
         <div ref={this.oneGetY}>
           <GoodsViewInfomationTabGroup idx={1} moveScrollY={this.moveScrollY} />
         </div>
-        <GoodsViewInfomationContent />
+        <GoodsViewInfomationContent productInfo={this.props.productInfo} />
         <div ref={this.twoGetY}>
           <GoodsViewInfomationTabGroup idx={2} moveScrollY={this.moveScrollY} />
         </div>

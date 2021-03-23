@@ -14,7 +14,7 @@ class ProductGoodsAdd extends React.Component {
   };
 
   componentDidMount() {
-    fetch('data/goodsAddProduct.json')
+    fetch('/data/goodsAddProduct.json')
       .then(res => res.json())
       .then(res =>
         this.setState({ goodsProductArr: res }, () => {

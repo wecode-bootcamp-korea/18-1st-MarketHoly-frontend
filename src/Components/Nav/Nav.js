@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { CgSearch } from 'react-icons/cg';
 import { FiMenu, FiShoppingCart } from 'react-icons/fi';
@@ -95,7 +96,6 @@ class Nav extends React.Component {
 
   render() {
     const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput, isNavFixed } = this.state;
-    console.log(navbarList);
     return (
       <div className={'navbar ' + (isNavFixed && 'navbarFixed')} onMouseHover={this.allCategoriesHoverLeave} onScroll={this.onScrollGet}>
         <div className="user-menu">
@@ -114,8 +114,8 @@ class Nav extends React.Component {
           </div>
         </div>
         <div className="navbar-logo">
-          <Link to="#" className="logo-link">
-            <img src="images/navlogo.png" alt="마켓홀리 로고" />
+          <Link to="/productcategory" className="logo-link">
+            <img src="/images/navlogo.png" alt="마켓홀리 로고" />
           </Link>
         </div>
         <div className="navbar-menu">
@@ -182,4 +182,4 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);
