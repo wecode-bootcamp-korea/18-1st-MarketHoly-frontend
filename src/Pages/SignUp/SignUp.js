@@ -4,10 +4,10 @@ import Nav from '../../Components/Nav/Nav';
 import Footer from '../../Components/Footer/Footer';
 import './SignUp.scss';
 
-const idCheck = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{2,4}$/;
-const firstBirthCheck = /[0-9-]$/;
-const birthCheck = /[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$/;
-const phoneCheck = /[0-9]{1,11}$/;
+const ID_CHECK = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{2,4}$/;
+const FIRST_BIRTHCHECK = /[0-9-]$/;
+const BIRTH_CHECK = /[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$/;
+const PHONE_CHECK = /[0-9]{1,11}$/;
 
 class SignUp extends Component {
   constructor() {
@@ -74,18 +74,18 @@ class SignUp extends Component {
 
   // Check
   handleIdCheck = () => {
-    this.setState({ isIdValid: idCheck.test(this.state.email) ? false : true });
+    this.setState({ isIdValid: ID_CHECK.test(this.state.email) ? false : true });
   };
   handlePwCheck = () => {
     this.setState({ isPwValid: this.state.password.length >= 10 ? false : true });
   };
   handlePhoneCheck = () => {
-    if (!phoneCheck.test(this.state.phoneNumber)) {
+    if (!PHONE_CHECK.test(this.state.phoneNumber)) {
       this.phoneRef.current.value = '';
     }
   };
   handleBirthCheck = () => {
-    if (!firstBirthCheck.test(this.state.birth)) {
+    if (!FIRST_BIRTHCHECK.test(this.state.birth)) {
       this.birthRef.current.value = '';
     }
   };
@@ -158,7 +158,7 @@ class SignUp extends Component {
       alert('휴대폰 번호를 입력해주세요');
     } else if (this.state.fullAddress === '') {
       alert('주소를 입력해주세요');
-    } else if (!birthCheck.test(this.state.birth)) {
+    } else if (!BIRTH_CHECK.test(this.state.birth)) {
       alert('유효하지 않는 생년월일 입니다.');
     } else {
       this.sendUserInfo();
@@ -305,7 +305,7 @@ class SignUp extends Component {
                 </tr>
               </tbody>
             </table>
-            <button className="SignUpBtn" type="submit" onClick={this.signUpSummit}>
+            <button className="signUpBtn" type="submit" onClick={this.signUpSummit}>
               가입하기
             </button>
 
