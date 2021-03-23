@@ -42,11 +42,8 @@ class Cart extends React.Component {
     });
   };
 
-  handleCnts = num => {
-    const { count } = this.state;
-
-    if (num === -1 && count === 1) return;
-    this.setState({ count: count + num });
+  countTotalPrice = data => {
+    console.log(data);
   };
 
   deleteCartItem = e => {
@@ -55,12 +52,6 @@ class Cart extends React.Component {
       cartlist: this.state.cartlist.filter(e => e.id != e.target.value),
     });
   };
-  // changecartlist = num => {
-  //   const { cartlist } = this.state;
-  //   this.setState({
-  //     cartlist[cartlist.id].cnt : cartlist[cartlist.id].cnt + num,
-  //   });
-  // };
 
   render() {
     const pricearr = [];
@@ -81,15 +72,23 @@ class Cart extends React.Component {
             </button>
             <VscKebabVertical className="verticalLine" />
             <div className="lineblack" />
-
-            <Cartitem
-              cartlist={this.state.cartlist}
-              isCheck={this.state.isCheck}
-              count={this.state.count}
-              handleCnts={this.handleCnts}
-              changecartlist={this.changecartlist}
-              deleteCartItem={this.deleteCartItem}
-            />
+            {this.state.cartlist.length !== 0 ? (
+              this.state.cartlist.map(e => (
+                <Cartitem
+                  cartlist={this.state.cartlist}
+                  isCheck={this.state.isCheck}
+                  countTotalPrice={this.countTotalPrice}
+                  deleteCartItem={this.deleteCartItem}
+                  id={e.id}
+                  name={e.name}
+                  price={e.price}
+                  img={e.img}
+                  discount_rate={e.discount_rate}
+                />
+              ))
+            ) : (
+              <div className="noGoods">장바구니에 담긴 상품이 없습니다</div>
+            )}
             <div className="linegray" />
             <button className="checkbox" onClick={this.handleCheck}>
               <AiOutlineCheckCircle
