@@ -6,7 +6,6 @@ import './Myreview.scss';
 
 export class Myreview extends Component {
   render() {
-    // console.log(this.props.review);
     return (
       <>
         <Router>
@@ -22,7 +21,7 @@ export class Myreview extends Component {
             </div>
           </div>
           <div className="reviewBox">
-            <Link to="/none">
+            <Link to="/Myreview">
               <div className="noneReview">작성가능 후기</div>
             </Link>
             <Link to="/done">
@@ -32,10 +31,14 @@ export class Myreview extends Component {
           <Switch>
             <Route
               exact
-              path="/none"
+              path="/Myreview"
               render={() => <Nonereview review={this.props.review} />}
             />
-            <Route exact path="/done" render={() => <Donereview />} />
+            <Route
+              exact
+              path="/done"
+              render={() => <Donereview reviewDone={this.props.reviewDone} />}
+            />
           </Switch>
         </Router>
       </>

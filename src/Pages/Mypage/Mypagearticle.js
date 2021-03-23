@@ -15,6 +15,7 @@ export class Mypagearticle extends Component {
       item: [],
       wishItem: [],
       review: [],
+      reviewDone: [],
       color: ['', true, false, false, false],
       color1: '1',
     };
@@ -42,6 +43,22 @@ export class Mypagearticle extends Component {
       .then(res => {
         this.setState({
           review: res,
+        });
+      });
+
+    fetch('/data/review.json')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          review: res,
+        });
+      });
+
+    fetch('/data/reviewdone.json')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          reviewDone: res,
         });
       });
   }
@@ -171,7 +188,12 @@ export class Mypagearticle extends Component {
                 <Route
                   exact
                   path="/Myreview"
-                  render={() => <Myreview review={this.state.review} />}
+                  render={() => (
+                    <Myreview
+                      review={this.state.review}
+                      reviewDone={this.state.reviewDone}
+                    />
+                  )}
                 />
               </Switch>
             </section>
