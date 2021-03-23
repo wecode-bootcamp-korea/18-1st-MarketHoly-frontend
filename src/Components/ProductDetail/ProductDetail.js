@@ -12,6 +12,7 @@ import './ProductDetail.scss';
 class ProductDetail extends React.Component {
   state = {
     productInfo: {},
+    productList: [],
     productCount: 0,
     sumPrice: 0,
     isSharedBtn: false,
@@ -22,10 +23,13 @@ class ProductDetail extends React.Component {
 
   componentDidMount() {
     // fetch('/data/productDetail.json')
-    fetch(`/product/detailproduct?id=${this.props.match.params.id}`)
+    console.log(this.props.match.params.id);
+    // fetch(`/product/detail?id=${this.props.match.params.id}`)
+    fetch(`/product/detail?id=${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
-        this.setState({ productInfo: res });
+        console.log(res);
+        this.setState({ productInfo: res.info, productList: res.related_products });
       });
   }
 
@@ -222,7 +226,7 @@ class ProductDetail extends React.Component {
               </div>
             </div>
           </div>
-          <ProductGoodsAdd productInfoId={productInfo.id} productInfo={productInfo} />
+          <ProductGoodsAdd productInfoId={productInfo.id} productInfo={this.state.productList} />
           <GoodsViewInfomation productInfo={productInfo} />
         </div>
         <Footer />

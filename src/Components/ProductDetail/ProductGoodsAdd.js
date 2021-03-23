@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import './ProductGoodsAdd.scss';
 
@@ -14,7 +15,7 @@ class ProductGoodsAdd extends React.Component {
   };
 
   componentDidMount() {
-    fetch('/data/goodsAddProduct.json')
+    fetch('data/goodsAddProduct.json')
       .then(res => res.json())
       .then(res =>
         this.setState({ goodsProductArr: res }, () => {
@@ -46,8 +47,13 @@ class ProductGoodsAdd extends React.Component {
     }
   };
 
+  handleMoveDetail = itemId => {
+    this.props.history.push(`/product/detail/${itemId}`);
+  };
+
   render() {
     const { carouselX, isLeftArrow, isRightArrow, goodsProductArr } = this.state;
+    const { productInfo } = this.props;
     return (
       <div className="goodsAddProduct">
         <h3 className="goodsAddTitle">RELATED PRODUCT</h3>
@@ -57,24 +63,24 @@ class ProductGoodsAdd extends React.Component {
               <AiOutlineArrowLeft className="arrowIcon leftArrow" />
             </div>
           )}
-          {isRightArrow && goodsProductArr.length > 5 && (
+          {isRightArrow && productInfo.length > 5 && (
             <div className="arrowRightBox arrowCommonBox" name="right" onClick={this.handleArrowMove}>
               <AiOutlineArrowRight className="arrowIcon rightArrow" />
             </div>
           )}
           <div className="goodsAddProductListWrapper">
             <ul className="goodsAddProductList" ref={e => (this.getWidth = e)} style={{ transform: `translateX(${carouselX}px)` }}>
-              {goodsProductArr?.map((item, idx) => (
+              {productInfo?.map((item, idx) => (
                 <li className="goodsAddProductItem" key={idx}>
                   <div className="goodsAddProductItemFigure">
-                    <a href="#" target="_blank">
-                      <img src={item.imgUrl} alt="" className="goodsAddProductItemImage" />
+                    <a href="" onClick={() => this.handleMoveDetail(item.id)}>
+                      <img src={item.image_url} alt="" className="goodsAddProductItemImage" />
                     </a>
                   </div>
                   <div className="goodsAddProductItemContent">
                     <div className="goodsAddProductItemContentWrapper">
                       <p className="goodsAddProductItemName">{item.name}</p>
-                      <p className="goodsAddProductItemPrice">{item.price.toLocaleString(navigator.language)}</p>
+                      <p className="goodsAddProductItemPrice">{Math.floor(item.price).toLocaleString(navigator.language)}</p>
                     </div>
                   </div>
                 </li>
@@ -87,4 +93,4 @@ class ProductGoodsAdd extends React.Component {
   }
 }
 
-export default ProductGoodsAdd;
+export default withRouter(ProductGoodsAdd);

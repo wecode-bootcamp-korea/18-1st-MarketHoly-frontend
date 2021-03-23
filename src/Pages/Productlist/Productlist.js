@@ -15,7 +15,6 @@ export class Productlist extends Component {
     };
   }
 
-  // "proxy": "http://10.58.1.200:8000",
   componentDidMount() {
     const product = `product/categorylistdetail/1`;
     // fetch('/data/products.json')
@@ -56,8 +55,6 @@ export class Productlist extends Component {
   };
 
   handleMoveDetail = itemId => {
-    console.log(itemId);
-    console.log('안녕');
     this.props.history.push(`/detail/${itemId}`);
   };
 
@@ -69,6 +66,7 @@ export class Productlist extends Component {
             <ul className="list">
               {this.state.product_list &&
                 this.state.product_list.map(item => {
+                  console.log(item);
                   let rate = 1 - item.discount_rate;
                   return (
                     <li key={item.id}>
