@@ -14,6 +14,10 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-slick": "^0.28.1",
+<<<<<<< HEAD
+=======
+    "react-slideshow-image": "^3.4.3",
+>>>>>>> 1c77613f4c2ceb345f8b6e990ce38589e3a1d1f3
     "slick-carousel": "^1.8.1",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.1"
