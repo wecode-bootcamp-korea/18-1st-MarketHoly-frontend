@@ -9,12 +9,15 @@ import NavBanner from './NavBanner';
 import NavBarHoverList from './NavBarHoverList';
 import './Nav.scss';
 
+const HOVER_WIDTH_TYPE1 = 220;
+const HOVER_WIDTH_TYPE2 = 450;
+
 class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.searchInputRef = React.createRef();
-    this.HOVER_WIDTH_TYPE1 = 220;
-    this.HOVER_WIDTH_TYPE2 = 450;
+    this.hoverWidth1 = HOVER_WIDTH_TYPE1;
+    this.hoverWidth2 = HOVER_WIDTH_TYPE2;
   }
 
   state = {
@@ -40,6 +43,10 @@ class Nav extends React.Component {
       });
 
     window.addEventListener('scroll', this.onScrollGet);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScrollGet);
   }
 
   handleChange = e => {
@@ -68,19 +75,19 @@ class Nav extends React.Component {
   allCategoriesHoverEnter = () => {
     this.setState({
       allCategoriesHover: true,
-      hoverWidth: this.HOVER_WIDTH_TYPE1,
+      hoverWidth: this.hoverWidth1,
     });
   };
   allCategoriesHoverLeave = () => {
     this.setState({
       allCategoriesHover: false,
-      hoverWidth: this.HOVER_WIDTH_TYPE1,
+      hoverWidth: this.hoverWidth1,
       displayShowIndex: 0,
     });
   };
   categoriesMenuHoverEnter = index => {
     this.setState({
-      hoverWidth: this.HOVER_WIDTH_TYPE2,
+      hoverWidth: this.hoverWidth2,
       displayShowIndex: index,
     });
   };
@@ -97,8 +104,16 @@ class Nav extends React.Component {
   };
 
   onScrollGet = () => {
-    if (window.scrollY > 105) this.setState({ isNavFixed: true });
-    else this.setState({ isNavFixed: false });
+    if (window.scrollY > 105) {
+      if (this.state.isNavFixed === false) {
+        this.setState({ isNavFixed: true });
+      }
+    }
+    if (window.scrollY < 104) {
+      if (this.state.isNavFixed === true) {
+        this.setState({ isNavFixed: false });
+      }
+    }
   };
 
   render() {
@@ -107,15 +122,15 @@ class Nav extends React.Component {
       <div className={'navbar ' + (isNavFixed && 'navbarFixed')} onMouseHover={this.allCategoriesHoverLeave} onScroll={this.onScrollGet}>
         <div className="user-menu">
           <NavBanner />
-          {isLogin ? (
+          {!isLogin ? (
             <div className="user-list-menu">
               <div className="list-join menu-list">
-                <Link to="/join" className="join-link">
+                <Link to="/Signup" className="join-link">
                   회원가입
                 </Link>
               </div>
               <div className="list-login menu-list">
-                <Link to="/login" className="login-link">
+                <Link to="/Login" className="login-link">
                   &nbsp;로그인
                 </Link>
               </div>

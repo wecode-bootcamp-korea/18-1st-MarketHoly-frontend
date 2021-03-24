@@ -13,10 +13,6 @@ class GoodsViewInfomation extends React.Component {
     this.threeGetY = React.createRef();
   }
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.onScrollGet);
-  }
-
   moveScrollY = idx => {
     idx === 1 && window.scrollTo(0, this.oneGetY.current.offsetTop - 56);
     idx === 2 && window.scrollTo(0, this.twoGetY.current.offsetTop - 56);
