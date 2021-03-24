@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "img": "https://img-cf.kurly.com/shop/data/goods/1470791120657i0.jpg",
+    "name": "아보카도",
+    "price": 2000,
+    "discount_rate": 0.2,
+    "cnt": 1
+  },
+  {
+    "id": 2,
+    "img": "https://img-cf.kurly.com/shop/data/goods/1470791120657i0.jpg",
+    "name": "아보카도",
+    "price": 3000,
+    "discount_rate": "",
+    "cnt": 1
+  },
+  {
+    "id": 3,
+    "img": "https://img-cf.kurly.com/shop/data/goods/1470791120657i0.jpg",
+    "name": "dkqkfhilahfjklsa",
+    "price": 3000,
+    "discount_rate": 0.13,
+    "cnt": 1
+  }
+]
