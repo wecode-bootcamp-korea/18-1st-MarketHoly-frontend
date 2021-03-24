@@ -127,7 +127,10 @@ class Order extends Component {
                     <h3>결제수단</h3>
                     <div className="paymentSection">
                       <h4>결제</h4>
-                      <span>결제 수단 API</span>
+                      <label>
+                        <input type="checkbox" />
+                        일반 결제
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -142,14 +145,14 @@ class Order extends Component {
                             <th className="subTit">주문금액</th>
                             <td>{payment.orderAmount.toLocaleString(navigator.language)}원</td>
                           </tr>
-                          <tr className="productAmount">
+                          {/* <tr className="productAmount">
                             <th>- 상품금액</th>
                             <td>{payment.productAmount.toLocaleString(navigator.language)}원</td>
                           </tr>
                           <tr className="productAmount">
                             <th>- 상품할인금액</th>
                             <td>-{payment.discountAmount.toLocaleString(navigator.language)}원</td>
-                          </tr>
+                          </tr> */}
                           <tr>
                             <th className="subTit">배송비</th>
                             <td>{payment.deliveryCharge.toLocaleString(navigator.language)}원</td>

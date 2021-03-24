@@ -1,20 +1,22 @@
-{
-  "productList": [
-    {
-      "id": 1,
-      "img": "https://img-cf.kurly.com/shop/data/goods/1572588428251i0.jpg",
-      "name": "[솔가] 비타민C 500 (60일분)",
-      "count": 1,
-      "price": 21450,
-      "cost": 33000
-    },
-    {
-      "id": 2,
-      "img": "https://img-cf.kurly.com/shop/data/goods/1518501508893i0.jpg",
-      "name": "[우리밀] 두부과자",
-      "count": 1,
-      "price": 2240,
-      "cost": 2300
-    }
-  ]
-}
+[
+  {
+    "productList": [
+      {
+        "id": 1,
+        "img": "https://img-cf.kurly.com/shop/data/goods/1572588428251i0.jpg",
+        "name": "[솔가] 비타민C 500 (60일분)",
+        "count": 1,
+        "price": 21450,
+        "cost": 33000
+      },
+      {
+        "id": 2,
+        "img": "https://img-cf.kurly.com/shop/data/goods/1518501508893i0.jpg",
+        "name": "[우리밀] 두부과자",
+        "count": 1,
+        "price": 2240,
+        "cost": 2300
+      }
+    ]
+  }
+]
