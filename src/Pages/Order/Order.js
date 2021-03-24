@@ -15,9 +15,7 @@ class Order extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/data/productList.json', {
-      method: 'GET',
-    })
+    fetch('/data/productList.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -25,9 +23,7 @@ class Order extends Component {
         });
       });
 
-    fetch('http://localhost:3000/data/userInfo.json', {
-      method: 'GET',
-    })
+    fetch('/data/userInfo.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -35,9 +31,7 @@ class Order extends Component {
         });
       });
 
-    fetch('http://localhost:3000/data/addressInfo.json', {
-      method: 'GET',
-    })
+    fetch('/data/addressInfo.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
@@ -45,9 +39,7 @@ class Order extends Component {
         });
       });
 
-    fetch('http://localhost:3000/data/payment.json', {
-      method: 'GET',
-    })
+    fetch('/data/payment.json')
       .then(res => res.json())
       .then(data => {
         this.setState({
