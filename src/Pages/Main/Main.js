@@ -18,9 +18,11 @@ class Main extends Component {
     listgoods: [],
     dailyspecial: [],
     product_list_by_category: [],
+    scrollY: 0,
   };
 
   componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
     // 이 상품 어때요?
     fetch('/data/ListGoods.json')
       .then(res => res.json())
@@ -38,23 +40,30 @@ class Main extends Component {
         });
       });
   }
+
+  handleScroll = () => {
+    this.setState({
+      scrollY: window.scrollY,
+    });
+  };
+
   // MD 추천
   handleCategory = e => {
     const offset = e.target.dataset.idx * LIMIT;
     const query = `?limit=${LIMIT}&offset=${offset}`;
-    console.log('확인 중', query);
+    // console.log('확인 중', query);
     fetch(`/product/mdrecommendation${query}`)
       .then(res => res.json())
       .then(res => this.setState({ product_list_by_category: res.product_list_by_category }));
   };
 
   render() {
-    const { listgoods, dailyspecial, product_list_by_category } = this.state;
+    const { listgoods, dailyspecial, product_list_by_category, scrollY } = this.state;
     return (
-      <div className="main">
+      <div className="main" onScroll={this.handleScroll}>
         <Nav />
         <Banner />
-        <Aside />
+        {scrollY > 250 && <Aside />}
         <div className="titRecommendGoods">이 상품 어때요?</div>
         <ListGoods listgoods={listgoods} />
         <DailySpecial dailyspecial={dailyspecial} />
