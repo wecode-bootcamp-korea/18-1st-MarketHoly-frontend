@@ -16,6 +16,7 @@ class Cart extends React.Component {
     address: '',
     count: 1,
     cartlist: [],
+    priceAdd: [],
   };
 
   componentDidMount() {
@@ -42,8 +43,8 @@ class Cart extends React.Component {
     });
   };
 
-  countTotalPrice = data => {
-    console.log(data);
+  countTotalPrice = (data, id) => {
+    console.log(data, id);
   };
 
   deleteCartItem = e => {

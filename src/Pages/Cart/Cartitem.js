@@ -11,13 +11,12 @@ export class Cartitem extends Component {
     };
   }
 
-  handleCnts = (num, e) => {
+  handleCnts = (num, e, id) => {
     const { count } = this.state;
 
     if (num === -1 && count === 1) return;
     this.setState({ count: count + num });
-    console.log(e);
-    this.props.countTotalPrice(e);
+    this.props.countTotalPrice(e * count, id);
   };
 
   render() {
@@ -38,7 +37,7 @@ export class Cartitem extends Component {
             <button
               className="subtract"
               name="subtract"
-              onClick={() => this.handleCnts(-1)}
+              onClick={() => this.handleCnts(-1, price, id)}
               value={price * this.state.count}
             >
               <GrSubtract />
@@ -47,7 +46,7 @@ export class Cartitem extends Component {
             <button
               className="add"
               name="add"
-              onClick={() => this.handleCnts(1)}
+              onClick={() => this.handleCnts(1, price, id)}
               value={price * this.state.count}
             >
               <RiAddFill />
