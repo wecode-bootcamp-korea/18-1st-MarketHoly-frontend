@@ -40,18 +40,20 @@
       .productImg {
         display: flex;
         align-items: center;
+        width: 60px;
+        margin-right: 20px;
+      }
 
-        img {
-          width: 60px;
-          height: 78px;
-          margin-right: 20px;
-        }
+      img {
+        width: 60px;
+        height: 78px;
       }
 
       .productName {
         display: flex;
         align-items: center;
-        width: 720px;
+        width: 740px;
+        margin-right: 20px;
         font-weight: bold;
         font-size: 16px;
         color: #000;
@@ -60,14 +62,17 @@
       .productCount {
         width: 100px;
         padding-top: 52px;
+        text-align: center;
+        font-size: 14px;
       }
 
       .productPrice {
-        width: 170px;
+        margin-left: auto;
+        width: 120px;
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
+        text-align: right;
 
         .price {
           line-height: 24px;
@@ -77,6 +82,7 @@
         .cost {
           font-size: 14px;
           line-height: 24px;
+          text-decoration: line-through;
           color: $subTextGray;
         }
       }
@@ -213,6 +219,11 @@
       text-align: center;
       font-size: 14px;
       color: $subTextGray;
+      letter-spacing: -0.3px;
+
+      p:last-child {
+        color: $mainText;
+      }
     }
   }
 }
