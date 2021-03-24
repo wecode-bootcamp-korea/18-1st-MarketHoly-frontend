@@ -6,7 +6,7 @@ export class Donereview extends Component {
     return (
       <>
         {this.props.reviewDone.map(e => (
-          <div className="doneReviewBox">
+          <div className="doneReviewBox" key={e.id}>
             <div className="doneItemname">{e.item}</div>
             <header className="doneHeader">
               <div className="doneTittle">{e.title} </div>

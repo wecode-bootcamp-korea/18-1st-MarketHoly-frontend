@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { AiOutlineRight } from 'react-icons/ai';
-import '../../styles/common.scss';
-import './Mypagearticle.scss';
 import Myiteminfo from './Myiteminfo';
 import Myalwayitem from './Myalwayitem';
 import Myreview from './Myreview';
 import Mydelivery from './Mydelivery';
+import '../../styles/common.scss';
+import './Mypagearticle.scss';
 
 export class Mypagearticle extends Component {
   constructor() {
@@ -46,14 +46,6 @@ export class Mypagearticle extends Component {
         });
       });
 
-    fetch('/data/review.json')
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          review: res,
-        });
-      });
-
     fetch('/data/reviewdone.json')
       .then(res => res.json())
       .then(res => {
@@ -71,24 +63,22 @@ export class Mypagearticle extends Component {
 
   removeWhishitem = e => {
     this.setState({
-      wishItem: this.state.wishItem.filter(item => e.target.value != item.id),
+      wishItem: this.state.wishItem.filter(item => e.target.value !== item.id),
     });
   };
 
   changecolor = e => {
+    const arr = this.state.color;
     let i;
-    console.log(this.state.color[e.target.value]);
-    this.setState({
-      color1: '',
-    });
+
     for (i = 1; i < this.state.color.length; i++) {
-      e.target.value != i
-        ? (this.state.color[i] = false)
-        : (this.state.color[e.target.value] = !this.state.color[
-            e.target.value
-          ]);
+      e.target.value !== i
+        ? (arr[i] = false)
+        : (arr[e.target.value] = !arr[e.target.value]);
     }
-    console.log(e.target.value);
+    this.setState({
+      color: arr,
+    });
   };
 
   render() {

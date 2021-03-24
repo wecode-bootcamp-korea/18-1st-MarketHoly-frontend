@@ -24,7 +24,7 @@ export class Myiteminfo extends Component {
               지난 3년간의 주문 내역 조회가 가능합니다.
             </div>
           </div>
-          <div className="select">{MyComponent()}</div>
+          <Select className="selectors" options={options} />
         </div>
         {this.props.item.map(e => {
           return (
