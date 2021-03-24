@@ -1,6 +1,6 @@
 @import './reset.scss';
 
-* { font-family : 'Noto Sans KR', sans-serif !important;}
+* { font-family : 'Noto Sans KR', sans-serif; }
 
 a {
   text-decoration: none;
@@ -33,10 +33,10 @@ input {
 $themePurple      : rgb(110, 26, 140);
 $themeLightPurple : #c080fb;
 
-$mainText         : #333;
-$subTextGray      : #999;
-$subTextLightGray : #ccc;
-$saleColor        : #fa622f;
+$mainText : #333;
+$subTextGray : #999;
+$subTextLightGray : #f3f3f3;
+$saleColor : #fa622f;
 
 $mainText: #333;
 $subTextGray: #999;

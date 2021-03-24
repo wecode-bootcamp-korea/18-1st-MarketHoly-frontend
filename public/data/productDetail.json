@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "subCategoryId": 2,
+  "imageUrl": "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+  "name": "[신규회원 이벤트] 심쿵하는 사진",
+  "description": "최고의 고앵님들의 사진첩 저장 심쿵사 주의",
+  "price": 117000,
+  "salesUnit": 1,
+  "amount": "3g5포x2케이스",
+  "content": "",
+  "origin": "국내산",
+  "storageMethod": "상온",
+  "expirationData": "농산물로 별도의 유통기한은 없으나 가급적 빨리 드시기 바랍니다.",
+  "uploadedAt": "",
+  "stock": "",
+  "discountRate": 0.6,
+  "allergy": [
+    "쇠고기",
+    "밀",
+    "우유",
+    "계란",
+    "갑각류",
+    "도라지",
+    "고앵이털"
+  ]
+}
