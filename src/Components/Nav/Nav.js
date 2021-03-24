@@ -23,7 +23,7 @@ class Nav extends React.Component {
   state = {
     search: '',
     allCategoriesHover: false,
-    hoverWidth: this.HOVER_WIDTH_TYPE1,
+    hoverWidth: HOVER_WIDTH_TYPE1,
     navbarList: [],
     displayShowIndex: 0,
     toggleSearchInput: false,
