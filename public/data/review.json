@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "유기농 애플망고",
+    "img": "https://img-cf.kurly.com/shop/data/goods/1517986736223l0.jpg",
+    "count": 12
+  },
+  {
+    "id": 2,
+    "name": "[라비퀸]매콤 까르보나라 떡볶이",
+    "img": "https://img-cf.kurly.com/shop/data/goods/155987122534l0.jpg",
+    "count": 67
+  },
+  {
+    "id": 3,
+    "name": "친환경 블루베리 4종",
+    "img": "https://img-cf.kurly.com/shop/data/goods/1616127577267l0.jpg",
+    "count": 8
+  }
+]

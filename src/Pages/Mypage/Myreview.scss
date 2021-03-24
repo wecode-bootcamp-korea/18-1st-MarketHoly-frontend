@@ -1,0 +1,119 @@
+@import './../../styles/common.scss';
+$reviewColor: #5f0080;
+
+.headerName {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    height: 36px;
+    margin-bottom: 30px;
+    line-height: 36px;
+    color: $mainText;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    font-size: 14px;
+    color: $subTextGray;
+    line-height: 22px;
+  }
+
+  .strong {
+    font-weight: 600;
+  }
+}
+
+.reviewBox {
+  display: flex;
+  width: 820px;
+  height: 50px;
+  margin-top: 20px;
+
+  .noneReview {
+    display: block;
+    width: 410px;
+    height: 100%;
+    border: 1px solid #dddfe1;
+    border-right: 0px solid #dddfe1;
+    color: #666;
+    line-height: 44px;
+    text-align: center;
+    font-size: 14px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .noneReview:hover {
+    border-bottom: 2px solid $reviewColor;
+    color: $reviewColor;
+    font-weight: 700;
+  }
+
+  .doneReview:hover {
+    border-bottom: 2px solid $reviewColor;
+    color: $reviewColor;
+    font-weight: 700;
+  }
+
+  .doneReview {
+    display: block;
+    overflow: hidden;
+    width: 410px;
+    height: 100%;
+    border: 1px solid #dddfe1;
+    font-size: 14px;
+    color: #666;
+    line-height: 44px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+.reviewItem {
+  display: flex;
+  justify-content: space-between;
+  width: 820px;
+  height: 140px;
+  padding: 8px 15px;
+  margin-top: 10px;
+  border: 1px solid #dddfe1;
+
+  .reviewItemLeft {
+    display: flex;
+
+    img {
+      width: 90px;
+      height: 116px;
+    }
+
+    .reviewItemName {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 30px 15px;
+
+      .strong {
+        font-weight: 600;
+      }
+
+      .small {
+        color: #666;
+        font-size: 12px;
+      }
+    }
+  }
+  .reviewWrite {
+    width: 90px;
+    height: 30px;
+    margin: 50px 20px;
+    padding-top: 9px;
+    color: white;
+    background-color: $reviewColor;
+    text-align: center;
+    font-size: 13px;
+    cursor: pointer;
+  }
+}

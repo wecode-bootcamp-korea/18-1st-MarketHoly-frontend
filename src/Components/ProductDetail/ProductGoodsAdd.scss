@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&display=swap');
+@import '../../styles/common.scss';
+
+.goodsAddProduct {
+   width       : 1050px;
+   height      : 400px;
+   font-family : 'Gothic A1', sans-serif;
+   font-weight : 500;
+   .goodsAddTitle {
+      font-size   : 18px;
+      font-weight : 700;
+      &:before {
+         width            : 20px;
+         height           : 5px;
+         background-color : #000;
+         display          : block;
+         content          : '';
+      }
+   }
+   .goodsAddProductWrapper {
+      position   : relative;
+      display    : flex;
+      width      : 1050px;
+      height     : 320px;
+      margin-top : 20px;
+      .arrowCommonBox {
+         position    : absolute;
+         display     : flex;
+         align-items : center;
+         width       : 30px;
+         height      : 320px;
+         cursor      : pointer;
+         z-index     : 300;
+      }
+      .arrowLeftBox {
+         left : 0;
+      }
+      .arrowRightBox {
+         right : 0;
+      }
+      .arrowIcon {
+         font-size      : 28px;
+         pointer-events : none;
+      }
+      .goodsAddProductListWrapper {
+         position : relative;
+         width    : 940px;
+         margin   : 0 auto;
+         overflow : hidden;
+         .goodsAddProductList {
+            position   : absolute;
+            display    : flex;
+            transition : 0.6s all;
+            .goodsAddProductItem {
+               width        : 179px;
+               height       : 320px;
+               margin-right : 9px;
+               border       : 1px solid #ddd;
+               .goodsAddProductItemFigure {
+                  height : 230px;
+                  a {
+                     .goodsAddProductItemImage {
+                        width      : 100%;
+                        height     : 100%;
+                        object-fit : fill;
+                     }
+                  }
+               }
+               .goodsAddProductItemContent {
+                  font-size : 14px;
+                  .goodsAddProductItemContentWrapper {
+                     padding : 10px;
+                     .goodsAddProductItemName {
+                        height      : 35px;
+                        line-height : 18px;
+                     }
+                  }
+               }
+            }
+
+         }
+      }
+   }
+}

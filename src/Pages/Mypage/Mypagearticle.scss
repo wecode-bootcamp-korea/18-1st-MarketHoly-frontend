@@ -1,0 +1,113 @@
+@import '../../styles/common.scss';
+
+.myArticle {
+  position: relative;
+  top: 200px;
+  width: 100%;
+  padding-top: 40px;
+
+  .article {
+    display: flex;
+    justify-content: space-between;
+    width: 1050px;
+    margin: 0 auto;
+
+    .navBar {
+      display: flex;
+      flex-direction: column;
+
+      .myHoly {
+        width: 200px;
+        height: 75px;
+        padding: 8px 0 33px 1px;
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        width: 198px;
+        height: 50px;
+        padding: 18px 20px 15px 20px;
+        color: #666;
+        border: 0.7px solid rgb(240, 240, 240);
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      li:hover {
+        color: #5f0080;
+        background-color: rgb(250, 250, 250);
+      }
+    }
+    .pageSection {
+      width: 820px;
+
+      .sectionHeader {
+        display: flex;
+        justify-content: space-between;
+        width: 820px;
+        height: 74px;
+        align-items: center;
+        padding-bottom: 33px;
+        // margin-top: 23px;
+        padding-top: 5px;
+        border-bottom: 2px solid black;
+
+        .headerName {
+          display: flex;
+          flex-direction: row;
+          padding-top: 30px;
+
+          h1 {
+            font-size: 24px;
+            font-weight: 600;
+          }
+
+          .headerInfo {
+            padding-left: 11px;
+            padding-top: 8px;
+            color: #999;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: -0.3px;
+            vertical-align: 3px;
+          }
+        }
+
+        .select {
+          width: 157px;
+          height: 40px;
+          padding: 0 0 0 15px;
+          color: #666;
+          font-size: 14px;
+          line-height: 18px;
+          outline: 0;
+        }
+      }
+    }
+  }
+}
+
+.notOder {
+  width: 820px;
+  height: 64px;
+  margin-top: 50px;
+  border-bottom: 1px solid gray;
+  color: #757575;
+  text-align: center;
+  font-size: 14px;
+}
+
+.clickChange {
+  background-color: rgb(250, 250, 250);
+  div {
+    color: #5f0080;
+  }
+}
+
+.false {
+  background-color: white;
+}

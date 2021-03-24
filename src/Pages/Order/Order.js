@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Nav from '../../Components/Nav/Nav';
+import Footer from '../../Components/Footer/Footer';
 import './Order.scss';
 
 class Order extends Component {
@@ -58,6 +60,7 @@ class Order extends Component {
     const { product, user, address, payment } = this.state;
     return (
       <>
+        <Nav />
         <div className="orderContainer">
           <h2>주문서</h2>
           <div className="userForm">
@@ -182,6 +185,7 @@ class Order extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </>
     );
   }
