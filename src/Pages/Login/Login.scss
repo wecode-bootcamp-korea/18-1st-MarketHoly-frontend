@@ -23,11 +23,10 @@
     border: solid 1px $subTextLightGray;
     border-radius: 3px;
     font-size: 14px;
-  }
 
-  .idField::placeholder,
-  .pwField::placeholder {
-    color: $subTextLightGray;
+    &::placeholder {
+      color: $subTextLightGray;
+    }
   }
 
   .pwField {

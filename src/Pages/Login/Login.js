@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Nav from '../../Components/Nav/Nav';
 import Footer from '../../Components/Footer/Footer';
 import './Login.scss';
 
@@ -24,6 +25,7 @@ class Login extends Component {
     if (idCheck.test(this.state.email) && this.state.password.length >= 10) {
       const summonerUrl = `user/login`;
       fetch(summonerUrl, {
+        //fetch url -> config.json으로 분리 필요
         method: 'POST',
         body: JSON.stringify({
           email: this.state.email,
@@ -31,11 +33,12 @@ class Login extends Component {
         }),
       })
         .then(res => res.json())
-        .then(res => {
-          console.log(res);
-          if (parseInt(res.status) === 200) {
+        .then(result => {
+          console.log(result);
+          if (result.message === 'SUCCESS') {
+            localStorage.setItem('token', result.access_token);
             alert('로그인 완료');
-            this.props.history.push('../Main');
+            this.props.history.push('/');
           } else {
             alert('로그인 실패');
           }
@@ -48,6 +51,7 @@ class Login extends Component {
   render() {
     return (
       <>
+        <Nav />
         <div className="loginForm">
           <h3>로그인</h3>
           <form>
@@ -58,7 +62,7 @@ class Login extends Component {
                 <input className="securityConnect" type="checkbox" />
                 보안접속
               </label>
-              <div className="findLogin">
+              {/* <div className="findLogin">
                 <a href="/#" className="findId">
                   아이디 찾기
                 </a>
@@ -66,7 +70,7 @@ class Login extends Component {
                 <a href="/#" className="findPwd">
                   비밀번호 찾기
                 </a>
-              </div>
+              </div> */}
             </div>
             <button type="submit" className="loginBtn" onClick={this.loginSubmit}>
               로그인
@@ -74,7 +78,7 @@ class Login extends Component {
             <button className="joinBtn">회원가입 </button>
           </form>
         </div>
-        <Footer />;
+        <Footer />
       </>
     );
   }

@@ -2,8 +2,9 @@
 
 .navbar {
    @extend %flex-column-center;
-   min-width : 1050px;
-   height    : 156px;
+   min-width        : 1050px;
+   height           : 156px;
+   background-color : white;
    .user-menu {
       display         : flex;
       justify-content : space-between;
@@ -25,6 +26,71 @@
          }
          .login-link {
             color : $mainText;
+         }
+      }
+
+      .userLoginMenu {
+         position        : relative;
+         display         : flex;
+         justify-content : flex-end;
+         align-items     : center;
+         width           : 130px;
+         font-size       : 13px;
+         .use {
+            display     : flex;
+            height      : 37px;
+            align-items : center;
+            color       : #242424;
+            &:after {
+               content          : "";
+               float            : right;
+               width            : 1px;
+               height           : 13px;
+               margin-left      : 8px;
+               background-color : #d8d8d8;
+            }
+            .ico_grade {
+               display          : inline-block;
+               width            : 40px;
+               padding          : 2px 0;
+               margin-right     : 5px;
+               margin-top       : -2px;
+               text-align       : center;
+               border           : 1px solid #949296;
+               border-radius    : 20px;
+               background-color : #fff;
+               color            : #949296;
+               font-size        : 10px;
+            }
+            .txt {
+               display     : flex;
+               align-items : center;
+               height      : 100%;
+               .name {
+                  margin-right : 2px;
+               }
+            }
+         }
+         .sub {
+            position         : absolute;
+            top              : 30px;
+            left             : 18px;
+            display          : none;
+            flex-direction   : column;
+            justify-content  : center;
+            width            : 100px;
+            padding          : 5px 10px;
+            background-color : white;
+            border           : 1px solid #949296;
+            z-index          : 600;
+            li {
+               display     : flex;
+               align-items : center;
+               height      : 24px;
+               a {
+                  color : #454545;
+               }
+            }
          }
       }
    }
@@ -149,15 +215,25 @@
          }
       }
       .menu-hover-box {
-         position   : absolute;
-         display    : none;
-         width      : 220px;
-         height     : 600px;
-         border     : 1px solid #efefef;
-         overflow   : hidden;
-         transition : 0.2s all;
+         position         : absolute;
+         display          : none;
+         width            : 220px;
+         height           : 600px;
+         border           : 1px solid #efefef;
+         overflow         : hidden;
+         transition       : 0.2s all;
+         background-color : white;
+         z-index          : 300;
       }
    }
+}
+
+.navbarFixed {
+   position  : fixed;
+   top       : -105px;
+   left      : 50%;
+   transform : translateX(-50%);
+   z-index   : 999;
 }
 
 .hover-on {

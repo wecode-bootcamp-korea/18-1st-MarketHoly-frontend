@@ -38,6 +38,9 @@ class Main extends Component {
         this.setState({
           dailyspecial: res,
         });
+      })
+      .then(res => {
+        this.handleCategory(1);
       });
   }
 
@@ -48,8 +51,8 @@ class Main extends Component {
   };
 
   // MD 추천
-  handleCategory = e => {
-    const offset = e.target.dataset.idx * LIMIT;
+  handleCategory = id => {
+    const offset = id * LIMIT;
     const query = `?limit=${LIMIT}&offset=${offset}`;
     // console.log('확인 중', query);
     fetch(`/product/mdrecommendation${query}`)
@@ -79,4 +82,5 @@ class Main extends Component {
     );
   }
 }
+
 export default Main;

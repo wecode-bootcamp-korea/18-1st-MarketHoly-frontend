@@ -1,0 +1,60 @@
+@import '../../styles/common.scss';
+
+.goodsViewInfomationContent {
+   width     : 1050px;
+   margin    : 0 auto;
+   font-size : 15px;
+   .numberBox {
+      width : 10%;
+   }
+   .titleBox {
+      width : 50%;
+   }
+   .writerBox {
+      width : 10%;
+   }
+   .dataCreatedBox {
+      width : 15%;
+   }
+   .helpCountBox {
+      width : 5%;
+   }
+   .lookupBox {
+      width : 10%;
+   }
+   .numberBox, .titleBox, .writerBox, .dataCreatedBox, .helpCountBox, .lookupBox {
+      display         : flex;
+      justify-content : center;
+   }
+   .reviewBox {
+      display        : flex;
+      flex-direction : column;
+      .reviewTitleMainNameBox {
+         display        : flex;
+         flex-direction : column;
+         .reviewTitle {
+            font-size   : 15px;
+            font-weight : 700;
+         }
+         .reviewText {
+            font-size : 13px;
+         }
+      }
+      .reviewContentBox {
+         width      : 1050px;
+         margin-top : 30px;
+         border-top : 2px solid $themePurple;
+         .reviewContentTitleBox {
+            display       : flex;
+            align-items   : center;
+            height        : 70px;
+            border-bottom : 1px solid #e3e3e3;
+         }
+         .reviewListBox {
+            display         : flex;
+            flex-direction  : column;
+            justify-content : center;
+         }
+      }
+   }
+}
