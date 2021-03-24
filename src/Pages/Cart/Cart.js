@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DaumPostcode from 'react-daum-postcode';
 import Cartitem from './Cartitem';
-import './Cart.scss';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { VscKebabVertical } from 'react-icons/vsc';
 import { GrLocation } from 'react-icons/gr';
 import { BiSearch } from 'react-icons/bi';
-import { RiAddFill } from 'react-icons/ri';
-import { GrSubtract } from 'react-icons/gr';
-import { fireEvent } from '@testing-library/react';
+import './Cart.scss';
 
 class Cart extends React.Component {
   state = {
@@ -16,7 +14,12 @@ class Cart extends React.Component {
     address: '',
     count: 1,
     cartlist: [],
-    priceAdd: [],
+    priceAdd: [0, 0, 0, 0, 0, 0, 0, 0],
+    priceSum: 0,
+    fullAddress: '',
+    isDaumPost: false,
+    isRegister: false,
+    register: [],
   };
 
   componentDidMount() {
@@ -44,22 +47,77 @@ class Cart extends React.Component {
   };
 
   countTotalPrice = (data, id) => {
-    console.log(data, id);
+    let arr = this.state.priceAdd;
+
+    arr[id] = data;
+    this.setState({
+      priceAdd: [...arr],
+    });
+    let sum = this.state.priceAdd.reduce((sum, num) => {
+      return sum + num;
+    }, 0);
+    console.log(sum);
+    this.setState({
+      priceSum: sum,
+    });
   };
 
   deleteCartItem = e => {
-    console.log(e.target);
+    console.log(e.target.value);
     this.setState({
-      cartlist: this.state.cartlist.filter(e => e.id != e.target.value),
+      cartlist: this.state.cartlist.filter(item => item.id != e.target.value),
+    });
+  };
+  handleOpenPost = () => {
+    this.setState({
+      isDaumPost: true,
+    });
+  };
+
+  handleAddress = data => {
+    let AllAddress = data.address;
+    let extraAddress = '';
+    let zoneCodes = data.zonecode;
+    if (data.addressType === 'R') {
+      if (data.bname !== '') {
+        extraAddress += data.bname;
+      }
+      if (data.buildingName !== '') {
+        extraAddress +=
+          extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+      }
+      AllAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+    }
+    this.setState({
+      fullAddress: AllAddress,
+      zoneCode: zoneCodes,
+      isDaumPost: false,
     });
   };
 
   render() {
     const pricearr = [];
+    let a = 0;
     for (let i = 0; i < this.state.cartlist.length; i++)
       pricearr[i] = this.state.cartlist[i].price;
     let totalprice = pricearr.reduce((acc, cur) => acc + cur, 0);
 
+    this.state.cartlist.map(e => (a = a + e.price));
+
+    const { isModalShow, isModalClose } = this.props;
+    const { isDaumPost } = this.state;
+    const width = 595;
+    const height = 450;
+    const modalStyle = {
+      position: 'fixed',
+      top: '10%',
+      left: '10%',
+      zIndex: '100',
+      border: '1px solid #000000',
+      overflow: 'hidden',
+    };
+
+    console.log(this.state.fullAddress);
     return (
       <div className="cart">
         <div className="title">장바구니</div>
@@ -85,6 +143,7 @@ class Cart extends React.Component {
                   price={e.price}
                   img={e.img}
                   discount_rate={e.discount_rate}
+                  priceAdd={this.priceAdd}
                 />
               ))
             ) : (
@@ -106,26 +165,40 @@ class Cart extends React.Component {
             <div className="delivery">
               <GrLocation className="icon" />
               <span className="tit">배송지</span>
-              <div className="text">
-                <span className="purpleText">배송지를 입력</span>하고
-                <br />
-                배송유형을 확인해 보세요!
-              </div>
+              {this.state.fullAddress == '' ? (
+                <div className="text">
+                  <span className="purpleText">배송지를 입력</span>하고
+                  <br />
+                  배송유형을 확인해 보세요!
+                </div>
+              ) : (
+                <div className="addressColor">{this.state.fullAddress}</div>
+              )}
               <div className="address">
                 <BiSearch className="icon" />
-                <Link to="/searchAddress" className="tit" target="_blank">
+                <div className="tit" onClick={this.handleOpenPost}>
                   주소 검색
-                </Link>
+                </div>
               </div>
             </div>
+            {isDaumPost ? (
+              <DaumPostcode
+                onComplete={this.handleAddress}
+                autoClose
+                width={width}
+                height={height}
+                style={modalStyle}
+                isDaumPost={isDaumPost}
+              />
+            ) : null}
             <div className="amountView">
               <div className="amount">
                 <span className="tit">상품금액</span>
-                <span className="price">{totalprice}원</span>
+                <span className="price">{a + this.state.priceSum}원</span>
               </div>
               <div className="amount">
                 <span className="tit">상품할인금액</span>
-                <span className="price">원</span>
+                <span className="price">0원</span>
               </div>
               <div className="amount">
                 <span className="tit">배송비</span>
@@ -134,7 +207,7 @@ class Cart extends React.Component {
               <div className="line" />
               <div className="amount">
                 <span className="tit">결제예정금액</span>
-                <span className="price">원</span>
+                <span className="price">{a + this.state.priceSum}원</span>
               </div>
             </div>
             {this.state.cartlist.length === 0 ? (
