@@ -22,10 +22,7 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
-    // fetch('/data/productDetail.json')
-    console.log(this.props.match.params.id);
-    // fetch(`/product/detail?id=${this.props.match.params.id}`)
-    fetch(`/product/detail?id=${this.props.match.params.id}`)
+    fetch(`/product/detail/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         console.log(res);
@@ -59,7 +56,11 @@ class ProductDetail extends React.Component {
     if ((productInfo.price - productInfo.price * productInfo.discount_rate) * productCount === 0) alert('1개 이상 선택 해주세요!');
     else {
       // 카트로 보낼때 값
-      console.log((productInfo.price - productInfo.price * productInfo.discount_rate) * productCount);
+      // const sumPrice = (productInfo.price - productInfo.price * productInfo.discount_rate) * productCount;
+      const cart_id = productInfo.id;
+      const quantity = productCount;
+      console.log(cart_id);
+      console.log(quantity);
     }
   };
 
@@ -118,7 +119,7 @@ class ProductDetail extends React.Component {
                     {productInfo.discount_rate && productInfo.dscount_rate !== 0 && <span className="detailInfoPriceSale">{productInfo.discount_rate * 100}%</span>}
                   </div>
                   <div className="detailInfoOriginalPrice">
-                    {productInfo.discount_rate !== 0 && (
+                    {productInfo.discount_rate !== null && (
                       <>
                         <div className="price">{productInfo.price && Math.floor(productInfo.price).toLocaleString('KO-kr')}</div>
                       </>

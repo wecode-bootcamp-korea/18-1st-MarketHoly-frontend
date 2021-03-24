@@ -15,19 +15,35 @@ export class Productlist extends Component {
     };
   }
 
-  componentDidMount() {
-    const product = `product/categorylistdetail/1`;
-    // fetch('/data/products.json')
-    fetch(product)
-      // fetch(product)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          product_list: res.product_list,
-          // product_list: res,
-        });
-      });
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.id !== prevProps.match.params.id) this.fetchList();
   }
+
+  componentDidMount() {
+    this.fetchList();
+  }
+
+  fetchList = () => {
+    const subCategoryId = this.props.match.params.id;
+    if (this.props.location.state.checkCategory === 'main') {
+      fetch(`/product?category=${subCategoryId}`)
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            product_list: res.product_list,
+          });
+        });
+    }
+    if (this.props.location.state.checkCategory === 'sub') {
+      fetch(`/product?sub-category=${subCategoryId}`)
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            product_list: res.product_list,
+          });
+        });
+    }
+  };
 
   addComma = num => {
     return num.toLocaleString('en');
@@ -55,7 +71,7 @@ export class Productlist extends Component {
   };
 
   handleMoveDetail = itemId => {
-    this.props.history.push(`/detail/${itemId}`);
+    this.props.history.push(`/product/detail/${itemId}`);
   };
 
   render() {
@@ -66,13 +82,13 @@ export class Productlist extends Component {
             <ul className="list">
               {this.state.product_list &&
                 this.state.product_list.map(item => {
-                  console.log(item);
+                  // console.log(item);
                   let rate = 1 - item.discount_rate;
                   return (
-                    <li key={item.id}>
+                    <li key={item.product_id}>
                       <div className="imgCouponBox">
                         <div className="imgHover">
-                          <img src={item.image} alt={item.name} onClick={() => this.handleMoveDetail(item.id)} />
+                          <img src={item.image_url} alt={item.name} onClick={() => this.handleMoveDetail(item.product_id)} />
                         </div>
                         <span className={item.isCoupon ? 'itemCoupon' : 'off'}>20%농할쿠폰</span>
                         <button className="FiShoppingCart" onClick={() => this.handleBasketModal(item)} value={item}>

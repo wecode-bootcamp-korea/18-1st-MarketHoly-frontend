@@ -34,14 +34,12 @@ class Nav extends React.Component {
 
   componentDidMount() {
     // fetch('/data/productNavbar.json', {})
-    const categoryUrl = `product/category`;
-    fetch(categoryUrl, {})
+    // const categoryUrl = `product/category`;
+    fetch('/product/category', {})
       .then(res => res.json())
       .then(res => {
-        console.log(res.result);
         this.setState({ navbarList: res.result });
       });
-
     window.addEventListener('scroll', this.onScrollGet);
   }
 
@@ -175,7 +173,7 @@ class Nav extends React.Component {
           )}
         </div>
         <div className="navbar-logo">
-          <Link to="/productcategory" className="logo-link">
+          <Link to="/" className="logo-link">
             <img src="/images/navlogo.png" alt="마켓홀리 로고" />
           </Link>
         </div>
