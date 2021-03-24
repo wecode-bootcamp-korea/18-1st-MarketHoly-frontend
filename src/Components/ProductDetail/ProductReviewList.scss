@@ -1,0 +1,57 @@
+@import '../../styles/common.scss';
+
+.reviewListContent {
+   .reviewTitleBox {
+      display         : flex;
+      flex-direction  : row;
+      justify-content : center;
+      align-items     : center;
+      width           : 1050px;
+      height          : 70px;
+      border-bottom   : 1px solid #e3e3e3;
+      cursor          : pointer;
+      &:hover {
+         background-color : #f3f3f3;
+      }
+      .titleName {
+         display : block;
+         span {
+            height  : auto;
+            padding : 22px 3px 23px;
+         }
+      }
+   }
+   .reviewContentMainBox {
+      display       : none;
+      width         : 1050px;
+      padding       : 10px;
+      border-bottom : 1px solid #e3e3e3;
+      font-size     : 15px;
+      .reviewContentHeaderText {
+         padding : 20px;
+         h3 {
+            padding-bottom : 15px;
+            font-weight    : 700;
+         }
+         p {
+            line-height : 1.2;
+         }
+      }
+      .reviewContentBtnBox {
+         display    : block;
+         transition : 1s all;
+         button {
+            float            : right;
+            height           : 36px;
+            padding          : 0px 15px;
+            border           : 1px solid $themePurple;
+            color            : $themePurple;
+            background-color : white;
+         }
+      }
+   }
+   .showReviewMainContent {
+      display        : flex;
+      flex-direction : column;
+   }
+}
