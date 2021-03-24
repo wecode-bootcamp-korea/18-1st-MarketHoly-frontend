@@ -72,9 +72,13 @@ export class Mypagearticle extends Component {
     let i;
 
     for (i = 1; i < this.state.color.length; i++) {
+<<<<<<< HEAD
       e.target.value !== i
         ? (arr[i] = false)
         : (arr[e.target.value] = !arr[e.target.value]);
+=======
+      e.target.value !== i ? (arr[i] = false) : (arr[e.target.value] = !arr[e.target.value]);
+>>>>>>> 8d5175f750bd3d00234d482fbd029072eb20f140
     }
     this.setState({
       color: arr,
@@ -92,11 +96,15 @@ export class Mypagearticle extends Component {
               </div>
               <ul>
                 <Link to="/">
+<<<<<<< HEAD
                   <li
                     className={this.state.color[1] ? 'clickChange' : false}
                     onClick={this.changecolor}
                     value="1"
                   >
+=======
+                  <li className={this.state.color[1] ? 'clickChange' : false} onClick={this.changecolor} value="1">
+>>>>>>> 8d5175f750bd3d00234d482fbd029072eb20f140
                     <div>주문 내역</div>
                     <div>
                       <AiOutlineRight />
@@ -104,11 +112,15 @@ export class Mypagearticle extends Component {
                   </li>
                 </Link>
                 <Link to="/Myalwayitem">
+<<<<<<< HEAD
                   <li
                     className={this.state.color[2] ? 'clickChange' : false}
                     onClick={this.changecolor}
                     value="2"
                   >
+=======
+                  <li className={this.state.color[2] ? 'clickChange' : false} onClick={this.changecolor} value="2">
+>>>>>>> 8d5175f750bd3d00234d482fbd029072eb20f140
                     <div>늘 사는 것</div>
                     <div>
                       <AiOutlineRight />
@@ -116,11 +128,15 @@ export class Mypagearticle extends Component {
                   </li>
                 </Link>
                 <Link to="/Mydelivery">
+<<<<<<< HEAD
                   <li
                     className={this.state.color[3] ? 'clickChange' : false}
                     onClick={this.changecolor}
                     value="3"
                   >
+=======
+                  <li className={this.state.color[3] ? 'clickChange' : false} onClick={this.changecolor} value="3">
+>>>>>>> 8d5175f750bd3d00234d482fbd029072eb20f140
                     <div>배송지 관리</div>
                     <div>
                       <AiOutlineRight />
@@ -128,11 +144,15 @@ export class Mypagearticle extends Component {
                   </li>
                 </Link>
                 <Link to="/Myreview">
+<<<<<<< HEAD
                   <li
                     className={this.state.color[4] ? 'clickChange' : false}
                     onClick={this.changecolor}
                     value="4"
                   >
+=======
+                  <li className={this.state.color[4] ? 'clickChange' : false} onClick={this.changecolor} value="4">
+>>>>>>> 8d5175f750bd3d00234d482fbd029072eb20f140
                     <div>
                       <div>상품 후기</div>
                     </div>
@@ -155,6 +175,7 @@ export class Mypagearticle extends Component {
             </nav>
             <section className="pageSection">
               <Switch>
+<<<<<<< HEAD
                 <Route
                   exact
                   path="/"
@@ -182,6 +203,12 @@ export class Mypagearticle extends Component {
                     />
                   )}
                 />
+=======
+                <Route exact path="/" render={() => <Myiteminfo item={this.state.item} />} />
+                <Route exact path="/Myalwayitem" render={() => <Myalwayitem wishItem={this.state.wishItem} removeWhish={this.removeWhish} removeWhishitem={this.removeWhishitem} />} />
+                <Route exact path="/Mydelivery" render={() => <Mydelivery />} />
+                <Route exact path="/Myreview" render={() => <Myreview review={this.state.review} reviewDone={this.state.reviewDone} />} />
+>>>>>>> 8d5175f750bd3d00234d482fbd029072eb20f140
               </Switch>
             </section>
           </div>

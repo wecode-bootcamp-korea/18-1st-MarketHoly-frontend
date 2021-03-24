@@ -1,0 +1,78 @@
+.doneReviewBox {
+  width: 820px;
+  height: 200px;
+  margin-top: 10px;
+  border-bottom: 1px solid #666;
+
+  .doneItemname {
+    width: 820px;
+    height: 60px;
+    padding: 20px 20px;
+    border-bottom: 1px solid #dddfe1;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.doneHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  width: 820px;
+  height: 40px;
+  padding: 10px 0px;
+
+  .doneTittle {
+    margin-left: 20px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .doneDate {
+    margin-right: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+  }
+}
+
+.doneComment {
+  width: 820px;
+  margin-top: 10px;
+  padding: 5px 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.doneButton {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+  bottom: 8px;
+  width: 820px;
+
+  .doneDelete {
+    width: 100px;
+    height: 40px;
+    color: #5f0080;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 12px;
+    cursor: pointer;
+  }
+
+  .doneChange {
+    width: 70px;
+    height: 40px;
+    padding-top: 12px;
+    margin-left: 30px;
+    color: #5f0080;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .doneChange:hover,
+  .doneDelete:hover {
+    border: 2px solid #5f0080;
+  }
+}

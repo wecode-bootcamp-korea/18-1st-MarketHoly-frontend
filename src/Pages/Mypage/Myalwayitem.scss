@@ -1,0 +1,124 @@
+@import '../../styles/common.scss';
+
+.headAlwayitem {
+  display: flex;
+  justify-content: space-between;
+  height: 61px;
+  padding: 14px 20px 14px 0px;
+  border-bottom: 1px solid black;
+  color: #333;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.5px;
+  line-height: 36px;
+
+  input {
+    width: 17px;
+    height: 17px;
+    margin-top: 7px;
+    outline-style: 1px solid rgb(217, 217, 217);
+  }
+
+  .headcenter {
+    position: relative;
+    left: 20px;
+  }
+
+  .headAlwayright {
+    margin-right: 40px;
+  }
+}
+
+.wishButtonbox {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 50px 10px 0px 0px;
+  width: 820px;
+
+  .wishButton {
+    width: 150px;
+    height: 42px;
+    border: 1px solid #5f0080;
+    background-color: #fff;
+    color: #5f0080;
+    font-size: 13px;
+    overflow: hidden;
+    line-height: 40px;
+    text-align: center;
+  }
+}
+
+.wishItem {
+  display: flex;
+  height: 158px;
+  border-bottom: 1px solid rgb(162, 162, 162);
+
+  .wishItemButton {
+    width: 40px;
+
+    input {
+      width: 17px;
+      height: 17px;
+      margin-top: 69px;
+      outline-style: 1px solid rgb(217, 217, 217);
+    }
+  }
+
+  .wishItemimg {
+    width: 150px;
+    padding: 20px 0 19px;
+
+    img {
+      width: 90px;
+      height: 116px;
+    }
+  }
+
+  .wishIteminfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 465px;
+
+    .wishItemname {
+      padding-bottom: 23px;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .wishItemprice {
+      color: rgb(182, 182, 182);
+      font-size: 13px;
+      font-weight: 400;
+    }
+  }
+
+  .wishItemOption {
+    padding: 40px 0px;
+    width: 165px;
+
+    button {
+      display: block;
+      float: none;
+      width: 100px;
+      height: 29px;
+      margin: 0 auto;
+      line-height: 27px;
+      border: 1px solid #5f0080;
+      background-color: #795b8f;
+      color: #fff;
+    }
+
+    .wishBasket {
+      margin-bottom: 5px;
+    }
+
+    .wishDelete {
+      padding-bottom: 20px;
+      color: #795b8f;
+      background-color: white;
+      font-size: 13px;
+      font-weight: 500;
+    }
+  }
+}

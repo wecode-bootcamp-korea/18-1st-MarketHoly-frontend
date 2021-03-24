@@ -1,0 +1,68 @@
+$borderLine: #ddd;
+
+.sectionOne {
+  width: 80px;
+  border: 1px solid $borderLine;
+  margin-bottom: 10px;
+
+  .list {
+    display: block;
+    height: 35px;
+    padding-top: 11px;
+    border-top: 1px solid $borderLine;
+    font-size: 13px;
+    text-align: center;
+  }
+}
+
+.sectionTwo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 250px;
+  border: 1px solid $borderLine;
+
+  .recentItem {
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  button {
+    background-color: white;
+    border: 1px solid white;
+    margin-left: 25px;
+  }
+
+  .underButton {
+    margin-left: 1px;
+  }
+
+  img {
+    width: 60px;
+    height: 70px;
+    margin: 10px 10px 0px 10px;
+  }
+}
+
+.scroll {
+  position: absolute;
+  right: 20px;
+  height: 400px;
+  color: #333;
+  z-index: 100;
+  transition-duration: 0.3s;
+}
+
+.slider {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+}
+
+@media (max-width: 1300px) {
+   .scroll {
+      display: none;
+   }
+}

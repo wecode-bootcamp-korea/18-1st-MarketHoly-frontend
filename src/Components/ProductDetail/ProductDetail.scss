@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Open+Sans:wght@400;600&display=swap');
+@import '../../styles/common.scss';
+
+.detailContainer {
+   display        : flex;
+   flex-direction : column;
+   margin         : 0 auto;
+   width          : 1050px;
+   line-height    : 1.5;
+   .paddingCommonBox {
+      padding : 18px 0;
+   }
+   .widthCommonBox {
+      display : inline-block;
+      width   : 150px;
+   }
+   .detailMain {
+      width         : 1050px;
+      padding-top   : 15px;
+      margin-bottom : 40px;
+      font-size     : 15px;
+      .detailHeader {
+         display : flex;
+         .detailImgSection {
+            width        : 430px;
+            height       : 550px;
+            margin-right : 55px;
+            img {
+               width      : 430px;
+               height     : 550px;
+               object-fit : fill;
+            }
+         }
+         .detailInfoSection {
+            width       : 560px;
+            padding-top : 15px;
+            .detailInfoHeader {
+               position : relative;
+               display  : flex;
+               width    : 560px;
+               .infoName {
+                  width       : 500px;
+                  font-size   : 26px;
+                  font-weight : 700;
+               }
+               .btnShare {
+                  position         : relative;
+                  display          : flex;
+                  align-items      : center;
+                  justify-content  : center;
+                  width            : 40px;
+                  height           : 40px;
+                  padding          : 0;
+                  background-color : rgba(0, 0, 0, 0);
+                  border           : 1px solid lightgray;
+                  border-radius    : 50%;
+                  .btnShareIcon {
+                     position : absolute;
+                     left     : 5px;
+                     width    : 25px;
+                     height   : 25px;
+                     cursor   : pointer;
+                     z-index  : 300;
+                  }
+                  .layerShare {
+                     position           : absolute;
+                     top                : 46px;
+                     left               : -180px;
+                     display            : flex;
+                     flex-direction     : column;
+                     justify-content    : center;
+                     align-items        : center;
+                     width              : 240px;
+                     height             : 165px;
+                     pointer-events     : none;
+                     border-radius      : 10px;
+                     -webkit-box-shadow : 0px 2px 22px -1px rgba(212, 212, 212, 1);
+                     -moz-box-shadow    : 0px 2px 22px -1px rgba(212, 212, 212, 1);
+                     box-shadow         : 0px 2px 22px -1px rgba(212, 212, 212, 1);
+                     .layerShareBox {
+                        display       : flex;
+                        margin-bottom : 20px;
+                        .twiterBox, .fabookBox {
+                           display     : flex;
+                           align-items : center;
+                           width       : 100px;
+                           height      : 30px;
+                           margin      : 10px;
+                        }
+                        .fabookBox {
+                           justify-content : flex-end;
+                        }
+                        .shareTwiterIcon, .shareFabookIcon {
+                           font-size      : 42px;
+                           cursor         : pointer;
+                           pointer-events : fill;
+                        }
+                        .twiterText, .fabookText {
+                           cursor         : pointer;
+                           color          : $mainText;
+                           pointer-events : fill;
+                           &:hover {
+                              text-decoration : underline;
+                           }
+                        }
+                        .shareTwiterIcon {
+                           color : #1999dd;
+                        }
+                        .shareFabookIcon {
+                           color : #0048a7;
+                        }
+                     }
+                     .shareUrlBox {
+                        display     : flex;
+                        align-items : center;
+                        .shareUrlText, .copyUrl {
+                           height           : 30px;
+                           border           : 1px solid #999999;
+                           background-color : rgba(0, 0, 0, 0);
+                           pointer-events   : fill;
+                        }
+                        .shareUrlText {
+                           width            : 120px;
+                           border           : none;
+                           background-color : #f5f5f5;
+                        }
+                        .copyUrl {
+                           width       : 100px;
+                           border      : 1px solid $themePurple;
+                           color       : $themePurple;
+                           font-weight : 700;
+                           &:hover {
+                              background-color : #fafafa;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+            .detailInfoMiniHeader {
+               margin-bottom : 20px;
+               span {
+                  color     : $subTextGray;
+                  font-size : 17px;
+               }
+            }
+            .detailInfoIsUsers {
+               .isUserText {
+                  color       : #333333;
+                  font-weight : 700;
+               }
+            }
+
+            .detailInfoPriceBox {
+               .detailInfoPriceDc {
+                  .detailInfoPrice {
+                     color        : black;
+                     font-size    : 30px;
+                     font-weight  : 700;
+                     margin-right : 3px;
+                  }
+                  .won {
+                     color        : black;
+                     font-size    : 20px;
+                     font-weight  : 700;
+                     margin-right : 7px;
+                  }
+                  .detailInfoPriceSale {
+                     color       : #fa622e;
+                     font-size   : 30px;
+                     font-weight : 700;
+                  }
+               }
+               .detailInfoOriginalPrice {
+                  display       : flex;
+                  margin-bottom : 13px;
+                  .price {
+                     margin-right    : 5px;
+                     color           : $subTextGray;
+                     font-size       : 18px;
+                     text-decoration : line-through;
+                  }
+               }
+               .notLogin {
+                  margin-bottom : 20px;
+                  .notLoginText {
+                     color       : $themePurple;
+                     font-weight : 700;
+                  }
+               }
+            }
+
+            .salesUnitBox {
+               display         : flex;
+               flex-direction  : column;
+               justify-content : center;
+               border-top      : 1px solid #f4f4f4;
+               .salesUnitMiniBox {
+                  display     : flex;
+                  align-items : center;
+                  padding     : 18px 0;
+                  .salesUnitName {
+                     width : 150px;
+                  }
+               }
+               .salesUnitAmountBox {
+                  display     : flex;
+                  align-items : center;
+                  .salesUnitName {
+                     width       : 150px;
+                     padding-top : 18px;
+                  }
+               }
+            }
+
+            .detailInfoDeliveryBox {
+               .DeliveryCommon {
+                  display : inline-block;
+               }
+               .deliveryDivisionBox {
+                  width         : 560px;
+                  border-top    : 1px solid #f4f4f4;
+                  border-bottom : 1px solid #f4f4f4;
+               }
+               .detailInfoPackingBox {
+                  display       : flex;
+                  width         : 560px;
+                  border-bottom : 1px solid #f4f4f4;
+                  .detailPackingNameBox {
+                     display        : flex;
+                     flex-direction : column;
+                  }
+                  .detailPackingExplicate {
+                     font-size : 12px;
+                     color     : $subTextGray;
+                  }
+               }
+            }
+
+            .allergyBox {
+               display       : flex;
+               border-bottom : 1px solid #f4f4f4;
+            }
+
+            .expirationBox {
+               display : flex;
+            }
+
+            .detailInfoBuyBox {
+               display       : flex;
+               border-top    : 1px solid #f4f4f4;
+               border-bottom : 1px solid #f4f4f4;
+               .detailInfoBuyName {
+                  display     : flex;
+                  align-items : center;
+               }
+               .detailInfoBuyCountBox {
+                  display         : flex;
+                  justify-content : space-between;
+                  align-items     : center;
+                  width           : 88px;
+                  border          : 1px solid #e2e2e2;
+                  border-radius   : 8px;
+                  button {
+                     border           : none;
+                     background-color : rgba(0, 0, 0, 0);
+                     font-size        : 20px;
+                     z-index          : 100;
+
+                  }
+                  .countIcon {
+                     color       : black;
+                     font-weight : 700;
+                  }
+                  .countNumber {
+                     display         : flex;
+                     justify-content : center;
+                     width           : 20px;
+                     font-weight     : 700;
+                     font-family     : 'Open Sans', sans-serif;
+                  }
+                  .countMinus, .countPlus {
+                     svg {
+                        pointer-events : none;
+                     }
+                  }
+               }
+            }
+
+            .sumPriceBox {
+               display        : flex;
+               align-items    : flex-end;
+               flex-direction : column;
+               padding-top    : 30px;
+               padding-bottom : 15px;
+               .sumPrice {
+                  .sumName {
+                     margin-right : 5px;
+                     color        : black;
+                     font-size    : 17px;
+                     font-weight  : 700;
+                  }
+                  .sumBox {
+                     letter-spacing : 0;
+                     .sumBuyPrice {
+                        margin-right : 5px;
+                        padding-left : 5px;
+                        color        : black;
+                        font-size    : 38px;
+                        font-weight  : 700;
+                        font-family  : 'Open Sans', sans-serif;
+                     }
+                     .sumWon {
+                        color       : black;
+                        font-size   : 22px;
+                        font-weight : 700;
+                     }
+                  }
+               }
+               .notLoginSumPrice {
+                  display : flex;
+                  .notLoginEmphasize {
+                     display          : inline-block;
+                     width            : 39px;
+                     height           : 20px;
+                     margin-right     : 6px;
+                     text-align       : center;
+                     border           : 1px solid #ffb203;
+                     border-radius    : 15px;
+                     background-color : #ffbf00;
+                     color            : white;
+                     font-size        : 13px;
+                     font-weight      : 700;
+                  }
+               }
+            }
+            .buyGroupBtnBox {
+               display : flex;
+               width   : 560px;
+               button {
+                  height           : 58px;
+                  border           : 1px solid $themePurple;
+                  border-radius    : 3px;
+                  font-size        : 15px;
+                  font-weight      : 700;
+                  color            : $themePurple;
+                  background-color : rgba(0, 0, 0, 0);
+               }
+               .buyGroupBtnView {
+                  button {
+                     width        : 128px;
+                     margin-right : 12px;
+                  }
+               }
+               .addToCart {
+                  width            : 278px;
+                  color            : white;
+                  background-color : $themePurple;
+               }
+               .notBuyGroupBtn {
+                  border         : 1px solid #dddddd;
+                  color          : #dddddd;
+                  pointer-events : none;
+                  cursor         : none;
+               }
+               .notAddToCart {
+                  border           : none;
+                  color            : $subTextLightGray;
+                  background-color : #dddddd;
+                  pointer-events   : none;
+                  cursor           : none;
+               }
+            }
+         }
+
+      }
+   }
+}
