@@ -1,0 +1,13 @@
+{
+  "payment": [
+    {
+      "id": 1,
+      "orderAmount": 32140,
+      "productAmount": 48300,
+      "discountAmount": 16160,
+      "deliveryCharge": 0,
+      "useReserve": 0,
+      "finalpayment": 32140
+    }
+  ]
+}

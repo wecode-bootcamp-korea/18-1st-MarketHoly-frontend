@@ -1,0 +1,22 @@
+@import '../../styles/common.scss';
+
+.user-menu-banner {
+   @extend %flex-row-center;
+   width         : 163px;
+   height        : 23px;
+   border        : 1px solid $subTextGray;
+   border-radius : 20px;
+   a {
+      display         : flex;
+      justify-content : space-between;
+      align-items     : center;
+      width           : 100%;
+      padding         : 10px;
+      color           : $subTextGray;
+      font-size       : 11px;
+      .span-bold {
+         color       : $themePurple;
+         font-weight : 700;
+      }
+   }
+}

@@ -6,7 +6,7 @@
   color: $mainText;
   letter-spacing: -0.5px;
 
-  // 주문서
+  // 주문서 제목
   h2 {
     padding-top: 55px;
     text-align: center;
@@ -31,59 +31,69 @@
 
     // 주문상품
     .productList {
+      display: flex;
+      flex-direction: column;
+      width: 1050px;
+
       li {
         height: 128px;
         display: flex;
+        padding: 0;
         border-bottom: 1px solid #ecececea;
-      }
 
-      .productImg {
-        display: flex;
-        align-items: center;
-        width: 60px;
-        margin-right: 20px;
-      }
+        //이미지
+        .productImg {
+          display: flex;
+          align-items: center;
+          width: 60px;
+          margin-right: 20px;
 
-      img {
-        width: 60px;
-        height: 78px;
-      }
-
-      .productName {
-        display: flex;
-        align-items: center;
-        width: 740px;
-        margin-right: 20px;
-        font-weight: bold;
-        font-size: 16px;
-        color: #000;
-      }
-
-      .productCount {
-        width: 100px;
-        padding-top: 52px;
-        text-align: center;
-        font-size: 14px;
-      }
-
-      .productPrice {
-        margin-left: auto;
-        width: 120px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: right;
-
-        .price {
-          line-height: 24px;
-          font-weight: bold;
+          img {
+            width: 60px;
+            height: 78px;
+          }
         }
 
-        .cost {
+        //이름
+        .productName {
+          display: flex;
+          align-items: center;
+          width: 740px;
+          margin-right: 20px;
+          font-weight: bold;
+          font-size: 16px;
+          color: #000;
+        }
+
+        //갯수
+        .productCount {
+          width: 100px;
+          padding-top: 52px;
+          text-align: center;
           font-size: 14px;
-          line-height: 24px;
-          text-decoration: line-through;
-          color: $subTextGray;
+        }
+
+        //가격
+        .productPrice {
+          margin-left: auto;
+          width: 120px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: right;
+
+          .price {
+            line-height: 24px;
+            font-weight: bold;
+            font-size: 16px;
+          }
+
+          .cost {
+            font-size: 14px;
+            line-height: 24px;
+            text-decoration: line-through;
+            color: $subTextGray;
+          }
         }
       }
     }
@@ -167,12 +177,15 @@
     // 결제 금액
     .paymentResult {
       width: 285px;
+      margin-left: auto;
 
       h3 {
         border-bottom: none;
       }
 
       .paymentResultSection {
+        display: flex;
+        flex-direction: column;
         height: 325px;
         padding: 20px;
         background-color: #fafafa;
@@ -180,20 +193,34 @@
 
         th {
           float: left;
+          padding-top: 20px;
+
+          .subTit {
+            font-size: 16px;
+          }
         }
 
         td {
           float: right;
+          padding-top: 20px;
         }
 
-        .subTit {
-          font-size: 16px;
-        }
-
+        //상품금액, 상품할인금액
         .productAmount {
           font-size: 14px;
           color: $subTextGray;
-          line-height: 20px;
+        }
+
+        //적립금 사용 제목
+        .reserveTit {
+          padding-bottom: 20px;
+          border-bottom: 1px solid #eee;
+        }
+
+        //최종결제 금액
+        .finalpayment {
+          font-size: 22px;
+          font-weight: bold;
         }
       }
     }

@@ -6,8 +6,9 @@ class Order extends Component {
     super();
     this.state = {
       product: [],
-      user: '',
-      address: '',
+      user: {},
+      address: {},
+      payment: [],
     };
   }
 
@@ -41,10 +42,20 @@ class Order extends Component {
           address: data,
         });
       });
+
+    fetch('http://localhost:3000/data/payment.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          payment: data,
+        });
+      });
   }
 
   render() {
-    const { product, user, address } = this.state;
+    const { product, user, address, payment } = this.state;
     return (
       <>
         <div className="orderContainer">
@@ -52,44 +63,49 @@ class Order extends Component {
           <div className="userForm">
             <h3>주문상품</h3>
             <div className="itemList">
-              {product.map(item => {
-                return <Product key={product.id} img={product.img} name={product.name} count={product.count} price={product.price} cost={product.cost} />;
-              })}
               <ul className="productList">
-                <li>
-                  <div className="productImg">{product[0]?.img}</div>
-                  <div className="productName">
-                    <span>{product[0]?.name}</span>
-                  </div>
-                  <div className="productCount">
-                    <span>{product.count}개</span>
-                  </div>
-                  <div className="productPrice">
-                    <span className="price">{product.price}원</span>
-                    <span className="cost">{product.cost}원</span>
-                  </div>
-                </li>
+                {product.productList?.map(item => {
+                  return (
+                    <li>
+                      <div className="productImg">
+                        <img src={item.img} alt="상품 이미지" />
+                      </div>
+                      <div className="productName">
+                        <span>{item.name}</span>
+                      </div>
+                      <div className="productCount">
+                        <span>{item.count}개</span>
+                      </div>
+                      <div className="productPrice">
+                        <span className="price">{item.price.toLocaleString(navigator.language)}원</span>
+                        <span className="cost">{item.cost.toLocaleString(navigator.language)}원</span>
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
 
               <div className="userInfo">
                 <h3>주문자 정보</h3>
                 <div className="ordererSection">
-                  <table>
-                    <tbody>
-                      <tr>
-                        <th>보내는 분</th>
-                        <td>{user.name}</td>
-                      </tr>
-                      <tr>
-                        <th>휴대폰</th>
-                        <td>{user.phone}</td>
-                      </tr>
-                      <tr>
-                        <th>이메일</th>
-                        <td>{user.email}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  {user.userInfo?.map(user => (
+                    <table>
+                      <tbody>
+                        <tr>
+                          <th>보내는 분</th>
+                          <td>{user.name}</td>
+                        </tr>
+                        <tr>
+                          <th>휴대폰</th>
+                          <td>{user.phone}</td>
+                        </tr>
+                        <tr>
+                          <th>이메일</th>
+                          <td>{user.email}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  ))}
                 </div>
               </div>
 
@@ -97,7 +113,9 @@ class Order extends Component {
                 <h3>배송 정보</h3>
                 <div className="addressSection">
                   <h4>배송지</h4>
-                  <span>{address.address}</span>
+                  {address.addressInfo?.map(address => (
+                    <span>{address.address}</span>
+                  ))}
                 </div>
               </div>
 
@@ -122,38 +140,36 @@ class Order extends Component {
                 <div className="paymentResult">
                   <h3>결제금액</h3>
                   <div className="paymentResultSection">
-                    <table>
-                      <tbody>
-                        <tr>
-                          <th className="subTit">주문금액</th>
-                          <td>32,140원</td>
-                        </tr>
-                        <tr className="productAmount">
-                          <th>상품금액</th>
-                          <td>48,300원</td>
-                        </tr>
-                        <tr className="productAmount">
-                          <th>상품할인금액</th>
-                          <td>-16,160원</td>
-                        </tr>
-                        <tr>
-                          <th className="subTit">배송비</th>
-                          <td>0원</td>
-                        </tr>
-                        <tr>
-                          <th className="subTit">쿠폰할인금액</th>
-                          <td>0원</td>
-                        </tr>
-                        <tr>
-                          <th className="subTit">적립금사용</th>
-                          <td>0원</td>
-                        </tr>
-                        <tr>
-                          <th className="subTit">최종결제금액</th>
-                          <td>32,140원</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    {payment.payment?.map(payment => (
+                      <table>
+                        <tbody>
+                          <tr>
+                            <th className="subTit">주문금액</th>
+                            <td>{payment.orderAmount.toLocaleString(navigator.language)}원</td>
+                          </tr>
+                          <tr className="productAmount">
+                            <th>- 상품금액</th>
+                            <td>{payment.productAmount.toLocaleString(navigator.language)}원</td>
+                          </tr>
+                          <tr className="productAmount">
+                            <th>- 상품할인금액</th>
+                            <td>-{payment.discountAmount.toLocaleString(navigator.language)}원</td>
+                          </tr>
+                          <tr>
+                            <th className="subTit">배송비</th>
+                            <td>{payment.deliveryCharge.toLocaleString(navigator.language)}원</td>
+                          </tr>
+                          <tr className="reserveTit">
+                            <th className="subTit">적립금사용</th>
+                            <td>{payment.useReserve.toLocaleString(navigator.language)}원</td>
+                          </tr>
+                          <tr>
+                            <th className="subTit">최종결제금액</th>
+                            <td className="finalpayment">{payment.finalpayment.toLocaleString(navigator.language)}원</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    ))}
                   </div>
                 </div>
               </div>
