@@ -1,0 +1,58 @@
+[
+    {
+        "id" : 1,
+        "image_url" : "images/sampleproduct_1.jpeg",
+        "name" : "[콜린스크린] 밀싹주스",
+        "price" : "8550.00",
+        "discount_rate" : 0.15
+    },
+    {
+        "id" : 2,
+        "image_url" : "images/sampleproduct_1.jpeg",
+        "name" : "[콜린스크린] 밀싹주스",
+        "price" : "9000.00",
+        "discount_rate" : null
+    },
+    {
+        "id" : 3,
+        "image_url" : "images/sampleproduct_1.jpeg",
+        "name" : "[콜린스크린] 밀싹주스",
+        "price" : "8550.00",
+        "discount_rate" : 0.15
+    },
+    {
+        "id" : 4,
+        "image_url" : "images/sampleproduct_1.jpeg",
+        "name" : "[콜린스크린] 밀싹주스",
+        "price" : "8550.00",
+        "discount_rate" : 0.15
+    },
+    {
+        "id" : 5,
+        "image_url" : "images/sampleproduct_1.jpeg",
+        "name" : "[콜린스크린] 밀싹주스",
+        "price" : "8550.00",
+        "discount_rate" : 0.15
+    },
+    {
+        "id" : 6,
+        "image_url" : "images/sampleproduct_1.jpeg",
+        "name" : "[콜린스크린] 밀싹주스",
+        "price" : "8550.00",
+        "discount_rate" : 0.15
+    },
+    {
+        "id" : 7,
+        "image_url" : "images/sampleproduct_1.jpeg",
+        "name" : "[콜린스크린] 밀싹주스",
+        "price" : "8550.00",
+        "discount_rate" : 0.15
+    },
+    {
+        "id" : 8,
+        "image_url" : "images/sampleproduct_1.jpeg",
+        "name" : "[콜린스크린] 밀싹주스",
+        "price" : "8550.00",
+        "discount_rate" : 0.15
+    }
+]
