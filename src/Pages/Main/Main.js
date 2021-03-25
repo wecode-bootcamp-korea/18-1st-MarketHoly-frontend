@@ -19,12 +19,15 @@ class Main extends Component {
   };
 
   componentDidMount() {
-    // 이 상품 어때요?
-    fetch('/data/ListGoods.json')
+    window.addEventListener('scroll', this.handleScroll);
+    // 1) 이 상품 어때요?
+    fetch('/product/recommendation')
+      // Mock Data fetch('/data/ListGoods.json')
       .then(res => res.json())
       .then(res => {
         this.setState({
-          listgoods: res,
+          listgoods: res.listgoods,
+          // listgoods: res,
         });
       });
     // 일일 특가
@@ -32,6 +35,7 @@ class Main extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
+          // 서버 연결 dailyspecial: res.dailyspecial,
           dailyspecial: res,
         });
       })
