@@ -16,7 +16,11 @@ export class Productlist extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log(this.props.location.state.checkMenu);
+
     if (this.props.match.params.id !== prevProps.match.params.id) this.fetchList();
+
+    if (this.props.location.state.checkMenu !== prevProps.location.state.checkMenu) this.fetchList();
   }
 
   componentDidMount() {
@@ -36,6 +40,26 @@ export class Productlist extends Component {
     }
     if (this.props.location.state.checkCategory === 'sub') {
       fetch(`/product?sub-category=${subCategoryId}`)
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            product_list: res.product_list,
+          });
+        });
+    }
+    if (this.props.location.state.checkMenu === 'new') {
+      console.log('오 신상');
+      fetch(`/product?sort=new`)
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            product_list: res.product_list,
+          });
+        });
+    }
+    if (this.props.location.state.checkMenu === 'best') {
+      console.log('오 베스트');
+      fetch(`/product?sort=best`)
         .then(res => res.json())
         .then(res => {
           this.setState({

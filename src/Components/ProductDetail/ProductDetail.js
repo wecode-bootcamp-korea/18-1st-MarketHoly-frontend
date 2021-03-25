@@ -4,9 +4,6 @@ import { BiShareAlt } from 'react-icons/bi';
 import { AiFillFacebook, AiOutlineMinus, AiOutlinePlus, AiOutlineTwitter } from 'react-icons/ai';
 import ProductGoodsAdd from './ProductGoodsAdd';
 import GoodsViewInfomation from './GoodsViewInfomation';
-import Footer from '../Footer/Footer';
-import Nav from '../Nav/Nav';
-import Aside from '../../Pages/aside/aside';
 import './ProductDetail.scss';
 
 class ProductDetail extends React.Component {
@@ -61,10 +58,20 @@ class ProductDetail extends React.Component {
     else {
       // 카트로 보낼때 값
       // const sumPrice = (productInfo.price - productInfo.price * productInfo.discount_rate) * productCount;
-      const cart_id = productInfo.id;
-      const quantity = productCount;
-      console.log(cart_id);
-      console.log(quantity);
+
+      const cartObj = {
+        id: productInfo.id,
+        quantity: productCount,
+      };
+      fetch('/order/cart', {
+        method: 'POST',
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+        body: JSON.stringify(cartObj),
+      })
+        .then(res => res.json())
+        .then(res => console.log(res));
     }
   };
 

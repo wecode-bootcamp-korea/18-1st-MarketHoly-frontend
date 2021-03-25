@@ -1,38 +1,39 @@
 @import '../../styles/common.scss';
 
 .listCategory {
-  margin: 0 200px 30px;
-  text-align: center;
+   width         : 1050px;
+   margin        : 0 auto 30px auto;
+   text-align    : center;
 
-  .category {
-    display: flex;
-    display: inline-block;
-    flex-wrap: wrap;
-    height: 40px;
-    padding: 12px 20px 0 19px;
-    margin: 9px;
-    border-radius: 40px;
-    border: 1px solid #f7f7f7;
-    background-color: #f7f7f7;
-    color: $mainText;
-    font-weight: 400;
-    font-size: 14px;
-    cursor: pointer;
-  }
+   .category {
+      display          : flex;
+      display          : inline-block;
+      flex-wrap        : wrap;
+      height           : 40px;
+      padding          : 12px 20px 0 19px;
+      margin           : 9px;
+      border-radius    : 40px;
+      border           : 1px solid #f7f7f7;
+      background-color : #f7f7f7;
+      color            : $mainText;
+      font-weight      : 400;
+      font-size        : 14px;
+      cursor           : pointer;
+   }
 
-  .clicked {
-    display: flex;
-    display: inline-block;
-    flex-wrap: wrap;
-    height: 40px;
-    padding: 12px 20px 0 19px;
-    margin: 9px;
-    border-radius: 40px;
-    border: 1px solid rgb(110, 26, 140);
-    background-color: rgb(110, 26, 140);
-    color: white;
-    font-weight: 400;
-    font-size: 14px;
-    cursor: pointer;
-  }
+   .clicked {
+      display          : flex;
+      display          : inline-block;
+      flex-wrap        : wrap;
+      height           : 40px;
+      padding          : 12px 20px 0 19px;
+      margin           : 9px;
+      border-radius    : 40px;
+      border           : 1px solid rgb(110, 26, 140);
+      background-color : rgb(110, 26, 140);
+      color            : white;
+      font-weight      : 400;
+      font-size        : 14px;
+      cursor           : pointer;
+   }
 }

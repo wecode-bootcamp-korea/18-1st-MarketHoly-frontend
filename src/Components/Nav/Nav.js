@@ -37,7 +37,6 @@ class Nav extends React.Component {
       .then(res => {
         this.setState({ navbarList: res.result });
       });
-
     this.fetchNavUser();
     window.addEventListener('scroll', this.onScrollGet);
   }
@@ -59,7 +58,7 @@ class Nav extends React.Component {
       .then(res => res.json())
       .then(res => {
         console.log(res);
-        this.setState({ userInfo: res.username });
+        this.setState({ userInfo: res });
       });
   };
 
@@ -158,7 +157,7 @@ class Nav extends React.Component {
               <Link to="/mypage" className="use">
                 <span className="ico_grade grade6">웰컴</span>
                 <span className="txt">
-                  <span className="name">{userInfo.username}</span>
+                  <span className="name">{userInfo.name}</span>
                   <span className="sir">님</span>
                   <GoTriangleDown />
                 </span>
@@ -207,12 +206,26 @@ class Nav extends React.Component {
                 </Link>
               </li>
               <li className="menu2">
-                <Link to="#">
+                <Link
+                  to={{
+                    pathname: `/product`,
+                    state: {
+                      checkMenu: 'new',
+                    },
+                  }}
+                >
                   <span className="menu-text">신상품</span>
                 </Link>
               </li>
               <li className="menu3">
-                <Link to="#">
+                <Link
+                  to={{
+                    pathname: `/product`,
+                    state: {
+                      checkMenu: 'best',
+                    },
+                  }}
+                >
                   <span className="menu-text">베스트</span>
                 </Link>
               </li>

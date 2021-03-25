@@ -20,9 +20,7 @@ export class Myiteminfo extends Component {
         <div className="sectionHeader">
           <div className="headerName">
             <h1>주문 내역</h1>
-            <div className="headerInfo">
-              지난 3년간의 주문 내역 조회가 가능합니다.
-            </div>
+            <div className="headerInfo">지난 3년간의 주문 내역 조회가 가능합니다.</div>
           </div>
           <Select className="selectors" options={options} />
         </div>
@@ -60,9 +58,7 @@ export class Myiteminfo extends Component {
             </div>
           );
         })}
-        {item.length == 0 && (
-          <div className="notOder">주문내역이 없습니다.</div>
-        )}
+        {item.length == 0 && <div className="notOder">주문내역이 없습니다.</div>}
       </>
     );
   }

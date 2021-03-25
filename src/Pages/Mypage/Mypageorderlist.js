@@ -3,7 +3,30 @@ import { AiOutlineRight } from 'react-icons/ai';
 import './Mypageorderlist.scss';
 
 export class Mypageorderlist extends Component {
+  state = {
+    userInfo: {},
+  };
+
+  componentDidMount() {
+    this.fetchMyPageUser();
+  }
+
+  fetchMyPageUser = () => {
+    fetch('/user/name', {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        this.setState({ userInfo: res });
+      });
+  };
+
   render() {
+    const { userInfo } = this.state;
     return (
       <div className="mypageOrderlist">
         <div className="mypageOrderlist2">
@@ -12,7 +35,7 @@ export class Mypageorderlist extends Component {
               <div className="myInfo_img"></div>
               <div className="myInfo_names">
                 <p className="nameOne">
-                  <span className="user">이대희</span>
+                  <span className="user">{userInfo.name}</span>
                   <span className="sir">님</span>
                 </p>
                 <p className="nameTwo">적립 5%</p>
@@ -58,12 +81,8 @@ export class Mypageorderlist extends Component {
           </div>
         </div>
         <div className="orderListUnderbar">
-          <span className="leftText">
-            2021 HOLLY FESTA! 매일 쏟아지는 혜택{' '}
-          </span>
-          <span className="rightText">
-            - 100% 당첨 랜덤 쿠폰 + 최대90% 한정수량 럭키드로우
-          </span>
+          <span className="leftText">2021 HOLLY FESTA! 매일 쏟아지는 혜택 </span>
+          <span className="rightText">- 100% 당첨 랜덤 쿠폰 + 최대90% 한정수량 럭키드로우</span>
         </div>
       </div>
     );
