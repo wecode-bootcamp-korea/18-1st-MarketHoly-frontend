@@ -15,7 +15,7 @@ export class Cartitem extends Component {
     const { count } = this.state;
     if (num === -1 && count === 1) return;
     this.setState({ count: count + num });
-    this.props.countTotalPrice(e * (count + num - 1), id);
+    this.props.countTotalPrice(e * (count + num - 1), id, count);
   };
 
   render() {
@@ -25,39 +25,23 @@ export class Cartitem extends Component {
       <>
         <div className="cartItemList">
           <div className="btnCartLeft">
-            <AiOutlineCheckCircle
-              className={isCheck ? 'checked' : 'unchecked'}
-            />
+            <AiOutlineCheckCircle className={isCheck ? 'checked' : 'unchecked'} />
           </div>
           <div>
             <img src={img} />
           </div>
           <div className="cartItemName2">{name}</div>
           <div className="dhcountNumber">
-            <button
-              className="subtract"
-              name="subtract"
-              onClick={() => this.handleCnts(-1, price, id)}
-              value={this.state.count}
-            >
+            <button className="subtract" name="subtract" onClick={() => this.handleCnts(-1, price, id)} value={this.state.count}>
               <GrSubtract />
             </button>
             <input readonly="readonly" value={this.state.count} />
-            <button
-              className="add"
-              name="add"
-              onClick={() => this.handleCnts(1, price, id)}
-              value={this.state.count}
-            >
+            <button className="add" name="add" onClick={() => this.handleCnts(1, price, id)} value={this.state.count}>
               <RiAddFill />
             </button>
           </div>
           <div className="cartListPrice">{price * this.state.count}원</div>
-          <button
-            className="cartDeleteBtn"
-            onClick={this.props.deleteCartItem}
-            value={id}
-          >
+          <button className="cartDeleteBtn" onClick={this.props.deleteCartItem} value={id}>
             ❌
           </button>
         </div>
