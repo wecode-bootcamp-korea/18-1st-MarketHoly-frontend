@@ -32,11 +32,11 @@ class Main extends Component {
         });
       });
     // 일일 특가
-    fetch('/data/DailySpecial.json')
+    fetch('/product/dailyspecial')
       .then(res => res.json())
       .then(res => {
         this.setState({
-          dailyspecial: res,
+          dailyspecial: res.dailyspecial,
         });
       })
       .then(res => {
