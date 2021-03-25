@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Countdown from 'react-countdown';
 import './Goods.scss';
 
@@ -13,14 +14,10 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 class Goods extends Component {
   render() {
     const { modifier, id, image_url, name, price, discount_rate, daily_discount_rate, start_date } = this.props;
-    // let priceTag = '';
-    // if(discount_rate) {
-
-    // }
     return (
       <div className="goods" key={id}>
         <div className="imagePart">
-          <img className={modifier === 'dailyspecial' ? 'sizebig' : 'sizesmall'} src={image_url} alt="goods" />
+          <img className={modifier === 'dailyspecial' ? 'sizebig' : 'sizesmall'} src={image_url} alt="goods" onClick={() => this.props.history.push(`/product/detail/${this.props.product_id}`)} />
           {daily_discount_rate && <div className="saleMark">{daily_discount_rate * 100}% 일일특가</div>}
           {start_date && (
             <div className="countdownMark">
@@ -44,4 +41,4 @@ class Goods extends Component {
   }
 }
 
-export default Goods;
+export default withRouter(Goods);
