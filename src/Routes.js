@@ -8,6 +8,7 @@ import Main from './Pages/Main/Main';
 import SignUp from './Pages/SignUp/SignUp';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import Login from './Pages/Login/Login';
+import Holycart from './Pages/Cart/Holycart';
 
 class Routes extends React.Component {
   render() {
@@ -21,6 +22,7 @@ class Routes extends React.Component {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/productcategory" component={ProductCategory} />
           <Route exact path="/cart" component={Cart} />
+          <Route exact path="/Holycart" component={Holycart} />
         </Switch>
       </Router>
     );

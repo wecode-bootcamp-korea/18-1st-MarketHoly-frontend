@@ -12,29 +12,62 @@ class Cart extends React.Component {
   state = {
     isCheck: false,
     address: '',
-    count: 1,
+    countTotal: 1,
     cartlist: [],
-    priceAdd: [0, 0, 0, 0, 0, 0, 0, 0],
+    priceAdd: [],
     priceSum: 0,
     fullAddress: '',
     isDaumPost: false,
     isRegister: false,
     register: [],
+    addressRes: '',
   };
   // "proxy": "http://10.58.1.200:8000",
   componentDidMount() {
-    const cartlist = `order/cartlist`;
+    const cartlist = `order/cart`;
     // fetch('/data/cartlist2.json');
-    fetch(cartlist)
+    fetch(cartlist, {
+      headers: {
+        Authorization: '#',
+      },
+    })
       .then(res => res.json())
       .then(res => {
         // console.log('res', res.cartlist),
         this.setState({
           // cart_list: res,
           cartlist: res.products,
+          addressRes: res.address,
         });
       });
+
+    let zero = [];
+    let i = 0;
+    while (i < 300) {
+      zero.push(0);
+      i++;
+    }
+    this.setState({
+      priceAdd: [...zero],
+    });
   }
+
+  postCartData = (totalItemPrice, id) => {
+    const cartlist = `order`;
+    this.state.cartlist.length !== 0 &&
+      fetch(cartlist, {
+        method: 'POST',
+        body: JSON.stringify({
+          total_price: totalItemPrice,
+          result: [id],
+        }),
+      });
+
+    alert('결제가 완료됐습니다.');
+    this.setState({
+      cartlist: [],
+    });
+  };
 
   handleCheck = () => {
     this.setState({ isCheck: !this.state.isCheck });
@@ -50,7 +83,7 @@ class Cart extends React.Component {
     });
   };
 
-  countTotalPrice = (data, id) => {
+  countTotalPrice = (data, id, count) => {
     let arr = this.state.priceAdd;
 
     arr[id] = data;
@@ -62,6 +95,7 @@ class Cart extends React.Component {
     }, 0);
     this.setState({
       priceSum: sum,
+      countTotal: count,
     });
   };
 
@@ -70,6 +104,7 @@ class Cart extends React.Component {
       cartlist: this.state.cartlist.filter(item => item.id != e.target.value),
     });
   };
+
   handleOpenPost = () => {
     this.setState({
       isDaumPost: true,
@@ -97,7 +132,7 @@ class Cart extends React.Component {
   };
 
   render() {
-    console.log('cartlist>>>>', this.state.cartlist);
+    console.log('countTotal>>>', this.state.priceAdd);
     const pricearr = [];
     let a = 0;
     for (let i = 0; i < this.state.cartlist.length; i++) pricearr[i] = this.state.cartlist[i].price;
@@ -119,7 +154,7 @@ class Cart extends React.Component {
     };
 
     let totalItemPrice = Math.floor(a) + this.state.priceSum;
-    console.log(totalItemPrice);
+
     return (
       <div className="cart">
         <div className="title">장바구니</div>
@@ -135,7 +170,7 @@ class Cart extends React.Component {
               this.state.cartlist.map(e => (
                 <>
                   <Cartitem
-                    cartlist={this.state.cartlist}
+                    cartlist={e.id}
                     isCheck={this.state.isCheck}
                     countTotalPrice={this.countTotalPrice}
                     deleteCartItem={this.deleteCartItem}
@@ -165,7 +200,7 @@ class Cart extends React.Component {
             <div className="delivery">
               <GrLocation className="icon" />
               <span className="tit">배송지</span>
-              {this.state.fullAddress == '' ? (
+              {/* {this.state.fullAddress == '' ? (
                 <div className="text">
                   <span className="purpleText">배송지를 입력</span>하고
                   <br />
@@ -173,7 +208,8 @@ class Cart extends React.Component {
                 </div>
               ) : (
                 <div className="addressColor">{this.state.fullAddress}</div>
-              )}
+              )} */}
+              <div className="addressColor">{this.state.addressRes}</div>
               <div className="address">
                 <BiSearch className="icon" />
                 <div className="tit" onClick={this.handleOpenPost}>
@@ -206,7 +242,7 @@ class Cart extends React.Component {
                 상품을 담아주세요
               </button>
             ) : (
-              <button className="cartBtnOrder" type="submit">
+              <button className="cartBtnOrder" type="submit" onClick={() => this.postCartData(totalItemPrice, this.state.cartlist.id)}>
                 주문하기
               </button>
             )}
