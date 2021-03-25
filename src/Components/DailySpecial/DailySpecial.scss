@@ -1,48 +1,47 @@
 @import '../../styles/common.scss';
 
 .dailySpecial {
-  display: flex;
-  justify-content: center;
-  margin-top: 150px;
+   display         : flex;
+   width           : 1050px;
+   margin          : 150px auto 0 auto;
+   .title {
+      display        : flex;
+      flex-direction : column;
+      margin-right   : 80px;
+   }
 
-  .title {
-    display: flex;
-    flex-direction: column;
-    margin-right: 80px;
-  }
+   .main {
+      margin-bottom : 17px;
+      text-align    : left;
+      font-size     : 32px;
+      font-weight   : 500;
+      color         : $mainText;
+   }
 
-  .main {
-    margin-bottom: 17px;
-    text-align: left;
-    font-size: 32px;
-    font-weight: 500;
-    color: $mainText;
-  }
+   .sub {
+      margin-top  : 17px;
+      text-align  : left;
+      font-size   : 15px;
+      font-weight : 400;
+      color       : $subTextGray;
+   }
 
-  .sub {
-    margin-top: 17px;
-    text-align: left;
-    font-size: 15px;
-    font-weight: 400;
-    color: $subTextGray;
-  }
+   .alert {
+      margin-top  : 70px;
+      text-align  : left;
+      font-size   : 14px;
+      font-weight : 400;
+      color       : $subTextLightGray;
+   }
 
-  .alert {
-    margin-top: 70px;
-    text-align: left;
-    font-size: 14px;
-    font-weight: 400;
-    color: $subTextLightGray;
-  }
+   .clock {
+      vertical-align : top;
+      margin-right   : 5px;
+   }
 
-  .clock {
-    vertical-align: top;
-    margin-right: 5px;
-  }
-
-  .twoGoods {
-    display: flex;
-    justify-content: center;
-    margin-right: 50px;
-  }
+   .twoGoods {
+      display         : flex;
+      justify-content : center;
+      margin-right    : 50px;
+   }
 }
