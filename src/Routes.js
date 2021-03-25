@@ -12,6 +12,7 @@ import Holycart from './Pages/Cart/Holycart';
 import Nav from './Components/Nav/Nav';
 import Footer from './Components/Footer/Footer';
 import Aside from './Pages/aside/aside';
+import Mypage from './Pages/Mypage/Mypage';
 
 class Routes extends React.Component {
   state = {
@@ -44,6 +45,8 @@ class Routes extends React.Component {
           <Route exact path="/product/category" component={ProductCategory} />
           <Route exact path="/product/category/:id" component={ProductCategory} />
           <Route exact path="/product/:id" component={ProductCategory} />
+          <Route exact path="/product" component={ProductCategory} />
+          <Route exact path="/mypage" component={Mypage} />
         </Switch>
         <Footer />
       </Router>

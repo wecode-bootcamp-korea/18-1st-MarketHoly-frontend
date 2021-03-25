@@ -1,26 +1,34 @@
 @import '../../styles/common.scss';
 
 .main {
-  .titRecommendGoods {
-    margin-top: 150px;
-    margin-bottom: 40px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 28px;
-    color: $mainText;
-  }
-  .viewAll {
-    margin: 50px auto;
-    display: block;
-    width: 516px;
-    height: 56px;
-    border: 1px solid $subTextLightGray;
-    color: $mainText;
-    font-size: 16px;
-    text-align: center;
-    padding-top: 18px;
-  }
-  .arrow {
-    vertical-align: top;
-  }
+   .titRecommendGoods {
+      margin-top    : 150px;
+      margin-bottom : 40px;
+      text-align    : center;
+      font-weight   : 700;
+      font-size     : 28px;
+      color         : $mainText;
+   }
+   .viewAll {
+      margin      : 50px auto;
+      display     : block;
+      width       : 516px;
+      height      : 56px;
+      border      : 1px solid $subTextLightGray;
+      color       : $mainText;
+      font-size   : 16px;
+      text-align  : center;
+      padding-top : 18px;
+   }
+   .arrow {
+      vertical-align : top;
+   }
+   .listGoods {
+      width  : 1050px;
+      margin : 0 auto;
+   }
+   .mdrecommend {
+      width  : 1050px;
+      margin : 0 auto;
+   }
 }
