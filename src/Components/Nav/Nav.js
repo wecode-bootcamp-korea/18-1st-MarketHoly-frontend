@@ -28,18 +28,40 @@ class Nav extends React.Component {
     isNavFixed: false,
     isLoginHover: false,
     isLogin: false,
+    userInfo: {},
   };
 
   componentDidMount() {
-    // fetch('/data/productNavbar.json', {})
-    // const categoryUrl = `product/category`;
     fetch('/product/category', {})
       .then(res => res.json())
       .then(res => {
         this.setState({ navbarList: res.result });
       });
+
+    this.fetchNavUser();
     window.addEventListener('scroll', this.onScrollGet);
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.location !== this.props.location && this.state.userInfo) {
+      console.log('여기 실행');
+      this.fetchNavUser();
+    }
+  }
+
+  fetchNavUser = () => {
+    fetch('/user/name', {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        this.setState({ userInfo: res.username });
+      });
+  };
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScrollGet);
@@ -113,12 +135,12 @@ class Nav extends React.Component {
   };
 
   render() {
-    const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput, isNavFixed, isLogin, isLoginHover } = this.state;
+    const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput, isNavFixed, userInfo, isLoginHover } = this.state;
     return (
       <div className={'navbar ' + (isNavFixed && 'navbarFixed')} onMouseHover={this.allCategoriesHoverLeave} onScroll={this.onScrollGet}>
         <div className="user-menu">
           <NavBanner />
-          {!isLogin ? (
+          {Object.keys(userInfo).length === 0 ? (
             <div className="user-list-menu">
               <div className="list-join menu-list">
                 <Link to="/Signup" className="join-link">
@@ -136,7 +158,7 @@ class Nav extends React.Component {
               <Link to="/mypage" className="use">
                 <span className="ico_grade grade6">웰컴</span>
                 <span className="txt">
-                  <span className="name">윤찬호</span>
+                  <span className="name">{userInfo.username}</span>
                   <span className="sir">님</span>
                   <GoTriangleDown />
                 </span>
