@@ -21,13 +21,17 @@ class Cart extends React.Component {
     isRegister: false,
     register: [],
   };
-
+  // "proxy": "http://10.58.1.200:8000",
   componentDidMount() {
-    fetch('/data/cartlist.json')
+    const cartlist = `order/cartlist`;
+    // fetch('/data/cartlist2.json');
+    fetch(cartlist)
       .then(res => res.json())
       .then(res => {
+        // console.log('res', res.cartlist),
         this.setState({
-          cartlist: res,
+          // cart_list: res,
+          cartlist: res.products,
         });
       });
   }
@@ -56,14 +60,12 @@ class Cart extends React.Component {
     let sum = this.state.priceAdd.reduce((sum, num) => {
       return sum + num;
     }, 0);
-    console.log(sum);
     this.setState({
       priceSum: sum,
     });
   };
 
   deleteCartItem = e => {
-    console.log(e.target.value);
     this.setState({
       cartlist: this.state.cartlist.filter(item => item.id != e.target.value),
     });
@@ -83,8 +85,7 @@ class Cart extends React.Component {
         extraAddress += data.bname;
       }
       if (data.buildingName !== '') {
-        extraAddress +=
-          extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+        extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
       }
       AllAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
     }
@@ -96,10 +97,10 @@ class Cart extends React.Component {
   };
 
   render() {
+    console.log('cartlist>>>>', this.state.cartlist);
     const pricearr = [];
     let a = 0;
-    for (let i = 0; i < this.state.cartlist.length; i++)
-      pricearr[i] = this.state.cartlist[i].price;
+    for (let i = 0; i < this.state.cartlist.length; i++) pricearr[i] = this.state.cartlist[i].price;
     let totalprice = pricearr.reduce((acc, cur) => acc + cur, 0);
 
     this.state.cartlist.map(e => (a = a + e.price));
@@ -117,43 +118,42 @@ class Cart extends React.Component {
       overflow: 'hidden',
     };
 
-    console.log(this.state.fullAddress);
+    let totalItemPrice = Math.floor(a) + this.state.priceSum;
+    console.log(totalItemPrice);
     return (
       <div className="cart">
         <div className="title">장바구니</div>
         <div className="contents">
           <div className="select">
             <button className="checkbox" onClick={this.handleCheck}>
-              <AiOutlineCheckCircle
-                className={this.state.isCheck ? 'checked' : 'unchecked'}
-              />
+              <AiOutlineCheckCircle className={this.state.isCheck ? 'checked' : 'unchecked'} />
               <span className="checkAll">전체선택(0/0)</span>
             </button>
             <VscKebabVertical className="verticalLine" />
             <div className="lineblack" />
             {this.state.cartlist.length !== 0 ? (
               this.state.cartlist.map(e => (
-                <Cartitem
-                  cartlist={this.state.cartlist}
-                  isCheck={this.state.isCheck}
-                  countTotalPrice={this.countTotalPrice}
-                  deleteCartItem={this.deleteCartItem}
-                  id={e.id}
-                  name={e.name}
-                  price={e.price}
-                  img={e.img}
-                  discount_rate={e.discount_rate}
-                  priceAdd={this.priceAdd}
-                />
+                <>
+                  <Cartitem
+                    cartlist={this.state.cartlist}
+                    isCheck={this.state.isCheck}
+                    countTotalPrice={this.countTotalPrice}
+                    deleteCartItem={this.deleteCartItem}
+                    id={e.id}
+                    name={e.name}
+                    price={e.price}
+                    img={e.img_url}
+                    discount_rate={e.discount_rate}
+                    priceAdd={this.priceAdd}
+                  />
+                </>
               ))
             ) : (
               <div className="noGoods">장바구니에 담긴 상품이 없습니다</div>
             )}
             <div className="linegray" />
             <button className="checkbox" onClick={this.handleCheck}>
-              <AiOutlineCheckCircle
-                className={this.state.isCheck ? 'checked' : 'unchecked'}
-              />
+              <AiOutlineCheckCircle className={this.state.isCheck ? 'checked' : 'unchecked'} />
               <span className="checkAll">전체선택(0/0)</span>
             </button>
             <VscKebabVertical className="verticalLine" />
@@ -181,20 +181,11 @@ class Cart extends React.Component {
                 </div>
               </div>
             </div>
-            {isDaumPost ? (
-              <DaumPostcode
-                onComplete={this.handleAddress}
-                autoClose
-                width={width}
-                height={height}
-                style={modalStyle}
-                isDaumPost={isDaumPost}
-              />
-            ) : null}
+            {isDaumPost ? <DaumPostcode onComplete={this.handleAddress} autoClose width={width} height={height} style={modalStyle} isDaumPost={isDaumPost} /> : null}
             <div className="amountView">
               <div className="amount">
                 <span className="tit">상품금액</span>
-                <span className="price">{a + this.state.priceSum}원</span>
+                <span className="price">{Math.floor(totalItemPrice)}원</span>
               </div>
               <div className="amount">
                 <span className="tit">상품할인금액</span>
@@ -207,7 +198,7 @@ class Cart extends React.Component {
               <div className="line" />
               <div className="amount">
                 <span className="tit">결제예정금액</span>
-                <span className="price">{a + this.state.priceSum}원</span>
+                <span className="price">{Math.floor(totalItemPrice)}원</span>
               </div>
             </div>
             {this.state.cartlist.length === 0 ? (
@@ -219,14 +210,9 @@ class Cart extends React.Component {
                 주문하기
               </button>
             )}
-            <span className="notice">
-              · ‘입금확인’ 상태일 때는 주문 내역 상세에서 직접 주문취소가
-              &nbsp;&nbsp;&nbsp;가능합니다.
-            </span>
+            <span className="notice">· ‘입금확인’ 상태일 때는 주문 내역 상세에서 직접 주문취소가 &nbsp;&nbsp;&nbsp;가능합니다.</span>
             <br />
-            <span className="notice">
-              · ‘입금확인’ 이후 상태에는 고객센터로 문의해주세요.
-            </span>
+            <span className="notice">· ‘입금확인’ 이후 상태에는 고객센터로 문의해주세요.</span>
           </div>
         </div>
       </div>
