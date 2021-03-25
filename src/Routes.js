@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import Main from './Pages/Main/Main';
-// import Cart from './Pages/Cart/Cart';
+import Cart from './Pages/Cart/Cart';
 // import SearchAddress from './Components/SearchAddress';
 import ProductCategory from './Pages/Productlist/ProductCategory';
 import Main from './Pages/Main/Main';
 import SignUp from './Pages/SignUp/SignUp';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import Login from './Pages/Login/Login';
+import Holycart from './Pages/Cart/Holycart';
 import Nav from './Components/Nav/Nav';
 import Footer from './Components/Footer/Footer';
 import Aside from './Pages/aside/aside';

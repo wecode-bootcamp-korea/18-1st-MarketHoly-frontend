@@ -1,0 +1,26 @@
+[
+  {
+    "address": "string(address)",
+    "products": [
+      {
+        "id": 1,
+        "name": "asdasd",
+        "quantity": 10,
+        "img_url": "https://img-cf.kurly.com/shop/data/goods/1470791120657i0.jpg",
+        "price": 3200
+      }
+    ]
+  },
+  {
+    "address": "string(address)",
+    "products": [
+      {
+        "id": 2,
+        "name": "장바구니",
+        "quantity": 13,
+        "img_url": "https://img-cf.kurly.com/shop/data/goods/1470791120657i0.jpg",
+        "price": 5200
+      }
+    ]
+  }
+]
