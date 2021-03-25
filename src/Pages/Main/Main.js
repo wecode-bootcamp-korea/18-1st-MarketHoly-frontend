@@ -4,9 +4,6 @@ import ListGoods from '../../Components/ListGoods/ListGoods';
 import DailySpecial from '../../Components/DailySpecial/DailySpecial';
 import ListCategory from '../../Components/ListCategory/ListCategory';
 import MDrecommend from '../../Components/MDrecommend/MDrecommend';
-import Nav from '../../Components/Nav/Nav';
-import Footer from '../../Components/Footer/Footer';
-import Aside from '../../Pages/aside/aside';
 import { IoChevronForward } from 'react-icons/io5';
 import '../../styles/common.scss';
 import './Main.scss';
@@ -22,7 +19,6 @@ class Main extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
     // 이 상품 어때요?
     fetch('/data/ListGoods.json')
       .then(res => res.json())
@@ -43,13 +39,6 @@ class Main extends Component {
         this.handleCategory(1);
       });
   }
-
-  handleScroll = () => {
-    this.setState({
-      scrollY: window.scrollY,
-    });
-  };
-
   // MD 추천
   handleCategory = id => {
     const offset = id * LIMIT;
@@ -61,12 +50,10 @@ class Main extends Component {
   };
 
   render() {
-    const { listgoods, dailyspecial, product_list_by_category, scrollY } = this.state;
+    const { listgoods, dailyspecial, product_list_by_category } = this.state;
     return (
-      <div className="main" onScroll={this.handleScroll}>
-        <Nav />
+      <div className="main">
         <Banner />
-        {scrollY > 250 && <Aside />}
         <div className="titRecommendGoods">이 상품 어때요?</div>
         <ListGoods listgoods={listgoods} />
         <DailySpecial dailyspecial={dailyspecial} />
@@ -77,7 +64,6 @@ class Main extends Component {
           전체보기
           <IoChevronForward className="arrow" />
         </span>
-        <Footer />
       </div>
     );
   }
