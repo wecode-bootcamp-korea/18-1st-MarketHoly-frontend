@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import MDGoods from '../Goods/Goods';
+import Goods from '../Goods/Goods';
+// import MDGoods from '../MDgoods/MDgoods';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './MDrecommend.scss';
@@ -18,8 +19,8 @@ export default class MDrecommend extends Component {
     return (
       <div className="mdrecommend">
         <Slider {...settings}>
-          {this.props.product_list_by_category.map(good => (
-            <MDGoods key={good.id} image_url={good.image_url} name={good.name} price={good.price} discount_rate={good.discount_rate} />
+          {this.props.product_list_by_category.map((good, index) => (
+            <Goods key={index} product_id={good.product_id} image_url={good.image_url} name={good.name} price={good.price} discount_rate={good.discount_rate} />
           ))}
         </Slider>
       </div>

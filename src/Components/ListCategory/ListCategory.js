@@ -7,7 +7,7 @@ class ListCategory extends Component {
   };
 
   handleColor = e => {
-    // console.log(e.target.dataset.idx);
+    // console.log('확인확인확인', e.target.dataset.idx);
     this.props.handleCategory(e.target.dataset.idx);
     this.setState({ clickIndex: e.target.dataset.idx });
   };

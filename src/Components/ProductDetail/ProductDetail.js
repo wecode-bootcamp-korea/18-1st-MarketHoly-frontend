@@ -22,6 +22,8 @@ class ProductDetail extends React.Component {
   };
 
   componentDidMount() {
+    console.log(this.props.match);
+
     fetch(`/product/detail/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
