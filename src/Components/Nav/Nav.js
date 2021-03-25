@@ -16,8 +16,6 @@ class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.searchInputRef = React.createRef();
-    this.hoverWidth1 = HOVER_WIDTH_TYPE1;
-    this.hoverWidth2 = HOVER_WIDTH_TYPE2;
   }
 
   state = {
@@ -34,14 +32,12 @@ class Nav extends React.Component {
 
   componentDidMount() {
     // fetch('/data/productNavbar.json', {})
-    const categoryUrl = `product/category`;
-    fetch(categoryUrl, {})
+    // const categoryUrl = `product/category`;
+    fetch('/product/category', {})
       .then(res => res.json())
       .then(res => {
-        console.log(res.result);
         this.setState({ navbarList: res.result });
       });
-
     window.addEventListener('scroll', this.onScrollGet);
   }
 
@@ -75,19 +71,19 @@ class Nav extends React.Component {
   allCategoriesHoverEnter = () => {
     this.setState({
       allCategoriesHover: true,
-      hoverWidth: this.hoverWidth1,
+      hoverWidth: HOVER_WIDTH_TYPE1,
     });
   };
   allCategoriesHoverLeave = () => {
     this.setState({
       allCategoriesHover: false,
-      hoverWidth: this.hoverWidth1,
+      hoverWidth: HOVER_WIDTH_TYPE1,
       displayShowIndex: 0,
     });
   };
   categoriesMenuHoverEnter = index => {
     this.setState({
-      hoverWidth: this.hoverWidth2,
+      hoverWidth: HOVER_WIDTH_TYPE2,
       displayShowIndex: index,
     });
   };
