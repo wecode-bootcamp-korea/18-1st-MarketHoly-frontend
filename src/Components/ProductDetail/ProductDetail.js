@@ -13,23 +13,40 @@ class ProductDetail extends React.Component {
     productCount: 0,
     sumPrice: 0,
     isSharedBtn: false,
-    isLogin: false,
+    userInfo: {},
     isRestockNotice: true,
     isWishList: false,
   };
 
   componentDidMount() {
-    console.log(this.props.match);
-
+    window.scrollTo(0, 0);
     fetch(`/product/detail/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         console.log(res);
         this.setState({ productInfo: res.info, productList: res.related_products });
       });
-
-    window.scrollTo(0, 0);
+    this.fetchNavUser();
   }
+
+  fetchNavUser = () => {
+    fetch('/user/name', {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.message === 'INVALID_TOKEN_TYPE') {
+          console.log('노 로그인 상세');
+          this.setState({ userInfo: {} });
+        } else {
+          console.log('로그인 중 상세');
+          this.setState({ userInfo: res });
+        }
+      });
+  };
 
   handleProductCount = e => {
     const { productCount } = this.state;
@@ -56,9 +73,6 @@ class ProductDetail extends React.Component {
     const { productInfo, productCount } = this.state;
     if ((productInfo.price - productInfo.price * productInfo.discount_rate) * productCount === 0) alert('1개 이상 선택 해주세요!');
     else {
-      // 카트로 보낼때 값
-      // const sumPrice = (productInfo.price - productInfo.price * productInfo.discount_rate) * productCount;
-
       const cartObj = {
         id: productInfo.id,
         quantity: productCount,
@@ -76,7 +90,7 @@ class ProductDetail extends React.Component {
   };
 
   render() {
-    const { productCount, productInfo, isSharedBtn, isLogin, isRestockNotice, isWishList } = this.state;
+    const { productCount, productInfo, isSharedBtn, userInfo, isRestockNotice, isWishList } = this.state;
     return (
       <div className="detailContainer">
         <div className="detailMain">
@@ -124,16 +138,16 @@ class ProductDetail extends React.Component {
                 <div className="detailInfoPriceDc">
                   <span className="detailInfoPrice">{productInfo.price && Math.floor(productInfo.price - productInfo.price * productInfo.discount_rate).toLocaleString(navigator.language)}</span>
                   <span className="won">원</span>
-                  {productInfo.discount_rate && productInfo.dscount_rate !== 0 && <span className="detailInfoPriceSale">{productInfo.discount_rate * 100}%</span>}
+                  {productInfo.discount_rate * 100 !== 0 && <span className="detailInfoPriceSale">{productInfo.discount_rate * 100}%</span>}
                 </div>
                 <div className="detailInfoOriginalPrice">
-                  {productInfo.discount_rate !== null && (
+                  {productInfo.discount_rate * 100 !== 0 && (
                     <>
                       <div className="price">{productInfo.price && Math.floor(productInfo.price).toLocaleString('KO-kr')}</div>
                     </>
                   )}
                 </div>
-                {!isLogin && (
+                {Object.keys(userInfo).length === 0 && (
                   <div className="notLogin">
                     <span className="notLoginText">로그인 후, 회원할인가와 적립혜택이 제공됩니다.</span>
                   </div>
@@ -220,7 +234,7 @@ class ProductDetail extends React.Component {
                 </div>
                 <div className="notLoginSumPrice">
                   <span className="notLoginEmphasize">적립</span>
-                  <span className="notLoginText">로그인 후, 회원할인가와 적립혜택 제공</span>
+                  {Object.keys(userInfo).length === 0 && <span className="notLoginText">로그인 후, 회원할인가와 적립혜택 제공</span>}
                 </div>
               </div>
               <div className="buyGroupBtnBox off">

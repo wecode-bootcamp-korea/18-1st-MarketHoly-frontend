@@ -46,7 +46,7 @@ class ProductReviewList extends React.Component {
         </div>
         <div className={'reviewContentMainBox ' + (isMainContent && 'showReviewMainContent')}>
           <div className="reviewContentHeaderText">
-            <h3>{review.product_id} product_id([고앵님] 미야오 로 구매했다</h3>
+            <h3>{this.props.productInfo.name}</h3>
             <p>{review.content}</p>
           </div>
           <div className="reviewContentBtnBox">

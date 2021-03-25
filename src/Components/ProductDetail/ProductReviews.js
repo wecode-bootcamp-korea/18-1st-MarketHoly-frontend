@@ -49,7 +49,7 @@ class ProductReviews extends React.Component {
               </div>
               <ul className="reviewListBox">
                 {reviews.map((review, index) => (
-                  <ProductReviewList review={review} index={index} key={index} />
+                  <ProductReviewList review={review} index={index} key={index} productInfo={this.props.productInfo} />
                 ))}
               </ul>
             </div>

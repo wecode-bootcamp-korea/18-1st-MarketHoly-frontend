@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './Login.scss';
 
 class Login extends Component {
@@ -7,6 +8,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      pushCheck: 'basepush',
     };
   }
 
@@ -16,9 +18,20 @@ class Login extends Component {
     });
   };
 
+  componentDidMount() {
+    if (this.props.location.state) {
+      this.setState({
+        pushCheck: this.props.location.state ? this.props.location.state.checkSend : 'basepush',
+      });
+    }
+  }
+
   loginSubmit = e => {
     e.preventDefault(); //Submit 버튼 눌러도 새로고침하지 않게 함
     const idCheck = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{1,4}$/;
+
+    console.log(this.props);
+    console.log(this);
 
     if (idCheck.test(this.state.email) && this.state.password.length >= 10) {
       const summonerUrl = `user/login`;
@@ -36,7 +49,7 @@ class Login extends Component {
           if (result.message === 'SUCCESS') {
             localStorage.setItem('token', result.access_token);
             alert('로그인 완료');
-            this.props.history.push('/');
+            this.state.pushCheck === 'signup' ? this.props.history.push('/') : this.props.history.goBack();
           } else {
             alert('로그인 실패');
           }
@@ -71,4 +84,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

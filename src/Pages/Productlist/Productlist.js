@@ -16,10 +16,7 @@ export class Productlist extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.props.location.state.checkMenu);
-
     if (this.props.match.params.id !== prevProps.match.params.id) this.fetchList();
-
     if (this.props.location.state.checkMenu !== prevProps.location.state.checkMenu) this.fetchList();
   }
 
@@ -124,10 +121,10 @@ export class Productlist extends Component {
                         {item.discount_rate ? (
                           <>
                             <div className="priceBox">
-                              <p className="discount">{item.discount_rate * 100}%</p>
+                              {item.discount_rate * 100 !== 0 && <p className="discount">{item.discount_rate * 100}%</p>}
                               <p className="itemAfterPrice">{this.addComma(Math.floor(item.price * rate))}원</p>
                             </div>
-                            <p className="itemPriceAfter">{this.addComma(Math.floor(item.price))}원</p>
+                            {item.discount_rate * 100 !== 0 && <p className="itemPriceAfter">{this.addComma(Math.floor(item.price))}원</p>}
                           </>
                         ) : (
                           <p className="itemPrice">{this.addComma(Math.floor(item.price))}원</p>

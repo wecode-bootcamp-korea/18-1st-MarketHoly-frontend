@@ -27,7 +27,6 @@ class Nav extends React.Component {
     toggleSearchInput: false,
     isNavFixed: false,
     isLoginHover: false,
-    isLogin: false,
     userInfo: {},
   };
 
@@ -35,7 +34,7 @@ class Nav extends React.Component {
     fetch('/product/category', {})
       .then(res => res.json())
       .then(res => {
-        this.setState({ navbarList: res.result });
+        this.setState({ navbarList: res.result, isLoginHover: false });
       });
     this.fetchNavUser();
     window.addEventListener('scroll', this.onScrollGet);
@@ -57,8 +56,13 @@ class Nav extends React.Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
-        this.setState({ userInfo: res });
+        if (res.message === 'INVALID_TOKEN_TYPE') {
+          console.log('노 로그인 Nav');
+          this.setState({ userInfo: {}, isLoginHover: false });
+        } else {
+          console.log('로그인 중 Nav');
+          this.setState({ userInfo: res, isLoginHover: false });
+        }
       });
   };
 
@@ -133,6 +137,11 @@ class Nav extends React.Component {
     }
   };
 
+  handleLogout = () => {
+    localStorage.removeItem('token');
+    alert('로그아웃 되셨습니다.');
+  };
+
   render() {
     const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput, isNavFixed, userInfo, isLoginHover } = this.state;
     return (
@@ -185,7 +194,9 @@ class Nav extends React.Component {
                   <Link to="">개인 정보 수정</Link>
                 </li>
                 <li>
-                  <Link to="">로그아웃</Link>
+                  <Link to="/" onClick={this.handleLogout}>
+                    로그아웃
+                  </Link>
                 </li>
               </ul>
             </li>
