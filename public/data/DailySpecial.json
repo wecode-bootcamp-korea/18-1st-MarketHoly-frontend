@@ -6,7 +6,7 @@
         "name" : "[빕스] 바베큐 폭립 오리지날",
         "price" : "8140.00",
         "daily_discount_rate" : 0.4,
-        "start_date" : "2021-03-22"
+        "start_date" : "2021-03-25"
     },
     {
         "id" : 2,
@@ -15,6 +15,6 @@
         "name" : "[빕스] 바베큐 폭립 오리지날",
         "price" : "8140.00",
         "daily_discount_rate" : 0.4,
-        "start_date" : "2021-03-22"
+        "start_date" : "2021-03-25"
     }
 ]

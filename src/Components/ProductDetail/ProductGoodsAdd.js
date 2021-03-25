@@ -80,7 +80,7 @@ class ProductGoodsAdd extends React.Component {
                   <div className="goodsAddProductItemContent">
                     <div className="goodsAddProductItemContentWrapper">
                       <p className="goodsAddProductItemName">{item.name}</p>
-                      <p className="goodsAddProductItemPrice">{Math.floor(item.price).toLocaleString(navigator.language)}</p>
+                      <p className="goodsAddProductItemPrice">{Math.floor(item.price).toLocaleString(navigator.language)} 원</p>
                     </div>
                   </div>
                 </li>

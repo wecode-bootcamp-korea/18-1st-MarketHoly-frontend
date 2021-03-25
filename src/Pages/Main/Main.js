@@ -21,22 +21,30 @@ class Main extends Component {
     scrollY: 0,
   };
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
-    // 이 상품 어때요?
-    fetch('/data/ListGoods.json')
+    // 1) 이 상품 어때요?
+    fetch('/product/recommendation')
+      // Mock Data fetch('/data/ListGoods.json')
       .then(res => res.json())
       .then(res => {
         this.setState({
-          listgoods: res,
+          listgoods: res.listgoods,
+          // listgoods: res,
         });
       });
-    // 일일 특가
-    fetch('/product/dailyspecial')
+    // 2) 일일 특가
+    // 서버 연결 fetch('/product/dailyspecial')
+    fetch('/data/DailySpecial.json')
       .then(res => res.json())
       .then(res => {
         this.setState({
-          dailyspecial: res.dailyspecial,
+          // 서버 연결 dailyspecial: res.dailyspecial,
+          dailyspecial: res,
         });
       })
       .then(res => {
@@ -50,7 +58,7 @@ class Main extends Component {
     });
   };
 
-  // MD 추천
+  // 3) MD 추천
   handleCategory = id => {
     const offset = id * LIMIT;
     const query = `?limit=${LIMIT}&offset=${offset}`;

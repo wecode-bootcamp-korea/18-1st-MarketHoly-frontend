@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Productlist from './Productlist';
 import ProductNamelist from './ProductNamelist';
 import Productslider from './Productslider';
@@ -21,4 +22,4 @@ export class ProductCategory extends Component {
   }
 }
 
-export default ProductCategory;
+export default withRouter(ProductCategory);

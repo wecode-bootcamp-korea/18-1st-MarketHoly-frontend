@@ -13,9 +13,10 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 
 class Goods extends Component {
   render() {
-    const { modifier, id, image_url, name, price, discount_rate, daily_discount_rate, start_date } = this.props;
+    const { modifier, product_id, image_url, name, price, discount_rate, daily_discount_rate, start_date } = this.props;
+    // console.log(product_id);
     return (
-      <div className="goods" key={id}>
+      <div className="goods" key={product_id}>
         <div className="imagePart">
           <img className={modifier === 'dailyspecial' ? 'sizebig' : 'sizesmall'} src={image_url} alt="goods" onClick={() => this.props.history.push(`/product/detail/${this.props.product_id}`)} />
           {daily_discount_rate && <div className="saleMark">{daily_discount_rate * 100}% 일일특가</div>}
