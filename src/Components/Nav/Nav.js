@@ -23,7 +23,7 @@ class Nav extends React.Component {
   state = {
     search: '',
     allCategoriesHover: false,
-    hoverWidth: this.HOVER_WIDTH_TYPE1,
+    hoverWidth: HOVER_WIDTH_TYPE1,
     navbarList: [],
     displayShowIndex: 0,
     toggleSearchInput: false,
@@ -175,7 +175,7 @@ class Nav extends React.Component {
           )}
         </div>
         <div className="navbar-logo">
-          <Link to="/productcategory" className="logo-link">
+          <Link to="/" className="logo-link">
             <img src="/images/navlogo.png" alt="마켓홀리 로고" />
           </Link>
         </div>
