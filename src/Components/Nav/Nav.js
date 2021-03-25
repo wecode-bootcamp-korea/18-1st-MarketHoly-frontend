@@ -16,34 +16,52 @@ class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.searchInputRef = React.createRef();
-    this.hoverWidth1 = HOVER_WIDTH_TYPE1;
-    this.hoverWidth2 = HOVER_WIDTH_TYPE2;
   }
 
   state = {
     search: '',
     allCategoriesHover: false,
-    hoverWidth: this.HOVER_WIDTH_TYPE1,
+    hoverWidth: HOVER_WIDTH_TYPE1,
     navbarList: [],
     displayShowIndex: 0,
     toggleSearchInput: false,
     isNavFixed: false,
     isLoginHover: false,
     isLogin: false,
+    userInfo: {},
   };
 
   componentDidMount() {
-    // fetch('/data/productNavbar.json', {})
-    const categoryUrl = `product/category`;
-    fetch(categoryUrl, {})
+    fetch('/product/category', {})
       .then(res => res.json())
       .then(res => {
-        console.log(res.result);
         this.setState({ navbarList: res.result });
       });
 
+    this.fetchNavUser();
     window.addEventListener('scroll', this.onScrollGet);
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.location !== this.props.location && this.state.userInfo) {
+      console.log('여기 실행');
+      this.fetchNavUser();
+    }
+  }
+
+  fetchNavUser = () => {
+    fetch('/user/name', {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        this.setState({ userInfo: res.username });
+      });
+  };
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScrollGet);
@@ -75,19 +93,19 @@ class Nav extends React.Component {
   allCategoriesHoverEnter = () => {
     this.setState({
       allCategoriesHover: true,
-      hoverWidth: this.hoverWidth1,
+      hoverWidth: HOVER_WIDTH_TYPE1,
     });
   };
   allCategoriesHoverLeave = () => {
     this.setState({
       allCategoriesHover: false,
-      hoverWidth: this.hoverWidth1,
+      hoverWidth: HOVER_WIDTH_TYPE1,
       displayShowIndex: 0,
     });
   };
   categoriesMenuHoverEnter = index => {
     this.setState({
-      hoverWidth: this.hoverWidth2,
+      hoverWidth: HOVER_WIDTH_TYPE2,
       displayShowIndex: index,
     });
   };
@@ -117,12 +135,12 @@ class Nav extends React.Component {
   };
 
   render() {
-    const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput, isNavFixed, isLogin, isLoginHover } = this.state;
+    const { allCategoriesHover, hoverWidth, displayShowIndex, navbarList, toggleSearchInput, isNavFixed, userInfo, isLoginHover } = this.state;
     return (
       <div className={'navbar ' + (isNavFixed && 'navbarFixed')} onMouseHover={this.allCategoriesHoverLeave} onScroll={this.onScrollGet}>
         <div className="user-menu">
           <NavBanner />
-          {!isLogin ? (
+          {Object.keys(userInfo).length === 0 ? (
             <div className="user-list-menu">
               <div className="list-join menu-list">
                 <Link to="/Signup" className="join-link">
@@ -140,7 +158,7 @@ class Nav extends React.Component {
               <Link to="/mypage" className="use">
                 <span className="ico_grade grade6">웰컴</span>
                 <span className="txt">
-                  <span className="name">윤찬호</span>
+                  <span className="name">{userInfo.username}</span>
                   <span className="sir">님</span>
                   <GoTriangleDown />
                 </span>
@@ -175,7 +193,7 @@ class Nav extends React.Component {
           )}
         </div>
         <div className="navbar-logo">
-          <Link to="/productcategory" className="logo-link">
+          <Link to="/" className="logo-link">
             <img src="/images/navlogo.png" alt="마켓홀리 로고" />
           </Link>
         </div>

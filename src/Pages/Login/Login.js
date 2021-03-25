@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Nav from '../../Components/Nav/Nav';
-import Footer from '../../Components/Footer/Footer';
 import './Login.scss';
 
 class Login extends Component {
@@ -51,7 +49,6 @@ class Login extends Component {
   render() {
     return (
       <>
-        <Nav />
         <div className="loginForm">
           <h3>로그인</h3>
           <form>
@@ -62,15 +59,6 @@ class Login extends Component {
                 <input className="securityConnect" type="checkbox" />
                 보안접속
               </label>
-              {/* <div className="findLogin">
-                <a href="/#" className="findId">
-                  아이디 찾기
-                </a>
-                <span className="bar"> | </span>
-                <a href="/#" className="findPwd">
-                  비밀번호 찾기
-                </a>
-              </div> */}
             </div>
             <button type="submit" className="loginBtn" onClick={this.loginSubmit}>
               로그인
@@ -78,7 +66,6 @@ class Login extends Component {
             <button className="joinBtn">회원가입 </button>
           </form>
         </div>
-        <Footer />
       </>
     );
   }

@@ -26,7 +26,7 @@ export class Aside extends Component {
 
   render() {
     return (
-      <aside className="scroll" style={{ top: this.state.scrollTop + 300 }} onScroll={this.handleScroll}>
+      <aside className="scroll" style={{ top: this.state.scrollTop + 220 }} onScroll={this.handleScroll}>
         <div className="sectionOne">
           <div className="list">등급별 혜택</div>
           <div className="list">레시피</div>

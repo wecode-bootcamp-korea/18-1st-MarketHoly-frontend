@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './Goods.scss';
+import { withRouter } from 'react-router-dom';
+import '../Goods/Goods';
 
 class MDGoods extends Component {
   render() {
@@ -8,7 +9,7 @@ class MDGoods extends Component {
     return (
       <div className="mdgoods" key={id}>
         <div className="imagePart">
-          <img className="sizesmall" src={image_url} alt="goods" />
+          <img className="sizesmall" src={image_url} alt="goods" onClick={() => this.props.history.push(`/product/detail/${this.props.product_id}`)} />
         </div>
         <div className="name">{name}</div>
         <div className="persmall">{discount_rate && discount_rate * 100 + '%'}</div>
@@ -21,4 +22,4 @@ class MDGoods extends Component {
   }
 }
 
-export default MDGoods;
+export default withRouter(MDGoods);

@@ -18,10 +18,10 @@ class DailySpecial extends Component {
           </span>
         </div>
         <div className="twoGoods">
-          {this.props.dailyspecial.map(good => (
+          {this.props.dailyspecial.map((good, index) => (
             <Goods
               modifier="dailyspecial"
-              key={good.id}
+              key={index}
               product_id={good.product_id}
               image_url={good.image_url}
               name={good.name}

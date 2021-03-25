@@ -18,8 +18,8 @@ export default class ListGoods extends Component {
     return (
       <div className="listGoods">
         <Slider {...settings}>
-          {this.props.listgoods.map(good => (
-            <Goods modifier="listcategory" key={good.id} image_url={good.image_url} name={good.name} price={good.price} discount_rate={good.discount_rate} />
+          {this.props.listgoods.map((good, index) => (
+            <Goods modifier="listcategory" key={index} product_id={good.product_id} image_url={good.image_url} name={good.name} price={good.price} discount_rate={good.discount_rate} />
           ))}
         </Slider>
       </div>
