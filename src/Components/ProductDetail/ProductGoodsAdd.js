@@ -15,15 +15,16 @@ class ProductGoodsAdd extends React.Component {
   };
 
   componentDidMount() {
-    fetch('data/goodsAddProduct.json')
-      .then(res => res.json())
-      .then(res =>
-        this.setState({ goodsProductArr: res }, () => {
-          this.setState({
-            imgUlWidth: this.getWidth.offsetWidth,
-          });
-        })
-      );
+    // 서버 꺼지면 출력할 목데이터 리스트들
+    // fetch('data/goodsAddProduct.json')
+    //   .then(res => res.json())
+    //   .then(res =>
+    //     this.setState({ goodsProductArr: res }, () => {
+    //       this.setState({
+    //         imgUlWidth: this.getWidth.offsetWidth,
+    //       });
+    //     })
+    //   );
   }
 
   handleArrowMove = e => {

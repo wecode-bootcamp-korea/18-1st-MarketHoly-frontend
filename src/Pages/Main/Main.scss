@@ -2,12 +2,12 @@
 
 .main {
    .titRecommendGoods {
-      margin-top    : 150px;
-      margin-bottom : 40px;
-      text-align    : center;
-      font-weight   : 700;
-      font-size     : 28px;
-      color         : $mainText;
+      width       : 1050px;
+      margin      : 150px auto 40px auto;
+      text-align  : center;
+      font-weight : 700;
+      font-size   : 28px;
+      color       : $mainText;
    }
    .viewAll {
       margin      : 50px auto;
