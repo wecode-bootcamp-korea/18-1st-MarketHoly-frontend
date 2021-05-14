@@ -27,7 +27,6 @@ class Main extends Component {
       .then(res => {
         this.setState({
           listgoods: res.listgoods,
-          // listgoods: res,
         });
       });
     // 일일 특가
@@ -36,7 +35,6 @@ class Main extends Component {
       .then(res => {
         this.setState({
           dailyspecial: res.dailyspecial,
-          // dailyspecial: res,
         });
       })
       .then(res => {
@@ -47,7 +45,6 @@ class Main extends Component {
   handleCategory = id => {
     const offset = id * LIMIT;
     const query = `?limit=${LIMIT}&offset=${offset}`;
-    // console.log('확인 중', query);
     fetch(`/product/mdrecommendation${query}`)
       .then(res => res.json())
       .then(res => this.setState({ product_list_by_category: res.product_list_by_category }));
@@ -55,6 +52,7 @@ class Main extends Component {
 
   render() {
     const { listgoods, dailyspecial, product_list_by_category } = this.state;
+
     return (
       <div className="main">
         <Banner />

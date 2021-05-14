@@ -45,7 +45,6 @@ export class Productlist extends Component {
         });
     }
     if (this.props.location.state.checkMenu === 'new') {
-      console.log('오 신상');
       fetch(`/product?sort=new`)
         .then(res => res.json())
         .then(res => {
@@ -55,7 +54,6 @@ export class Productlist extends Component {
         });
     }
     if (this.props.location.state.checkMenu === 'best') {
-      console.log('오 베스트');
       fetch(`/product?sort=best`)
         .then(res => res.json())
         .then(res => {
@@ -86,7 +84,6 @@ export class Productlist extends Component {
 
   handleCnt = num => {
     const { count } = this.state;
-
     if (num === -1 && count === 1) return;
     this.setState({ count: count + num });
   };
@@ -103,7 +100,6 @@ export class Productlist extends Component {
             <ul className="list">
               {this.state.product_list &&
                 this.state.product_list.map(item => {
-                  // console.log(item);
                   let rate = 1 - item.discount_rate;
                   return (
                     <li key={item.product_id}>

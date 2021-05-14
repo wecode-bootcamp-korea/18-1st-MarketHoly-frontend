@@ -30,9 +30,6 @@ class Login extends Component {
     e.preventDefault(); //Submit 버튼 눌러도 새로고침하지 않게 함
     const idCheck = /^[A-Za-z0-9][A-Za-z0-9._-]+[@]{1}[a-z]+[.]{1}[a-z]{1,4}$/;
 
-    console.log(this.props);
-    console.log(this);
-
     if (idCheck.test(this.state.email) && this.state.password.length >= 10) {
       const summonerUrl = `user/login`;
       fetch(summonerUrl, {
@@ -45,7 +42,6 @@ class Login extends Component {
       })
         .then(res => res.json())
         .then(result => {
-          console.log(result);
           if (result.message === 'SUCCESS') {
             localStorage.setItem('token', result.access_token);
             alert('로그인 완료');
