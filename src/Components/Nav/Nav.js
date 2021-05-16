@@ -42,7 +42,6 @@ class Nav extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.location !== this.props.location && this.state.userInfo) {
-      console.log('여기 실행');
       this.fetchNavUser();
     }
   }
@@ -57,10 +56,8 @@ class Nav extends React.Component {
       .then(res => res.json())
       .then(res => {
         if (res.message === 'INVALID_TOKEN_TYPE') {
-          console.log('노 로그인 Nav');
           this.setState({ userInfo: {}, isLoginHover: false });
         } else {
-          console.log('로그인 중 Nav');
           this.setState({ userInfo: res, isLoginHover: false });
         }
       });
@@ -212,10 +209,10 @@ class Nav extends React.Component {
             <div className="menu-main">
               <ul className="menu-main-list">
                 <li className="menu1" onMouseEnter={this.allCategoriesHoverEnter}>
-                  <Link to="#" className="menu1-link">
+                  <div className="menu1-link">
                     <FiMenu className="menu1-icon" />
                     <span className="menu-text">전체 카테고리</span>
-                  </Link>
+                  </div>
                 </li>
                 <li className="menu2">
                   <Link

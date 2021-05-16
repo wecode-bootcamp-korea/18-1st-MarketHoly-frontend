@@ -33,12 +33,11 @@ class ListCategory extends Component {
       '베이비·키즈',
       '반려동물',
     ];
-
     return (
       <div className="listCategory">
         {categories.map((category, index) => {
           return (
-            <span key={index} className={clickIndex == index + 1 ? 'clicked' : 'category'} data-idx={index + 1} onClick={this.handleColor}>
+            <span key={index} className={parseInt(clickIndex) === index + 1 ? 'clicked' : 'category'} data-idx={index + 1} onClick={this.handleColor}>
               {category}
             </span>
           );

@@ -14,19 +14,6 @@ class ProductGoodsAdd extends React.Component {
     goodsProductArr: [],
   };
 
-  componentDidMount() {
-    // 서버 꺼지면 출력할 목데이터 리스트들
-    // fetch('data/goodsAddProduct.json')
-    //   .then(res => res.json())
-    //   .then(res =>
-    //     this.setState({ goodsProductArr: res }, () => {
-    //       this.setState({
-    //         imgUlWidth: this.getWidth.offsetWidth,
-    //       });
-    //     })
-    //   );
-  }
-
   handleArrowMove = e => {
     if (e.target.className.includes('arrowLeftBox')) {
       this.setState({ carouselX: this.state.carouselX + CAROUSEL_X }, () => {
@@ -53,7 +40,7 @@ class ProductGoodsAdd extends React.Component {
   };
 
   render() {
-    const { carouselX, isLeftArrow, isRightArrow, goodsProductArr } = this.state;
+    const { carouselX, isLeftArrow, isRightArrow } = this.state;
     const { productInfo } = this.props;
     return (
       <div className="goodsAddProduct">

@@ -15,6 +15,8 @@ export default class ListGoods extends Component {
       slidesToScroll: 4,
     };
 
+    console.log(this.props.listgoods);
+
     return (
       <div className="listGoods">
         <Slider {...settings}>

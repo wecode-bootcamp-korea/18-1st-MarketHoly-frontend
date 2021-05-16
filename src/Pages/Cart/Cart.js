@@ -33,7 +33,7 @@ class Cart extends React.Component {
     })
       .then(res => res.json())
       .then(res => {
-        // console.log('res', res.cartlist),
+        //
         this.setState({
           // cart_list: res,
           cartlist: res.products,
@@ -132,7 +132,6 @@ class Cart extends React.Component {
   };
 
   render() {
-    console.log('countTotal>>>', this.state.priceAdd);
     const pricearr = [];
     let a = 0;
     for (let i = 0; i < this.state.cartlist.length; i++) pricearr[i] = this.state.cartlist[i].price;
