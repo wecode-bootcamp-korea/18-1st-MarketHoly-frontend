@@ -263,9 +263,9 @@ class Nav extends React.Component {
                 </form>
               </div>
               <div className="cart-count">
-                <div className="cart-count-link">
+                <Link to="/Cart" className="cart-count-link">
                   <FiShoppingCart className="cart-count-icon" />
-                </div>
+                </Link>
               </div>
             </div>
             <div className="menu-hover-box" style={allCategoriesHover ? { display: 'flex', width: `${hoverWidth}px` } : { display: 'none' }} onMouseLeave={this.allCategoriesHoverLeave}>

@@ -16,17 +16,14 @@ class SearchAddress extends Component {
       }
       fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
     }
+
     localStorage.setItem('fulladdress', fullAddress);
   };
 
   render() {
-    console.log(this.props.isCheck);
     return (
       <div className="searchAddress">
-        <DaumPostcode
-          onComplete={this.handleComplete}
-          //   onClick={console.log(this.handleComplete(data)}
-        />
+        <DaumPostcode onComplete={this.handleComplete} />
       </div>
     );
   }

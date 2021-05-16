@@ -84,7 +84,6 @@ export class Productlist extends Component {
 
   handleCnt = num => {
     const { count } = this.state;
-
     if (num === -1 && count === 1) return;
     this.setState({ count: count + num });
   };
@@ -101,7 +100,6 @@ export class Productlist extends Component {
             <ul className="list">
               {this.state.product_list &&
                 this.state.product_list.map(item => {
-                  // console.log(item);
                   let rate = 1 - item.discount_rate;
                   return (
                     <li key={item.product_id}>

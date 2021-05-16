@@ -11,45 +11,21 @@ import './Cart.scss';
 class Cart extends React.Component {
   state = {
     isCheck: false,
-    address: '',
     countTotal: 1,
-    cartlist: [],
+    cartlist: '',
     priceAdd: [],
     priceSum: 0,
-    fullAddress: '',
-    isDaumPost: false,
-    isRegister: false,
-    register: [],
     addressRes: '',
+    totalItemPrice: 0,
+    arr: [],
   };
-  // "proxy": "http://10.58.1.200:8000",
+
   componentDidMount() {
     const cartlist = `order/cart`;
     // fetch('/data/cartlist2.json');
-    fetch(cartlist, {
-      headers: {
-        Authorization: '#',
-      },
-    })
+    fetch('/data/cartlist2.json')
       .then(res => res.json())
-      .then(res => {
-        //
-        this.setState({
-          // cart_list: res,
-          cartlist: res.products,
-          addressRes: res.address,
-        });
-      });
-
-    let zero = [];
-    let i = 0;
-    while (i < 300) {
-      zero.push(0);
-      i++;
-    }
-    this.setState({
-      priceAdd: [...zero],
-    });
+      .then(res => this.setState({ cartlist: res }));
   }
 
   postCartData = (totalItemPrice, id) => {
@@ -73,9 +49,9 @@ class Cart extends React.Component {
     this.setState({ isCheck: !this.state.isCheck });
   };
 
-  handleChangeAddress = address => {
-    this.setState({ address: address });
-  };
+  // handleChangeAddress = address => {
+  //   this.setState({ address: address });
+  // };
 
   deleteAlert = () => {
     this.setState({
@@ -101,56 +77,15 @@ class Cart extends React.Component {
 
   deleteCartItem = e => {
     this.setState({
-      cartlist: this.state.cartlist.filter(item => item.id != e.target.value),
-    });
-  };
-
-  handleOpenPost = () => {
-    this.setState({
-      isDaumPost: true,
-    });
-  };
-
-  handleAddress = data => {
-    let AllAddress = data.address;
-    let extraAddress = '';
-    let zoneCodes = data.zonecode;
-    if (data.addressType === 'R') {
-      if (data.bname !== '') {
-        extraAddress += data.bname;
-      }
-      if (data.buildingName !== '') {
-        extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
-      }
-      AllAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
-    }
-    this.setState({
-      fullAddress: AllAddress,
-      zoneCode: zoneCodes,
-      isDaumPost: false,
+      cartlist: this.state.cartlist.filter(item => item.products[0].id != e.target.value),
     });
   };
 
   render() {
-    const pricearr = [];
     let a = 0;
-    for (let i = 0; i < this.state.cartlist.length; i++) pricearr[i] = this.state.cartlist[i].price;
-    let totalprice = pricearr.reduce((acc, cur) => acc + cur, 0);
 
-    this.state.cartlist.map(e => (a = a + e.price));
-
-    const { isModalShow, isModalClose } = this.props;
-    const { isDaumPost } = this.state;
-    const width = 595;
-    const height = 450;
-    const modalStyle = {
-      position: 'fixed',
-      top: '10%',
-      left: '10%',
-      zIndex: '100',
-      border: '1px solid #000000',
-      overflow: 'hidden',
-    };
+    const cartLength = Array(this.state.cartlist.length);
+    const arr = cartLength;
 
     let totalItemPrice = Math.floor(a) + this.state.priceSum;
 
@@ -167,20 +102,18 @@ class Cart extends React.Component {
             <div className="lineblack" />
             {this.state.cartlist.length !== 0 ? (
               this.state.cartlist.map(e => (
-                <>
-                  <Cartitem
-                    cartlist={e.id}
-                    isCheck={this.state.isCheck}
-                    countTotalPrice={this.countTotalPrice}
-                    deleteCartItem={this.deleteCartItem}
-                    id={e.id}
-                    name={e.name}
-                    price={e.price}
-                    img={e.img_url}
-                    discount_rate={e.discount_rate}
-                    priceAdd={this.priceAdd}
-                  />
-                </>
+                <Cartitem
+                  cartlist={e.id}
+                  isCheck={this.state.isCheck}
+                  countTotalPrice={this.countTotalPrice}
+                  deleteCartItem={this.deleteCartItem}
+                  id={e.products[0].id}
+                  name={e.products[0].name}
+                  price={e.products[0].price}
+                  img={e.products[0].img_url}
+                  discount_rate={e.discount_rate}
+                  priceAdd={this.priceAdd}
+                />
               ))
             ) : (
               <div className="noGoods">장바구니에 담긴 상품이 없습니다</div>
@@ -216,11 +149,11 @@ class Cart extends React.Component {
                 </div>
               </div>
             </div>
-            {isDaumPost ? <DaumPostcode onComplete={this.handleAddress} autoClose width={width} height={height} style={modalStyle} isDaumPost={isDaumPost} /> : null}
+            {/* {isDaumPost ? <DaumPostcode onComplete={this.handleAddress} autoClose width={width} height={height} style={modalStyle} isDaumPost={isDaumPost} /> : null} */}
             <div className="amountView">
               <div className="amount">
                 <span className="tit">상품금액</span>
-                <span className="price">{Math.floor(totalItemPrice)}원</span>
+                <span className="price">{Math.floor(this.state.totalItemPrice)}원</span>
               </div>
               <div className="amount">
                 <span className="tit">상품할인금액</span>
@@ -233,7 +166,7 @@ class Cart extends React.Component {
               <div className="line" />
               <div className="amount">
                 <span className="tit">결제예정금액</span>
-                <span className="price">{Math.floor(totalItemPrice)}원</span>
+                <span className="price">{Math.floor(this.state.totalItemPrice)}원</span>
               </div>
             </div>
             {this.state.cartlist.length === 0 ? (

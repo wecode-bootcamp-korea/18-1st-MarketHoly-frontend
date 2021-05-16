@@ -7,6 +7,7 @@ export class ProductNamelist extends Component {
     super();
     this.state = {
       productList: [],
+      listArray: [true],
     };
   }
 
@@ -20,6 +21,12 @@ export class ProductNamelist extends Component {
       });
   }
 
+  handleList = e => {
+    const arr = Array(7).fill(false);
+    arr[e - 1] = true;
+    this.setState({ listArray: arr });
+  };
+
   render() {
     return (
       <>
@@ -28,7 +35,7 @@ export class ProductNamelist extends Component {
           <ul className="productList">
             {this.state.productList.map(items => {
               return (
-                <li key={items.id}>
+                <li key={items.id} onClick={() => this.handleList(items.id)} className={this.state.listArray[items.id - 1] && 'tap'}>
                   <a>{items.contents}</a>
                 </li>
               );

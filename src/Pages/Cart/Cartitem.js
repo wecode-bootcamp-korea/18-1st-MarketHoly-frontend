@@ -15,7 +15,7 @@ export class Cartitem extends Component {
     const { count } = this.state;
     if (num === -1 && count === 1) return;
     this.setState({ count: count + num });
-    this.props.countTotalPrice(e * (count + num - 1), id, count);
+    this.props.countTotalPrice(e * (count + num), id, count);
   };
 
   render() {

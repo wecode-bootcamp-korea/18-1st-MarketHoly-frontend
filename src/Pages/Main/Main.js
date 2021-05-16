@@ -27,7 +27,6 @@ class Main extends Component {
       .then(res => {
         this.setState({
           listgoods: res.listgoods,
-          // listgoods: res,
         });
       });
     // 일일 특가
@@ -36,7 +35,6 @@ class Main extends Component {
       .then(res => {
         this.setState({
           dailyspecial: res.dailyspecial,
-          // dailyspecial: res,
         });
       })
       .then(res => {
@@ -54,6 +52,7 @@ class Main extends Component {
 
   render() {
     const { listgoods, dailyspecial, product_list_by_category } = this.state;
+
     return (
       <div className="main">
         <Banner />

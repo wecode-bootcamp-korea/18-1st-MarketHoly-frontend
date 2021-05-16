@@ -25,7 +25,6 @@ class ProductDetail extends React.Component {
       .then(res => res.json())
       .then(res => {
         this.setState({ productInfo: res.info, productList: res.related_products });
-        // this.setState({ productInfo: res });
       });
     this.fetchNavUser();
   }
