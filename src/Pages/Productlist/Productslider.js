@@ -19,13 +19,13 @@ export default class SimpleSlider extends Component {
       <div className="sliders">
         <Slider {...settings}>
           <div>
-            <img src="https://img-cf.kurly.com/shop/data/category/pc_category_EDLP_210205.1612768855.jpg" />
+            <img src="https://images.unsplash.com/photo-1506459225024-1428097a7e18?ixid=MnwxMjA3fDB8MXxzZWFyY2h8NDd8fGZvb2R8ZW58MHx8fHwxNjIxMDgyMjM3&ixlib=rb-1.2.1&dpr=1&auto=format&fit=crop&w=480&h=80&q=60" />
           </div>
           <div>
-            <img src="https://img-cf.kurly.com/shop/data/main/1/pc_img_1616135472.jpg" />
+            <img src="https://images.unsplash.com/photo-1620744729284-585642a156d3?ixlib=rb-1.2.1&dpr=1&auto=format&fit=crop&w=480&h=80&q=60 " />
           </div>
           <div>
-            <img src="https://img-cf.kurly.com/shop/data/main/1/pc_img_1615973847.jpg" />
+            <img src="https://images.unsplash.com/photo-1599785209707-a456fc1337bb?ixlib=rb-1.2.1&dpr=1&auto=format&fit=crop&w=480&h=80&q=60" />
           </div>
         </Slider>
       </div>

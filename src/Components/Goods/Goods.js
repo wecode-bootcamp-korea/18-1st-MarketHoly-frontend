@@ -14,10 +14,6 @@ const renderer = ({ hours, minutes, seconds, completed }) => {
 class Goods extends Component {
   render() {
     const { modifier, product_id, image_url, name, price, discount_rate, daily_discount_rate, start_date } = this.props;
-    // console.log(product_id);
-    console.log(discount_rate * 100);
-    console.log(discount_rate);
-    console.log(daily_discount_rate);
     return (
       <div className="goods" key={product_id}>
         <div className="imagePart">

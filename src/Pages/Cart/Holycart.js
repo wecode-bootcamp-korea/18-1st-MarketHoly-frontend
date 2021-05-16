@@ -8,10 +8,8 @@ export class Holycart extends Component {
   render() {
     return (
       <div>
-        <Aside />
         <Nav />
         <Cart />
-        <Footer />
       </div>
     );
   }

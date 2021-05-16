@@ -31,7 +31,6 @@ class Login extends Component {
       })
         .then(res => res.json())
         .then(res => {
-          console.log(res);
           if (parseInt(res.status) === 200) {
             alert('로그인 완료');
             this.props.history.push('../Main');

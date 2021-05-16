@@ -2,7 +2,7 @@
   "name": "marketholy",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://52.78.178.238:8000",
+  "proxy": "http://15.165.161.215:8000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",

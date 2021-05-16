@@ -34,12 +34,9 @@ class SignUp extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
-
     fetch('/data/signup.json')
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.setState({
           tos: res,
         });
@@ -134,7 +131,6 @@ class SignUp extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         if (parseInt(res.status) === 200) {
           alert('회원가입이 완료되었습니다.');
           this.props.history.push({

@@ -12,25 +12,18 @@ class SearchAddress extends Component {
         extraAddress += data.bname;
       }
       if (data.buildingName !== '') {
-        extraAddress +=
-          extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+        extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
       }
       fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
     }
 
-    console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
-    // this.props.address(fullAddress);
     localStorage.setItem('fulladdress', fullAddress);
   };
 
   render() {
-    console.log(this.props.isCheck);
     return (
       <div className="searchAddress">
-        <DaumPostcode
-          onComplete={this.handleComplete}
-          //   onClick={console.log(this.handleComplete(data)}
-        />
+        <DaumPostcode onComplete={this.handleComplete} />
       </div>
     );
   }
