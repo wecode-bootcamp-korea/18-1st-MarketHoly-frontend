@@ -6,11 +6,11 @@
    height           : 156px;
    background-color : white;
    .navbar {
-      width: 100%;
+      width            : 100%;
       margin           : 0 auto;
       background-color : white;
       .user-menu, .navbar-logo, .navbar-menu {
-         margin: 0 auto;
+         margin : 0 auto;
       }
       .user-menu {
          display         : flex;
@@ -245,7 +245,7 @@
 }
 
 .hover-on {
-   color            : $themePurple;
+   color            : $themePurple !important;
    background-color : #f7f7f7;
    font-weight      : 700;
 }

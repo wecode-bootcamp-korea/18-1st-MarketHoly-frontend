@@ -58,7 +58,6 @@ class Cart extends React.Component {
       cartlist: [],
     });
   };
-  totalItemPrice;
 
   countTotalPrice = (data, id, count) => {
     let arr = this.state.priceAdd;

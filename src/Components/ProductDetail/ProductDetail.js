@@ -20,6 +20,7 @@ class ProductDetail extends React.Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    // fetch('data/productDetail.json')
     fetch(`/product/detail/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
@@ -38,10 +39,8 @@ class ProductDetail extends React.Component {
       .then(res => res.json())
       .then(res => {
         if (res.message === 'INVALID_TOKEN_TYPE') {
-          //로그아웃 상세
           this.setState({ userInfo: {} });
         } else {
-          //로그인 중 상세
           this.setState({ userInfo: res });
         }
       });
@@ -82,9 +81,7 @@ class ProductDetail extends React.Component {
           Authorization: localStorage.getItem('token'),
         },
         body: JSON.stringify(cartObj),
-      })
-        .then(res => res.json())
-        .then(console.log);
+      }).then(res => res.json());
     }
   };
 

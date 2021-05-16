@@ -8,10 +8,8 @@ import Main from './Pages/Main/Main';
 import SignUp from './Pages/SignUp/SignUp';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import Login from './Pages/Login/Login';
-import Holycart from './Pages/Cart/Holycart';
 import Nav from './Components/Nav/Nav';
 import Footer from './Components/Footer/Footer';
-import Aside from './Pages/aside/aside';
 import Mypage from './Pages/Mypage/Mypage';
 
 class Routes extends React.Component {
